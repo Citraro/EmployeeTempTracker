@@ -1,7 +1,32 @@
-<!-- This is rendered at the @RenderBody() call in _Layout.cshtml -->
+<!-- This is rendered at the  (AT)RenderBody() call in _Layout.cshtml -->
 @{
     ViewData["Title"] = "User Login";
 }
 
-<h2>Index</h2>
-<p>Hello from the view template</p>
+@* @section head {
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+} *@
+
+<div id="login_form" class="w3-card w3-margin-left w3-margin-right">
+    <div class="w3-container w3-blue-grey"><h4 class="w3-center">User Login</h4></div>
+    <form class="w3-container" action="./Login/AuthUser" method="Get">
+        <input class="w3-input w3-round w3-border w3-border-grey w3-margin-top" type="text" size="50" maxlength="50" name="uname" placeholder="Username" />
+        <input class="w3-input w3-round w3-border w3-border-grey w3-margin-top" type="text" size="50" maxlength="50" name="passwd" placeholder="Password" />
+
+        <!-- Center submit button in the middle with 1/3rd container width -->
+        <div class="w3-row">
+            <div class="w3-third"><p></p></div>
+            <div class="w3-third w3-container w3-margin-top w3-margin-bottom">
+                <input class="w3-btn w3-block w3-blue-grey w3-border w3-border-black w3-round-large w3-padding-small" type="submit" value="Submit" name="authenticate_user" />
+            </div>
+            <div class="w3-third"><p></p></div>
+        </div>
+    </form>
+</div>
+
+<hr />
+
+<div class="w3-container">
+    <p class="w3-center">New User? Request registration <a href="./Home">here</a>.</p>
+</div>

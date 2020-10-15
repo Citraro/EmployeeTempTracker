@@ -26,8 +26,10 @@ namespace EmployeeTempTracker.Controllers {
         // Example of adding a route.
         // Changing this to return an IActionResult (return View();) would search for /Views/Login/AuthUser.cshtml
         // Get http://capstone.ohitski.org/Login/AuthUser
-        public string AuthUser(string uname, string passwd, int id) {
-            return HtmlEncoder.Default.Encode($"Hello {uname}, your Id is {id} and you entered {passwd} to login.");
+        public IActionResult AuthUser(string uname, string passwd, int id) {
+            ViewData["Title"] = "Authenticate";
+            ViewData["Message"] = HtmlEncoder.Default.Encode($"Hello, {uname}, your id is {id} and you entered {passwd} as your password.");
+            return View();
         }
 
     }
