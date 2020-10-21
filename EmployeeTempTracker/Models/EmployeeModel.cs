@@ -2,7 +2,7 @@ using System;
 
 namespace EmployeeTempTracker.Models
 {
-    public class Employee
+    public class EmployeeModel
     {
         public string Id { get; set; }
         public string Company { get; set; }

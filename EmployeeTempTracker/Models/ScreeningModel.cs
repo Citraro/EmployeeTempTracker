@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EmployeeTempTracker.Models
 {
-    public class Screening
+    public class ScreeningModel
     {
         public string EmpId { get; set; }
 
