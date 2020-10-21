@@ -48,8 +48,6 @@ namespace EmployeeTempTracker.Controllers {
             else{
                 return RedirectToAction("InvalidLogin");
             }
-
-            return View();
         }
 
         public IActionResult UserDashBoard(string uname, string passwd, int id = 1){
