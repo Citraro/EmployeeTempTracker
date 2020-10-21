@@ -50,7 +50,7 @@ namespace EmployeeTempTracker.Controllers {
             }
         }
 
-        public IActionResult UserDashBoard(string uname, string passwd, int id = 1){
+        public IActionResult UserDashboard(string uname, string passwd, int id = 1){
             ViewData["Title"] = "Dashboard";
             ViewData["Message"] = HtmlEncoder.Default.Encode($"Hello, {uname}, your id is {id} and you entered {passwd} as your password.");
             return View();
