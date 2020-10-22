@@ -18,13 +18,21 @@ namespace EmployeeTempTracker.Controllers
             _logger = logger;
         }
 
+        // Get http://capstone.ohitski.org/
         public IActionResult Index()
         {
             return View();
         }
 
+        // Get http://capstone.ohitski.org/Home/Privacy
         public IActionResult Privacy()
         {
+            return View();
+        }
+
+        // Get http://capstone.ohitski.org/Home/EnterScreening
+        public IActionResult EnterScreening() {
+            ViewData["Title"] = "Health Screening";
             return View();
         }
 
