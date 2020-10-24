@@ -41,8 +41,11 @@ namespace EmployeeTempTracker.Controllers {
             Boolean someLogicToCheckDataBaseForUser = true; //TEMPORARY FIELD, REMOVE WHEN API CALLS ARE IMPLEMENTED
             
             if(someLogicToCheckDataBaseForUser){
-                // Redirect to http://capstone.ohitski.org/Login/UserDashboard
-                return RedirectToAction("UserDashboard",new{uname = uname,passwd = passwd, id = id});
+                // Redirect to http://capstone.ohitski.org/Login/Dashboard
+                return RedirectToAction("DashBoard", "Login", new {uname = uname, passwd = passwd, id = id});
+
+                // Example of how to redirect to another controller (http://capstone.ohitski.org/Home/EnterScreening):
+                // return RedirectToAction("EnterScreening", "Home");
             }
             else{
                 // Redirect to http://capstone.ohitski.org/Login/InvalidLogin
@@ -51,7 +54,7 @@ namespace EmployeeTempTracker.Controllers {
         }
 
         // Get http://capstone.ohitski.org/Login/UserDashboard
-        public IActionResult UserDashBoard(string uname, string passwd, int id = 1){
+        public IActionResult DashBoard(string uname, string passwd, int id = 1){
             ViewData["Title"] = "Dashboard";
             ViewData["Message"] = HtmlEncoder.Default.Encode($"Hello, {uname}, your id is {id} and you entered {passwd} as your password.");
             return View();

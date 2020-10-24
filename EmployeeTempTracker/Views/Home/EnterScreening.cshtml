@@ -1,2 +1,103 @@
-<h4>ToDo: Create a form for health screening entries.</h4>
+<div class="w3-container w3-red">
+<h4>ToDo: Determine how to incorporate the Questionnarie && Create the screening object</h4>
 <p>Use the example screening forms as an outline for data requirements. Use the Intellinetics website for design inspiration. Pass form data to a ScreeningModel object.</p>
+</div>
+<hr />
+
+<div id="gsi_screening_form" class="w3-card-4 w3-margin-left w3-margin-right">
+    <div class="w3-container w3-green"><h4 class="w3-center">New Screening</h4></div>
+    <form method="Post" action="/Home/ProcessScreening" class="w3-container">
+        <!-- Begin Data Entry Portion -->
+       
+        <!-- First/Last Name Row -->
+        <div class="w3-row w3-margin-top">
+            <div class="w3-half w3-container"><input class="w3-input w3-round w3-border w3-border-grey" type="text" size="20" name="fname" placeholder="Firstname" required /></div>
+            <div class="w3-half w3-container"><input class="w3-input w3-round w3-border w3-border-grey" type="text" size="20" name="fname" placeholder="Lastname" required /></div>
+        </div>
+           
+        <!-- Id, Organization, & Temperature row -->
+        <div class="w3-row w3-margin-top w3-margin-bottom">
+            <div class="w3-third w3-container"><input class="w3-input w3-round w3-border w3-border-grey" type="text" size="20" name="id" placeholder="Employee Id" required /></div>
+            <div class="w3-third w3-container">
+                <select class="w3-select w3-round w3-border w3-border-grey" name="domain" placeholder="Organization">
+                    <option value="" disabled selected>Organization</option>
+                    <option value="GSI">GSI</option>
+                    <option value="Intellinetics">Intellinetics</option>
+                </select>
+            </div>
+            <div class="w3-third w3-container"><input class="w3-input w3-round w3-border w3-border-grey" type="password" maxlength="4" minlength="4" name="temperature" placeholder="Temperature" /></div>
+        </div>
+
+        <!-- End Data Entry Portion / Begin Questionairre Portion -->
+
+        <h3 class="w3-center">Please truthfully answer the following questions for the health and safety of us all.</h3>
+        <!-- Question A split into two columns to save vertical space -->
+        <p>1. Have you had any of the following symptoms including but not limited to:</p>
+        <div class="w3-row">
+            <div class="w3-half">
+                <ul>
+                    <li>Fever or chills</li>
+                    <li>Cough</li>
+                    <li>Shorntess of breath</li>
+                    <li>Difficulty breathing</li>
+                    <li>Fatigue</li>
+                    <li>Muscle or body aches</li>
+                </ul>
+            </div>
+            <div class="w3-half">
+                <ul>
+                    <li>Headache</li>
+                    <li>New loss of taste or smell</li>
+                    <li>Sore throat</li>
+                    <li>Congestion or runny nose</li>
+                    <li>Nausea or vomiting</li>
+                    <li>Diarrhea</li>
+                </ul>
+            </div>
+        </div>
+        <i>Source: <a target="_blank" href="https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html">https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html</a></i><br />
+        <!-- Answer question A -->
+        <input id="question_a_yes" class="w3-radio" type="radio" name="question_a" value="Yes" /><label for="question_a_yes"> Yes</label>
+        <input id="question_a_no" class="w3-radio" type="radio" name="question_a" value="No" /><label for="question_a_no"> No</label>
+                
+        <!-- Question B -->
+        <p>2. Have you had <b>close contact</b> in the last 14 days with someone with a diagnosis of COVID-19? <i>Close contact defined as within 6 feet of an infected person for at least 15 minutes</i></p>
+        <input id="question_b_yes" class="w3-radio" type="radio" name="question_b" value="Yes" /><label for="question_b_yes"><p> Yes </p></label>
+        <input id="question_b_no" class="w3-radio" type="radio" name="question_b" value="No" /><label for="question_b_no"><p> No </p></label>
+
+        <!-- Question C -->
+        <p>3. Have you traveled internationally in the last 14 days?</p>
+        <input id="question_c_yes" class="w3-radio" type="radio" name="question_c" value="Yes" /><label for="question_c_yes"><p> Yes </p></label>
+        <input id="question_c_no" class="w3-radio" type="radio" name="question_c" value="No" /><label for="question_c_no"><p> No </p></label>
+
+        <!-- Submit Button row (button centered below the two columns) -->
+        <div class="w3-row w3-margin-bottom">
+            <div class="w3-third"><p></p></div>
+            <div class="w3-third w3-container">
+                <input class="w3-btn w3-block w3-green w3-border w3-border-grey w3-round-large w3-padding-small" type="submit" value="Submit" name="new_screening" />
+            </div>
+            <div class="w3-third"><p></p></div>
+        </div>     
+
+    </form>
+</div>
+
+
+<hr />
+<!-- Questionairre paragraphs from page 1 of the screening form -->
+<p>This information sheet is intended to accompany all personal protective equipment (PPE) made available by Graphics Sciences in connection with the COVID-19 public health emergency, including, without limitation, face masks and gloves. Please review all information below before using or sharing any such PPE. Graphic Sciences is providing non-medical grade face coverings and gloves. Graphics Sciences is providing this PPE as an emergency measure to help mitigate the spread of SARS=CoV-2, the virus that causes COVID-19. This PPE has not been evaluated by the U.S. Food and Drug Administration (FDA) for the use in the treatment or prevention of any disease, including COVID-19, and it is intended for use only during the declared COVID-19 public health emergency.</p>
+<p>More specifically, this PPE is not intended for use:</p>
+<ul>
+    <li>Where FDA-cleared or FDA-approved PPE is available.</li>
+    <li>In any surgical setting, or where significant exposure to liquids and bodily or other hazardous fluids may be expected.</li>
+    <li>In a clinical setting where infection risk is high; or</li>
+    <li>In the presence of a high-intensity heat source or flammable gas</li>
+</ul>
+<p>Before using any PPE, please review all information from the manufacturer(s) of the PPE regarding:</p>
+<ul>
+    <li>Specific information on body-contacting materials, to avoid a potential allergy or other sensitivity that may render the PPE unsafe for your use; and</li>
+    <li>Recommended use, disposal, cleaning, and\or disinfection protocols, as applicable.</li>
+</ul>
+<p>Graphic Sciences has not independently verified any information provided by the manufacturer(s) and, in making the PPE available, is relying in good faith on any such information. If no information or instructions are provided by the manufacturer(s), please contact the manufacturer(s) of the PPE and\or refer to current guidance from the Centers for Disease Control and Prevention (CDC) and other applicable health authorities.</p>
+
+<br /><br />
