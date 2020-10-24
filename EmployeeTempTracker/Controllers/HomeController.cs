@@ -49,8 +49,16 @@ namespace EmployeeTempTracker.Controllers
             screening.IntlTravel = intlTravel;
             screening.Date = DateTime.Now;
             ViewData["Screening"] = screening;
-
             // STILL NEED SigPrintName, Time, SigDate
+
+            // Check for questionairre anomalies
+            bool flag = false;
+            if (screening.Symptoms == "Yes")        flag = true;
+            if (screening.CloseContact == "Yes")    flag = true;
+            if (screening.IntlTravel == "Yes")      flag = true;
+
+            //if (flag) return RedirectToAction("SendHome", "Home", new {screening});
+            //else return View();
             return View();
         }
 
