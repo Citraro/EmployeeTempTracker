@@ -36,6 +36,24 @@ namespace EmployeeTempTracker.Controllers
             return View();
         }
 
+        // Get http://capstone.ohitski.org/Home/EnterScreening
+        public IActionResult ProcessScreening(string fname, string lname, string id, string org, string temperature, string symptoms, string closeContact, string intlTravel) {
+            // Takes EnterScreening form data and creates a ScreeningModel object from it.
+            // Maybe have a popup that makes the signee verify everything is true?
+            
+            ScreeningModel screening = new ScreeningModel();
+            screening.EmpId = id;
+            screening.Temp = temperature;
+            screening.Symptoms = symptoms;
+            screening.CloseContact = closeContact;
+            screening.IntlTravel = intlTravel;
+            screening.Date = DateTime.Now;
+            ViewData["Screening"] = screening;
+
+            // STILL NEED SigPrintName, Time, SigDate
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
