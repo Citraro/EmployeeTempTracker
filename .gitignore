@@ -341,3 +341,4 @@ healthchecksdb
 
 # VSCode Settings Folder
 .vscode
+.ionide

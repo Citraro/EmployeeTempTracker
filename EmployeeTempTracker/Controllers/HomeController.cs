@@ -90,13 +90,47 @@ namespace EmployeeTempTracker.Controllers
             _logger = logger;
         }
 
+        // Get http://capstone.ohitski.org/
         public IActionResult Index()
         {
             return View();
         }
 
+        // Get http://capstone.ohitski.org/Home/Privacy
         public IActionResult Privacy()
         {
+            return View();
+        }
+
+        // Get http://capstone.ohitski.org/Home/EnterScreening
+        public IActionResult EnterScreening() {
+            ViewData["Title"] = "Health Screening";
+            return View();
+        }
+
+        // Get http://capstone.ohitski.org/Home/EnterScreening
+        public IActionResult ProcessScreening(string fname, string lname, string id, string org, string temperature, string symptoms, string closeContact, string intlTravel) {
+            // Takes EnterScreening form data and creates a ScreeningModel object from it.
+            // Maybe have a popup that makes the signee verify everything is true?
+            
+            ScreeningModel screening = new ScreeningModel();
+            screening.EmpId = id;
+            screening.Temp = temperature;
+            screening.Symptoms = symptoms;
+            screening.CloseContact = closeContact;
+            screening.IntlTravel = intlTravel;
+            screening.Date = DateTime.Now;
+            ViewData["Screening"] = screening;
+            // STILL NEED SigPrintName, Time, SigDate
+
+            // Check for questionairre anomalies
+            bool flag = false;
+            if (screening.Symptoms == "Yes")        flag = true;
+            if (screening.CloseContact == "Yes")    flag = true;
+            if (screening.IntlTravel == "Yes")      flag = true;
+
+            //if (flag) return RedirectToAction("SendHome", "Home", new {screening});
+            //else return View();
             return View();
         }
 
