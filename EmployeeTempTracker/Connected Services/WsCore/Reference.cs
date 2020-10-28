@@ -7,505 +7,816 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ICMCoreService
+namespace WsCore
 {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://www.intellinetics.com/", ConfigurationName="ICMCoreService.ICMCoreServiceSoap")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://www.intellinetics.com/", ConfigurationName="WsCore.ICMCoreServiceSoap")]
     public interface ICMCoreServiceSoap
     {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMDeleteFolder", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int XMDeleteFolder(string sid, int appId, int folderId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMDeleteFolder", ReplyAction="*")]
         System.Threading.Tasks.Task<int> XMDeleteFolderAsync(string sid, int appId, int folderId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMMoveFolder", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int XMMoveFolder(string sid, int appId, int fromFolderId, int toFolderId, bool deleteSourceFolder);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMMoveFolder", ReplyAction="*")]
         System.Threading.Tasks.Task<int> XMMoveFolderAsync(string sid, int appId, int fromFolderId, int toFolderId, bool deleteSourceFolder);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMCopyFolder", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int XMCopyFolder(string sid, int appId, int fromFolderId, int toFolderId, bool includeExtents);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMCopyFolder", ReplyAction="*")]
         System.Threading.Tasks.Task<int> XMCopyFolderAsync(string sid, int appId, int fromFolderId, int toFolderId, bool includeExtents);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMDeleteFolderNotes", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int XMDeleteFolderNotes(string sid, int appId, int folderId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMDeleteFolderNotes", ReplyAction="*")]
         System.Threading.Tasks.Task<int> XMDeleteFolderNotesAsync(string sid, int appId, int folderId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMAddFolderNotes", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int XMAddFolderNotes(string sid, int appId, int folderId, string noteText);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMAddFolderNotes", ReplyAction="*")]
         System.Threading.Tasks.Task<int> XMAddFolderNotesAsync(string sid, int appId, int folderId, string noteText);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMUpdateFolderNotes", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int XMUpdateFolderNotes(string sid, int appId, int folderId, string noteText);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMUpdateFolderNotes", ReplyAction="*")]
         System.Threading.Tasks.Task<int> XMUpdateFolderNotesAsync(string sid, int appId, int folderId, string noteText);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMSetFolderAccessLevel", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int XMSetFolderAccessLevel(string sid, int appId, int folderId, int accessLevel);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMSetFolderAccessLevel", ReplyAction="*")]
         System.Threading.Tasks.Task<int> XMSetFolderAccessLevelAsync(string sid, int appId, int folderId, int accessLevel);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMDeleteDocument", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int XMDeleteDocument(string sid, int appId, int folderId, int documentId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMDeleteDocument", ReplyAction="*")]
         System.Threading.Tasks.Task<int> XMDeleteDocumentAsync(string sid, int appId, int folderId, int documentId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMCopyDocument", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int XMCopyDocument(string sid, int appId, int fromFolderId, int fromDocumentId, int toFolderId, int toSubfolderId, bool includeExtents);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMCopyDocument", ReplyAction="*")]
         System.Threading.Tasks.Task<int> XMCopyDocumentAsync(string sid, int appId, int fromFolderId, int fromDocumentId, int toFolderId, int toSubfolderId, bool includeExtents);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMMoveDocument", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int XMMoveDocument(string sid, int appId, int fromFolderId, int fromDocumentId, int toFolderId, int toSubfolderId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMMoveDocument", ReplyAction="*")]
         System.Threading.Tasks.Task<int> XMMoveDocumentAsync(string sid, int appId, int fromFolderId, int fromDocumentId, int toFolderId, int toSubfolderId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMUpdateDocument", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int XMUpdateDocument(string sid, int appId, int folderId, int documentId, string descriptor);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMUpdateDocument", ReplyAction="*")]
         System.Threading.Tasks.Task<int> XMUpdateDocumentAsync(string sid, int appId, int folderId, int documentId, string descriptor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMSetDocumentAccessLevel", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int XMSetDocumentAccessLevel(string sid, int appId, int folderId, int documentId, int accessLevel);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMSetDocumentAccessLevel", ReplyAction="*")]
         System.Threading.Tasks.Task<int> XMSetDocumentAccessLevelAsync(string sid, int appId, int folderId, int documentId, int accessLevel);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMCopyPages", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int XMCopyPages(string sid, int appId, int fromFolderId, int fromDocumentId, int[] fileIds, int toFolderId, int toSubfolderId, bool includeExtents);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMCopyPages", ReplyAction="*")]
         System.Threading.Tasks.Task<int> XMCopyPagesAsync(string sid, int appId, int fromFolderId, int fromDocumentId, int[] fileIds, int toFolderId, int toSubfolderId, bool includeExtents);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMMovePages", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int XMMovePages(string sid, int appId, int fromFolderId, int fromDocumentId, int[] fileIds, int toFolderId, int toSubfolderId, bool includeExtents);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMMovePages", ReplyAction="*")]
         System.Threading.Tasks.Task<int> XMMovePagesAsync(string sid, int appId, int fromFolderId, int fromDocumentId, int[] fileIds, int toFolderId, int toSubfolderId, bool includeExtents);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMSetPageBookmark", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int XMSetPageBookmark(string sid, int appId, int folderId, int subfolderId, int lsmAreaId, int lsmFileId, string bookmark);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMSetPageBookmark", ReplyAction="*")]
         System.Threading.Tasks.Task<int> XMSetPageBookmarkAsync(string sid, int appId, int folderId, int subfolderId, int lsmAreaId, int lsmFileId, string bookmark);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMAddPageNotes", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int XMAddPageNotes(string sid, int appId, int folderId, int subfolderId, int lsmAreaId, int lsmFileId, string notesText);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMAddPageNotes", ReplyAction="*")]
         System.Threading.Tasks.Task<int> XMAddPageNotesAsync(string sid, int appId, int folderId, int subfolderId, int lsmAreaId, int lsmFileId, string notesText);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMDeletePageNotes", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int XMDeletePageNotes(string sid, int appId, int folderId, int subfolderId, int lsmAreaId, int lsmFileId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMDeletePageNotes", ReplyAction="*")]
         System.Threading.Tasks.Task<int> XMDeletePageNotesAsync(string sid, int appId, int folderId, int subfolderId, int lsmAreaId, int lsmFileId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMSetPageAccessLevel", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int XMSetPageAccessLevel(string sid, int appId, int folderId, int subfolderId, int lsmAreaId, int lsmFileId, int accessLevel);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMSetPageAccessLevel", ReplyAction="*")]
         System.Threading.Tasks.Task<int> XMSetPageAccessLevelAsync(string sid, int appId, int folderId, int subfolderId, int lsmAreaId, int lsmFileId, int accessLevel);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMModifyFolderIndexes", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.XMModifyResponse> XMModifyFolderIndexesAsync(string sid, int appId, int[] folderIds, ICMCoreService.XMDataFieldInput[] fields);
+        WsCore.XMModifyResponse XMModifyFolderIndexes(string sid, int appId, int[] folderIds, WsCore.XMDataFieldInput[] fields);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMModifyFolderIndexes", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.XMModifyResponse> XMModifyFolderIndexesAsync(string sid, int appId, int[] folderIds, WsCore.XMDataFieldInput[] fields);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMModifyDocumentAttributes", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.XMModifyResponse> XMModifyDocumentAttributesAsync(string sid, int appId, int[] documentIds, ICMCoreService.XMDataFieldInput[] fields);
+        WsCore.XMModifyResponse XMModifyDocumentAttributes(string sid, int appId, int[] documentIds, WsCore.XMDataFieldInput[] fields);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMModifyDocumentAttributes", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.XMModifyResponse> XMModifyDocumentAttributesAsync(string sid, int appId, int[] documentIds, WsCore.XMDataFieldInput[] fields);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMMoveDocuments", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.XMTransferResponse> XMMoveDocumentsAsync(string sid, int appId, int fromFolderId, int toFolderId, ICMCoreService.XMTransferMap[] transferMaps);
+        WsCore.XMTransferResponse XMMoveDocuments(string sid, int appId, int fromFolderId, int toFolderId, WsCore.XMTransferMap[] transferMaps);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/XMMoveDocuments", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.XMTransferResponse> XMMoveDocumentsAsync(string sid, int appId, int fromFolderId, int toFolderId, WsCore.XMTransferMap[] transferMaps);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/LoginUser", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.LoginUserResult> LoginUserAsync(string userID, string passWord, int authType);
+        WsCore.LoginUserResult LoginUser(string userID, string passWord, int authType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/LoginUser", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.LoginUserResult> LoginUserAsync(string userID, string passWord, int authType);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/LoginUserGXP", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.LoginUserResult> LoginUserGXPAsync(string userID, string passWord, int authType, int programId);
+        WsCore.LoginUserResult LoginUserGXP(string userID, string passWord, int authType, int programId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/LoginUserGXP", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.LoginUserResult> LoginUserGXPAsync(string userID, string passWord, int authType, int programId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/LoginUserHosted", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.LoginUserResult> LoginUserHostedAsync(string clientDomain, string userId, string password);
+        WsCore.LoginUserResult LoginUserHosted(string clientDomain, string userId, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/LoginUserHosted", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.LoginUserResult> LoginUserHostedAsync(string clientDomain, string userId, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/LoginUserHostedGXP", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.LoginUserResult> LoginUserHostedGXPAsync(string clientDomain, string userId, string password, int programId);
+        WsCore.LoginUserResult LoginUserHostedGXP(string clientDomain, string userId, string password, int programId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/LoginUserHostedGXP", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.LoginUserResult> LoginUserHostedGXPAsync(string clientDomain, string userId, string password, int programId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/LogoutUser", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
+        void LogoutUser(string loginSessionID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/LogoutUser", ReplyAction="*")]
         System.Threading.Tasks.Task LogoutUserAsync(string loginSessionID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetUserAccess", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.GetUserAccessResult> GetUserAccessAsync(string userID, string passWord, int authType);
+        WsCore.GetUserAccessResult GetUserAccess(string userID, string passWord, int authType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetUserAccess", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.GetUserAccessResult> GetUserAccessAsync(string userID, string passWord, int authType);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetUserAccessHosted", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.GetUserAccessResult> GetUserAccessHostedAsync(string hostDomain, string userId, string password);
+        WsCore.GetUserAccessResult GetUserAccessHosted(string hostDomain, string userId, string password);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetUserAccessHosted", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.GetUserAccessResult> GetUserAccessHostedAsync(string hostDomain, string userId, string password);
+        
+        // CODEGEN: Parameter 'GetLogoResult' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'Microsoft.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetLogo", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.GetLogoResponse> GetLogoAsync(ICMCoreService.GetLogoRequest request);
+        WsCore.GetLogoResponse GetLogo(WsCore.GetLogoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetLogo", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.GetLogoResponse> GetLogoAsync(WsCore.GetLogoRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ListApplications", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.ListApplicationsResult> ListApplicationsAsync();
+        WsCore.ListApplicationsResult ListApplications();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ListApplications", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.ListApplicationsResult> ListApplicationsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ListApplicationsHosted", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.ListApplicationsResult> ListApplicationsHostedAsync(string hostDomain);
+        WsCore.ListApplicationsResult ListApplicationsHosted(string hostDomain);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ListApplicationsHosted", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.ListApplicationsResult> ListApplicationsHostedAsync(string hostDomain);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ListApplicationsHostedWithUser", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.ListApplicationsResult> ListApplicationsHostedWithUserAsync(string hostDomain, string userName);
+        WsCore.ListApplicationsResult ListApplicationsHostedWithUser(string hostDomain, string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ListApplicationsHostedWithUser", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.ListApplicationsResult> ListApplicationsHostedWithUserAsync(string hostDomain, string userName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ListApplicationsUserRights", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.ListApplicationsUserRightsResult> ListApplicationsUserRightsAsync(string hostDomain, string userName);
+        WsCore.ListApplicationsUserRightsResult ListApplicationsUserRights(string hostDomain, string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ListApplicationsUserRights", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.ListApplicationsUserRightsResult> ListApplicationsUserRightsAsync(string hostDomain, string userName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetApplicationsCollection", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.ApplicationItem[]> GetApplicationsCollectionAsync(string loginSessionId);
+        WsCore.ApplicationItem[] GetApplicationsCollection(string loginSessionId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetApplicationsCollection", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.ApplicationItem[]> GetApplicationsCollectionAsync(string loginSessionId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetApplicationDesignEx", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.GetApplicationDesignResult> GetApplicationDesignExAsync(string loginSessionId, int appId);
+        WsCore.GetApplicationDesignResult GetApplicationDesignEx(string loginSessionId, int appId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetApplicationDesignEx", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.GetApplicationDesignResult> GetApplicationDesignExAsync(string loginSessionId, int appId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetApplicationDesignHosted", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.GetApplicationDesignResult> GetApplicationDesignHostedAsync(string hostDomain, int appId);
+        WsCore.GetApplicationDesignResult GetApplicationDesignHosted(string hostDomain, int appId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetApplicationDesignHosted", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.GetApplicationDesignResult> GetApplicationDesignHostedAsync(string hostDomain, int appId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetApplicationDesign", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.GetApplicationDesignResult> GetApplicationDesignAsync(int appId);
+        WsCore.GetApplicationDesignResult GetApplicationDesign(int appId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetApplicationDesign", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.GetApplicationDesignResult> GetApplicationDesignAsync(int appId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetApplicationDesignHostedWithUser", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.GetApplicationDesignResult> GetApplicationDesignHostedWithUserAsync(string hostDomain, int appId, string userName);
+        WsCore.GetApplicationDesignResult GetApplicationDesignHostedWithUser(string hostDomain, int appId, string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetApplicationDesignHostedWithUser", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.GetApplicationDesignResult> GetApplicationDesignHostedWithUserAsync(string hostDomain, int appId, string userName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ChangeUserPasswordHosted", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
+        bool ChangeUserPasswordHosted(string loginSessionID, string newPassword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ChangeUserPasswordHosted", ReplyAction="*")]
         System.Threading.Tasks.Task<bool> ChangeUserPasswordHostedAsync(string loginSessionID, string newPassword);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetUserInformation", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.GetUserInformationResult> GetUserInformationAsync(string loginSessionID, int appId);
+        WsCore.GetUserInformationResult GetUserInformation(string loginSessionID, int appId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetUserInformation", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.GetUserInformationResult> GetUserInformationAsync(string loginSessionID, int appId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/AcquireFolder", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.AcquireFolderResult> AcquireFolderAsync(string loginSessionID, int appID, int folderID);
+        WsCore.AcquireFolderResult AcquireFolder(string loginSessionID, int appID, int folderID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/AcquireFolder", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.AcquireFolderResult> AcquireFolderAsync(string loginSessionID, int appID, int folderID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/AcquireFolderEx", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.AcquireFolderResult> AcquireFolderExAsync(string loginSessionID, int appID, string indexKey, string indexValue);
+        WsCore.AcquireFolderResult AcquireFolderEx(string loginSessionID, int appID, string indexKey, string indexValue);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/AcquireFolderEx", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.AcquireFolderResult> AcquireFolderExAsync(string loginSessionID, int appID, string indexKey, string indexValue);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/PublishPDF", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.PublishPDFResult> PublishPDFAsync(string loginSessionID, ICMCoreService.PDFComposition pdfComposition);
+        WsCore.PublishPDFResult PublishPDF(string loginSessionID, WsCore.PDFComposition pdfComposition);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/PublishPDF", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.PublishPDFResult> PublishPDFAsync(string loginSessionID, WsCore.PDFComposition pdfComposition);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/CreatePDF", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.CreatePDFResult> CreatePDFAsync(string loginSessionID, int appID, int folderID, int scope, string refID, string optionSwitches, bool recycle);
+        WsCore.CreatePDFResult CreatePDF(string loginSessionID, int appID, int folderID, int scope, string refID, string optionSwitches, bool recycle);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/CreatePDF", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.CreatePDFResult> CreatePDFAsync(string loginSessionID, int appID, int folderID, int scope, string refID, string optionSwitches, bool recycle);
+        
+        // CODEGEN: Parameter 'pageAddress' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'Microsoft.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/DownloadPage", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.DownloadPageResponse> DownloadPageAsync(ICMCoreService.DownloadPageRequest request);
+        WsCore.DownloadPageResponse DownloadPage(WsCore.DownloadPageRequest request);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/DownloadPage", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.DownloadPageResponse> DownloadPageAsync(WsCore.DownloadPageRequest request);
+        
+        // CODEGEN: Parameter 'pageAddress' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'Microsoft.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ImageRotatePage", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.ImageRotatePageResponse> ImageRotatePageAsync(ICMCoreService.ImageRotatePageRequest request);
+        WsCore.ImageRotatePageResponse ImageRotatePage(WsCore.ImageRotatePageRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ImageRotatePage", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.ImageRotatePageResponse> ImageRotatePageAsync(WsCore.ImageRotatePageRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/SubmitFiles", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.SubmitFilesResult> SubmitFilesAsync(string loginSessionID, int appId, int folderId, int subfolderId, int permAccessLevel, int contentType, ICMCoreService.SourceFile[] sourceFiles);
+        WsCore.SubmitFilesResult SubmitFiles(string loginSessionID, int appId, int folderId, int subfolderId, int permAccessLevel, int contentType, WsCore.SourceFile[] sourceFiles);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/SubmitFiles", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.SubmitFilesResult> SubmitFilesAsync(string loginSessionID, int appId, int folderId, int subfolderId, int permAccessLevel, int contentType, WsCore.SourceFile[] sourceFiles);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMCreateFolder", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.FMResult> FMCreateFolderAsync(string loginSessionId, int appId, ICMCoreService.FMIndexItem[] indexItems, int accessLevel);
+        WsCore.FMResult FMCreateFolder(string loginSessionId, int appId, WsCore.FMIndexItem[] indexItems, int accessLevel);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMCreateFolder", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.FMResult> FMCreateFolderAsync(string loginSessionId, int appId, WsCore.FMIndexItem[] indexItems, int accessLevel);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMModifyFolderIndexes", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.FMResult> FMModifyFolderIndexesAsync(string loginSessionId, int appId, int folderId, ICMCoreService.FMIndexItem[] indexItems);
+        WsCore.FMResult FMModifyFolderIndexes(string loginSessionId, int appId, int folderId, WsCore.FMIndexItem[] indexItems);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMModifyFolderIndexes", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.FMResult> FMModifyFolderIndexesAsync(string loginSessionId, int appId, int folderId, WsCore.FMIndexItem[] indexItems);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMPutFolderNote", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.FMResult> FMPutFolderNoteAsync(string loginSessionId, int appId, int folderId, string notetext);
+        WsCore.FMResult FMPutFolderNote(string loginSessionId, int appId, int folderId, string notetext);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMPutFolderNote", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.FMResult> FMPutFolderNoteAsync(string loginSessionId, int appId, int folderId, string notetext);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMModifyPagesetIndexes", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.FMResult> FMModifyPagesetIndexesAsync(string loginSessionId, int appId, int objRef, ICMCoreService.FMIndexItem[] indexItems);
+        WsCore.FMResult FMModifyPagesetIndexes(string loginSessionId, int appId, int objRef, WsCore.FMIndexItem[] indexItems);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMModifyPagesetIndexes", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.FMResult> FMModifyPagesetIndexesAsync(string loginSessionId, int appId, int objRef, WsCore.FMIndexItem[] indexItems);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMModifyPagesetIndexesAll", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.FMResult> FMModifyPagesetIndexesAllAsync(string loginSessionId, int appId, int folderId, int subfolderId, ICMCoreService.FMIndexItem[] indexItems);
+        WsCore.FMResult FMModifyPagesetIndexesAll(string loginSessionId, int appId, int folderId, int subfolderId, WsCore.FMIndexItem[] indexItems);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMModifyPagesetIndexesAll", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.FMResult> FMModifyPagesetIndexesAllAsync(string loginSessionId, int appId, int folderId, int subfolderId, WsCore.FMIndexItem[] indexItems);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMAddPagesetIndexes", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.FMResult> FMAddPagesetIndexesAsync(string loginSessionId, int appId, int folderId, int objRef, ICMCoreService.FMIndexItem[] indexItems);
+        WsCore.FMResult FMAddPagesetIndexes(string loginSessionId, int appId, int folderId, int objRef, WsCore.FMIndexItem[] indexItems);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMAddPagesetIndexes", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.FMResult> FMAddPagesetIndexesAsync(string loginSessionId, int appId, int folderId, int objRef, WsCore.FMIndexItem[] indexItems);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMPutPageBookmark", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.FMResult> FMPutPageBookmarkAsync(string loginSessionId, int appId, int folderId, int subfolderId, int areaId, int fileId, string bookmark);
+        WsCore.FMResult FMPutPageBookmark(string loginSessionId, int appId, int folderId, int subfolderId, int areaId, int fileId, string bookmark);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMPutPageBookmark", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.FMResult> FMPutPageBookmarkAsync(string loginSessionId, int appId, int folderId, int subfolderId, int areaId, int fileId, string bookmark);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMPutPageNote", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.FMResult> FMPutPageNoteAsync(string loginSessionId, int appId, int folderId, int subfolderId, int areaId, int fileId, string notetext);
+        WsCore.FMResult FMPutPageNote(string loginSessionId, int appId, int folderId, int subfolderId, int areaId, int fileId, string notetext);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMPutPageNote", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.FMResult> FMPutPageNoteAsync(string loginSessionId, int appId, int folderId, int subfolderId, int areaId, int fileId, string notetext);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMPutPageRedactions", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.FMResult> FMPutPageRedactionsAsync(string loginSessionId, int appId, int folderId, int subfolderId, int areaId, int fileId, string[] zones);
+        WsCore.FMResult FMPutPageRedactions(string loginSessionId, int appId, int folderId, int subfolderId, int areaId, int fileId, string[] zones);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMPutPageRedactions", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.FMResult> FMPutPageRedactionsAsync(string loginSessionId, int appId, int folderId, int subfolderId, int areaId, int fileId, string[] zones);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMPutPageAccessLevel", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.FMResult> FMPutPageAccessLevelAsync(string loginSessionId, int appId, int folderId, int subfolderId, int areaId, int fileId, int level);
+        WsCore.FMResult FMPutPageAccessLevel(string loginSessionId, int appId, int folderId, int subfolderId, int areaId, int fileId, int level);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMPutPageAccessLevel", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.FMResult> FMPutPageAccessLevelAsync(string loginSessionId, int appId, int folderId, int subfolderId, int areaId, int fileId, int level);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMPutPagesetAccessLevel", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.FMResult> FMPutPagesetAccessLevelAsync(string loginSessionId, int appId, int folderId, int objRef, int level);
+        WsCore.FMResult FMPutPagesetAccessLevel(string loginSessionId, int appId, int folderId, int objRef, int level);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMPutPagesetAccessLevel", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.FMResult> FMPutPagesetAccessLevelAsync(string loginSessionId, int appId, int folderId, int objRef, int level);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMPutFolderAccessLevel", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.FMResult> FMPutFolderAccessLevelAsync(string loginSessionId, int appId, int folderId, int level);
+        WsCore.FMResult FMPutFolderAccessLevel(string loginSessionId, int appId, int folderId, int level);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMPutFolderAccessLevel", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.FMResult> FMPutFolderAccessLevelAsync(string loginSessionId, int appId, int folderId, int level);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMDeleteFolder", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.FMResult> FMDeleteFolderAsync(string loginSessionId, int appId, int folderId);
+        WsCore.FMResult FMDeleteFolder(string loginSessionId, int appId, int folderId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMDeleteFolder", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.FMResult> FMDeleteFolderAsync(string loginSessionId, int appId, int folderId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMDeleteSubfolder", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.FMResult> FMDeleteSubfolderAsync(string loginSessionId, int appId, int folderId, int subfolderId);
+        WsCore.FMResult FMDeleteSubfolder(string loginSessionId, int appId, int folderId, int subfolderId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMDeleteSubfolder", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.FMResult> FMDeleteSubfolderAsync(string loginSessionId, int appId, int folderId, int subfolderId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMDeletePageset", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.FMResult> FMDeletePagesetAsync(string loginSessionId, int appId, int folderId, int objRef);
+        WsCore.FMResult FMDeletePageset(string loginSessionId, int appId, int folderId, int objRef);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMDeletePageset", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.FMResult> FMDeletePagesetAsync(string loginSessionId, int appId, int folderId, int objRef);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMMoveFolder", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.FMResult> FMMoveFolderAsync(string loginSessionId, int appId, int fromFolderId, int toFolderId, bool deleteSource);
+        WsCore.FMResult FMMoveFolder(string loginSessionId, int appId, int fromFolderId, int toFolderId, bool deleteSource);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMMoveFolder", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.FMResult> FMMoveFolderAsync(string loginSessionId, int appId, int fromFolderId, int toFolderId, bool deleteSource);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMMoveDocuments", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.FMResult> FMMoveDocumentsAsync(string loginSessionId, int appId, int fromFolderId, int fromObjRef, int fromPageFileId, int toFolderId, int toSubfolderId);
+        WsCore.FMResult FMMoveDocuments(string loginSessionId, int appId, int fromFolderId, int fromObjRef, int fromPageFileId, int toFolderId, int toSubfolderId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/FMMoveDocuments", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.FMResult> FMMoveDocumentsAsync(string loginSessionId, int appId, int fromFolderId, int fromObjRef, int fromPageFileId, int toFolderId, int toSubfolderId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetErrorLog", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
+        void GetErrorLog(string loginSessionId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetErrorLog", ReplyAction="*")]
         System.Threading.Tasks.Task GetErrorLogAsync(string loginSessionId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ExecuteTaskFromCodeStore", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.TaskResponse> ExecuteTaskFromCodeStoreAsync(string loginSessionId, int appId, string[] args);
+        WsCore.TaskResponse ExecuteTaskFromCodeStore(string loginSessionId, int appId, string[] args);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ExecuteTaskFromCodeStore", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.TaskResponse> ExecuteTaskFromCodeStoreAsync(string loginSessionId, int appId, string[] args);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/RetrieveApplications", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.ApplicationsResponse> RetrieveApplicationsAsync(ICMCoreService.ApplicationsRequest request);
+        WsCore.ApplicationsResponse RetrieveApplications(WsCore.ApplicationsRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/RetrieveApplications", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.ApplicationsResponse> RetrieveApplicationsAsync(WsCore.ApplicationsRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/RetrieveApplicationMetadata", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.ApplicationMetadataResponse> RetrieveApplicationMetadataAsync(ICMCoreService.ApplicationMetadataRequest request);
+        WsCore.ApplicationMetadataResponse RetrieveApplicationMetadata(WsCore.ApplicationMetadataRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/RetrieveApplicationMetadata", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.ApplicationMetadataResponse> RetrieveApplicationMetadataAsync(WsCore.ApplicationMetadataRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/RetrieveApplicationMetadataEx", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.ApplicationMetadataResponseEx> RetrieveApplicationMetadataExAsync(ICMCoreService.ApplicationMetadataRequest request);
+        WsCore.ApplicationMetadataResponseEx RetrieveApplicationMetadataEx(WsCore.ApplicationMetadataRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/RetrieveApplicationMetadataEx", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.ApplicationMetadataResponseEx> RetrieveApplicationMetadataExAsync(WsCore.ApplicationMetadataRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/RetrieveApplicationMetadataTest", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.ApplicationMetadataResponseTest> RetrieveApplicationMetadataTestAsync(int appid);
+        WsCore.ApplicationMetadataResponseTest RetrieveApplicationMetadataTest(int appid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/RetrieveApplicationMetadataTest", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.ApplicationMetadataResponseTest> RetrieveApplicationMetadataTestAsync(int appid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ExecuteFolderUpdate", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.FolderUpdateResponse> ExecuteFolderUpdateAsync(string sid, ICMCoreService.FolderUpdateRequest request);
+        WsCore.FolderUpdateResponse ExecuteFolderUpdate(string sid, WsCore.FolderUpdateRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ExecuteFolderUpdate", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.FolderUpdateResponse> ExecuteFolderUpdateAsync(string sid, WsCore.FolderUpdateRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetFolderIndexData", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.GetFolderIndexDataResponseGetFolderIndexDataResult> GetFolderIndexDataAsync(string sid, int appId, int folderId);
+        WsCore.GetFolderIndexDataResponseGetFolderIndexDataResult GetFolderIndexData(string sid, int appId, int folderId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetFolderIndexData", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.GetFolderIndexDataResponseGetFolderIndexDataResult> GetFolderIndexDataAsync(string sid, int appId, int folderId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetDocumentAttributeData", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.ICMDataEntity2[]> GetDocumentAttributeDataAsync(string sid, int appId, int folderId, int objRef);
+        WsCore.ICMDataEntity2[] GetDocumentAttributeData(string sid, int appId, int folderId, int objRef);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetDocumentAttributeData", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.ICMDataEntity2[]> GetDocumentAttributeDataAsync(string sid, int appId, int folderId, int objRef);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetDocumentXObject", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.GetDocumentXObjectResult> GetDocumentXObjectAsync(string sid, int appId, int folderId, int objRef);
+        WsCore.GetDocumentXObjectResult GetDocumentXObject(string sid, int appId, int folderId, int objRef);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetDocumentXObject", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.GetDocumentXObjectResult> GetDocumentXObjectAsync(string sid, int appId, int folderId, int objRef);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ExecuteDocumentUpdate", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.DocumentUpdateResponse> ExecuteDocumentUpdateAsync(string sid, ICMCoreService.DocumentUpdateRequest request);
+        WsCore.DocumentUpdateResponse ExecuteDocumentUpdate(string sid, WsCore.DocumentUpdateRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ExecuteDocumentUpdate", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.DocumentUpdateResponse> ExecuteDocumentUpdateAsync(string sid, WsCore.DocumentUpdateRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ExecuteDocumentAttributesUpdate", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.DocumentUpdateResponse> ExecuteDocumentAttributesUpdateAsync(string sid, ICMCoreService.DocumentAttributesUpdateRequest request);
+        WsCore.DocumentUpdateResponse ExecuteDocumentAttributesUpdate(string sid, WsCore.DocumentAttributesUpdateRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ExecuteDocumentAttributesUpdate", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.DocumentUpdateResponse> ExecuteDocumentAttributesUpdateAsync(string sid, WsCore.DocumentAttributesUpdateRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ExecuteFolderManagement", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.FolderManagementResponse> ExecuteFolderManagementAsync(string sid, ICMCoreService.FolderManagementRequest request);
+        WsCore.FolderManagementResponse ExecuteFolderManagement(string sid, WsCore.FolderManagementRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ExecuteFolderManagement", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.FolderManagementResponse> ExecuteFolderManagementAsync(string sid, WsCore.FolderManagementRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/UpdateImageOverlayObjects", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<int> UpdateImageOverlayObjectsAsync(string sid, ICMCoreService.TransformImageOverlayObjectsRequest request);
+        int UpdateImageOverlayObjects(string sid, WsCore.TransformImageOverlayObjectsRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/UpdateImageOverlayObjects", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> UpdateImageOverlayObjectsAsync(string sid, WsCore.TransformImageOverlayObjectsRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetNoteReferences", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.GetNoteReferencesResult[]> GetNoteReferencesAsync(string sid, int appId, int[] folderIds);
+        WsCore.GetNoteReferencesResult[] GetNoteReferences(string sid, int appId, int[] folderIds);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetNoteReferences", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.GetNoteReferencesResult[]> GetNoteReferencesAsync(string sid, int appId, int[] folderIds);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetNote", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
+        string GetNote(string sid, int appId, int objRef);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetNote", ReplyAction="*")]
         System.Threading.Tasks.Task<string> GetNoteAsync(string sid, int appId, int objRef);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/RetrievePage", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.RetrievePageResponse> RetrievePageAsync(string loginSessionID, ICMCoreService.RetrievePageRequest request);
+        WsCore.RetrievePageResponse RetrievePage(string loginSessionID, WsCore.RetrievePageRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/RetrievePage", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.RetrievePageResponse> RetrievePageAsync(string loginSessionID, WsCore.RetrievePageRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/RetrievePage2", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.RetrievePageResponse> RetrievePage2Async(string loginSessionID, ICMCoreService.RetrievePageRequest request);
+        WsCore.RetrievePageResponse RetrievePage2(string loginSessionID, WsCore.RetrievePageRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/RetrievePage2", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.RetrievePageResponse> RetrievePage2Async(string loginSessionID, WsCore.RetrievePageRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/RetrievePageAsThumbnail", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.RetrievePageResponse> RetrievePageAsThumbnailAsync(string loginSessionID, ICMCoreService.RetrievePageRequest request);
+        WsCore.RetrievePageResponse RetrievePageAsThumbnail(string loginSessionID, WsCore.RetrievePageRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/RetrievePageAsThumbnail", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.RetrievePageResponse> RetrievePageAsThumbnailAsync(string loginSessionID, WsCore.RetrievePageRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetDocumentContent", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.GetDocumentContentResponse> GetDocumentContentAsync(string loginSessionID, ICMCoreService.GetDocumentContentRequest request);
+        WsCore.GetDocumentContentResponse GetDocumentContent(string loginSessionID, WsCore.GetDocumentContentRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetDocumentContent", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.GetDocumentContentResponse> GetDocumentContentAsync(string loginSessionID, WsCore.GetDocumentContentRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ListDocuments", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.ListDocumentsResponseListDocumentsResult> ListDocumentsAsync(string loginSessionID, int appId, int folderId);
+        WsCore.ListDocumentsResponseListDocumentsResult ListDocuments(string loginSessionID, int appId, int folderId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ListDocuments", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.ListDocumentsResponseListDocumentsResult> ListDocumentsAsync(string loginSessionID, int appId, int folderId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ExecuteSubmitContent", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.ExecuteSubmitContentResponse> ExecuteSubmitContentAsync(string sid, ICMCoreService.ExecuteSubmitContentRequest request);
+        WsCore.ExecuteSubmitContentResponse ExecuteSubmitContent(string sid, WsCore.ExecuteSubmitContentRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ExecuteSubmitContent", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.ExecuteSubmitContentResponse> ExecuteSubmitContentAsync(string sid, WsCore.ExecuteSubmitContentRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ExecuteSubmitContent2", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.ExecuteSubmitContentResponse> ExecuteSubmitContent2Async(string sid, ICMCoreService.ExecuteSubmitContentRequest2 request);
+        WsCore.ExecuteSubmitContentResponse ExecuteSubmitContent2(string sid, WsCore.ExecuteSubmitContentRequest2 request);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ExecuteSubmitContent2", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.ExecuteSubmitContentResponse> ExecuteSubmitContent2Async(string sid, WsCore.ExecuteSubmitContentRequest2 request);
+        
+        // CODEGEN: Parameter 'fileContents' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'Microsoft.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/UploadFile", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.UploadFileResponse> UploadFileAsync(ICMCoreService.UploadFileRequest request);
+        WsCore.UploadFileResponse UploadFile(WsCore.UploadFileRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/UploadFile", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.UploadFileResponse> UploadFileAsync(WsCore.UploadFileRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/DeleteFiles", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
+        void DeleteFiles(string sid, string fileNamePrefix);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/DeleteFiles", ReplyAction="*")]
         System.Threading.Tasks.Task DeleteFilesAsync(string sid, string fileNamePrefix);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/RetrieveFolder", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<System.Xml.XmlNode> RetrieveFolderAsync(string sid, ICMCoreService.RetrieveFolderRequest request);
+        System.Xml.XmlNode RetrieveFolder(string sid, WsCore.RetrieveFolderRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/RetrieveFolder", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Xml.XmlNode> RetrieveFolderAsync(string sid, WsCore.RetrieveFolderRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/SubmitDocument", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<int> SubmitDocumentAsync(string sid, ICMCoreService.SubmitDocumentRequest request);
+        int SubmitDocument(string sid, WsCore.SubmitDocumentRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/SubmitDocument", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> SubmitDocumentAsync(string sid, WsCore.SubmitDocumentRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/PublishPDF2", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.PublishPDF2Result> PublishPDF2Async(string loginSessionID, int appId, ICMCoreService.PDFOpus opus, ICMCoreService.PDFOpusDetail[] opusDetails);
+        WsCore.PublishPDF2Result PublishPDF2(string loginSessionID, int appId, WsCore.PDFOpus opus, WsCore.PDFOpusDetail[] opusDetails);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/PublishPDF2", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.PublishPDF2Result> PublishPDF2Async(string loginSessionID, int appId, WsCore.PDFOpus opus, WsCore.PDFOpusDetail[] opusDetails);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/CreateFolder", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.CreateFolderResponse> CreateFolderAsync(string sid, ICMCoreService.CreateFolderRequest request);
+        WsCore.CreateFolderResponse CreateFolder(string sid, WsCore.CreateFolderRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/CreateFolder", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.CreateFolderResponse> CreateFolderAsync(string sid, WsCore.CreateFolderRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/SubmitContent", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.SubmitContentResponse> SubmitContentAsync(string sid, ICMCoreService.SubmitContentRequest request);
+        WsCore.SubmitContentResponse SubmitContent(string sid, WsCore.SubmitContentRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/SubmitContent", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.SubmitContentResponse> SubmitContentAsync(string sid, WsCore.SubmitContentRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/VFVHListContainer", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.VFVHListContainerResult> VFVHListContainerAsync(string sid, int appId, int containerId);
+        WsCore.VFVHListContainerResult VFVHListContainer(string sid, int appId, int containerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/VFVHListContainer", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.VFVHListContainerResult> VFVHListContainerAsync(string sid, int appId, int containerId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/VFVHCheckout", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.VFVHCheckoutResult> VFVHCheckoutAsync(string sid, int appId, int folderId, int containerId);
+        WsCore.VFVHCheckoutResult VFVHCheckout(string sid, int appId, int folderId, int containerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/VFVHCheckout", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.VFVHCheckoutResult> VFVHCheckoutAsync(string sid, int appId, int folderId, int containerId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/VFVHCheckin", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
+        int VFVHCheckin(string sid, int appId, int containerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/VFVHCheckin", ReplyAction="*")]
         System.Threading.Tasks.Task<int> VFVHCheckinAsync(string sid, int appId, int containerId);
         
+        // CODEGEN: Parameter 'contents' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'Microsoft.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/VFVHSubmitVersion", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.VFVHSubmitVersionResponse> VFVHSubmitVersionAsync(ICMCoreService.VFVHSubmitVersionRequest request);
+        WsCore.VFVHSubmitVersionResponse VFVHSubmitVersion(WsCore.VFVHSubmitVersionRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/VFVHSubmitVersion", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.VFVHSubmitVersionResponse> VFVHSubmitVersionAsync(WsCore.VFVHSubmitVersionRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/VFVHUpdateLastAccess", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
+        void VFVHUpdateLastAccess(string sid, int appId, int containerId, int version);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/VFVHUpdateLastAccess", ReplyAction="*")]
         System.Threading.Tasks.Task VFVHUpdateLastAccessAsync(string sid, int appId, int containerId, int version);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/VFVHDeleteVersion", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
+        int VFVHDeleteVersion(string sid, int appId, int containerId, int version);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/VFVHDeleteVersion", ReplyAction="*")]
         System.Threading.Tasks.Task<int> VFVHDeleteVersionAsync(string sid, int appId, int containerId, int version);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/VFVHListCheckouts", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
-        System.Threading.Tasks.Task<ICMCoreService.VirtualFileCheckout[]> VFVHListCheckoutsAsync(string sid, int appId, int containerId, int userId);
+        WsCore.VirtualFileCheckout[] VFVHListCheckouts(string sid, int appId, int containerId, int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/VFVHListCheckouts", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsCore.VirtualFileCheckout[]> VFVHListCheckoutsAsync(string sid, int appId, int containerId, int userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/VFVHChangeToVersion", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ICMDataEntity2[]))]
+        int VFVHChangeToVersion(string sid, int appId, int folderId, int objId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/VFVHChangeToVersion", ReplyAction="*")]
         System.Threading.Tasks.Task<int> VFVHChangeToVersionAsync(string sid, int appId, int folderId, int objId);
     }
     
@@ -10433,13 +10744,13 @@ namespace ICMCoreService
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.intellinetics.com/", Order=0)]
-        public ICMCoreService.DownloadPageResult DownloadPageResult;
+        public WsCore.DownloadPageResult DownloadPageResult;
         
         public DownloadPageResponse()
         {
         }
         
-        public DownloadPageResponse(ICMCoreService.DownloadPageResult DownloadPageResult)
+        public DownloadPageResponse(WsCore.DownloadPageResult DownloadPageResult)
         {
             this.DownloadPageResult = DownloadPageResult;
         }
@@ -10693,13 +11004,13 @@ namespace ICMCoreService
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    public interface ICMCoreServiceSoapChannel : ICMCoreService.ICMCoreServiceSoap, System.ServiceModel.IClientChannel
+    public interface ICMCoreServiceSoapChannel : WsCore.ICMCoreServiceSoap, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    public partial class CMCoreServiceSoapClient : System.ServiceModel.ClientBase<ICMCoreService.ICMCoreServiceSoap>, ICMCoreService.ICMCoreServiceSoap
+    public partial class CMCoreServiceSoapClient : System.ServiceModel.ClientBase<WsCore.ICMCoreServiceSoap>, WsCore.ICMCoreServiceSoap
     {
         
         /// <summary>
@@ -10735,9 +11046,19 @@ namespace ICMCoreService
         {
         }
         
+        public int XMDeleteFolder(string sid, int appId, int folderId)
+        {
+            return base.Channel.XMDeleteFolder(sid, appId, folderId);
+        }
+        
         public System.Threading.Tasks.Task<int> XMDeleteFolderAsync(string sid, int appId, int folderId)
         {
             return base.Channel.XMDeleteFolderAsync(sid, appId, folderId);
+        }
+        
+        public int XMMoveFolder(string sid, int appId, int fromFolderId, int toFolderId, bool deleteSourceFolder)
+        {
+            return base.Channel.XMMoveFolder(sid, appId, fromFolderId, toFolderId, deleteSourceFolder);
         }
         
         public System.Threading.Tasks.Task<int> XMMoveFolderAsync(string sid, int appId, int fromFolderId, int toFolderId, bool deleteSourceFolder)
@@ -10745,9 +11066,19 @@ namespace ICMCoreService
             return base.Channel.XMMoveFolderAsync(sid, appId, fromFolderId, toFolderId, deleteSourceFolder);
         }
         
+        public int XMCopyFolder(string sid, int appId, int fromFolderId, int toFolderId, bool includeExtents)
+        {
+            return base.Channel.XMCopyFolder(sid, appId, fromFolderId, toFolderId, includeExtents);
+        }
+        
         public System.Threading.Tasks.Task<int> XMCopyFolderAsync(string sid, int appId, int fromFolderId, int toFolderId, bool includeExtents)
         {
             return base.Channel.XMCopyFolderAsync(sid, appId, fromFolderId, toFolderId, includeExtents);
+        }
+        
+        public int XMDeleteFolderNotes(string sid, int appId, int folderId)
+        {
+            return base.Channel.XMDeleteFolderNotes(sid, appId, folderId);
         }
         
         public System.Threading.Tasks.Task<int> XMDeleteFolderNotesAsync(string sid, int appId, int folderId)
@@ -10755,9 +11086,19 @@ namespace ICMCoreService
             return base.Channel.XMDeleteFolderNotesAsync(sid, appId, folderId);
         }
         
+        public int XMAddFolderNotes(string sid, int appId, int folderId, string noteText)
+        {
+            return base.Channel.XMAddFolderNotes(sid, appId, folderId, noteText);
+        }
+        
         public System.Threading.Tasks.Task<int> XMAddFolderNotesAsync(string sid, int appId, int folderId, string noteText)
         {
             return base.Channel.XMAddFolderNotesAsync(sid, appId, folderId, noteText);
+        }
+        
+        public int XMUpdateFolderNotes(string sid, int appId, int folderId, string noteText)
+        {
+            return base.Channel.XMUpdateFolderNotes(sid, appId, folderId, noteText);
         }
         
         public System.Threading.Tasks.Task<int> XMUpdateFolderNotesAsync(string sid, int appId, int folderId, string noteText)
@@ -10765,9 +11106,19 @@ namespace ICMCoreService
             return base.Channel.XMUpdateFolderNotesAsync(sid, appId, folderId, noteText);
         }
         
+        public int XMSetFolderAccessLevel(string sid, int appId, int folderId, int accessLevel)
+        {
+            return base.Channel.XMSetFolderAccessLevel(sid, appId, folderId, accessLevel);
+        }
+        
         public System.Threading.Tasks.Task<int> XMSetFolderAccessLevelAsync(string sid, int appId, int folderId, int accessLevel)
         {
             return base.Channel.XMSetFolderAccessLevelAsync(sid, appId, folderId, accessLevel);
+        }
+        
+        public int XMDeleteDocument(string sid, int appId, int folderId, int documentId)
+        {
+            return base.Channel.XMDeleteDocument(sid, appId, folderId, documentId);
         }
         
         public System.Threading.Tasks.Task<int> XMDeleteDocumentAsync(string sid, int appId, int folderId, int documentId)
@@ -10775,9 +11126,19 @@ namespace ICMCoreService
             return base.Channel.XMDeleteDocumentAsync(sid, appId, folderId, documentId);
         }
         
+        public int XMCopyDocument(string sid, int appId, int fromFolderId, int fromDocumentId, int toFolderId, int toSubfolderId, bool includeExtents)
+        {
+            return base.Channel.XMCopyDocument(sid, appId, fromFolderId, fromDocumentId, toFolderId, toSubfolderId, includeExtents);
+        }
+        
         public System.Threading.Tasks.Task<int> XMCopyDocumentAsync(string sid, int appId, int fromFolderId, int fromDocumentId, int toFolderId, int toSubfolderId, bool includeExtents)
         {
             return base.Channel.XMCopyDocumentAsync(sid, appId, fromFolderId, fromDocumentId, toFolderId, toSubfolderId, includeExtents);
+        }
+        
+        public int XMMoveDocument(string sid, int appId, int fromFolderId, int fromDocumentId, int toFolderId, int toSubfolderId)
+        {
+            return base.Channel.XMMoveDocument(sid, appId, fromFolderId, fromDocumentId, toFolderId, toSubfolderId);
         }
         
         public System.Threading.Tasks.Task<int> XMMoveDocumentAsync(string sid, int appId, int fromFolderId, int fromDocumentId, int toFolderId, int toSubfolderId)
@@ -10785,9 +11146,19 @@ namespace ICMCoreService
             return base.Channel.XMMoveDocumentAsync(sid, appId, fromFolderId, fromDocumentId, toFolderId, toSubfolderId);
         }
         
+        public int XMUpdateDocument(string sid, int appId, int folderId, int documentId, string descriptor)
+        {
+            return base.Channel.XMUpdateDocument(sid, appId, folderId, documentId, descriptor);
+        }
+        
         public System.Threading.Tasks.Task<int> XMUpdateDocumentAsync(string sid, int appId, int folderId, int documentId, string descriptor)
         {
             return base.Channel.XMUpdateDocumentAsync(sid, appId, folderId, documentId, descriptor);
+        }
+        
+        public int XMSetDocumentAccessLevel(string sid, int appId, int folderId, int documentId, int accessLevel)
+        {
+            return base.Channel.XMSetDocumentAccessLevel(sid, appId, folderId, documentId, accessLevel);
         }
         
         public System.Threading.Tasks.Task<int> XMSetDocumentAccessLevelAsync(string sid, int appId, int folderId, int documentId, int accessLevel)
@@ -10795,9 +11166,19 @@ namespace ICMCoreService
             return base.Channel.XMSetDocumentAccessLevelAsync(sid, appId, folderId, documentId, accessLevel);
         }
         
+        public int XMCopyPages(string sid, int appId, int fromFolderId, int fromDocumentId, int[] fileIds, int toFolderId, int toSubfolderId, bool includeExtents)
+        {
+            return base.Channel.XMCopyPages(sid, appId, fromFolderId, fromDocumentId, fileIds, toFolderId, toSubfolderId, includeExtents);
+        }
+        
         public System.Threading.Tasks.Task<int> XMCopyPagesAsync(string sid, int appId, int fromFolderId, int fromDocumentId, int[] fileIds, int toFolderId, int toSubfolderId, bool includeExtents)
         {
             return base.Channel.XMCopyPagesAsync(sid, appId, fromFolderId, fromDocumentId, fileIds, toFolderId, toSubfolderId, includeExtents);
+        }
+        
+        public int XMMovePages(string sid, int appId, int fromFolderId, int fromDocumentId, int[] fileIds, int toFolderId, int toSubfolderId, bool includeExtents)
+        {
+            return base.Channel.XMMovePages(sid, appId, fromFolderId, fromDocumentId, fileIds, toFolderId, toSubfolderId, includeExtents);
         }
         
         public System.Threading.Tasks.Task<int> XMMovePagesAsync(string sid, int appId, int fromFolderId, int fromDocumentId, int[] fileIds, int toFolderId, int toSubfolderId, bool includeExtents)
@@ -10805,9 +11186,19 @@ namespace ICMCoreService
             return base.Channel.XMMovePagesAsync(sid, appId, fromFolderId, fromDocumentId, fileIds, toFolderId, toSubfolderId, includeExtents);
         }
         
+        public int XMSetPageBookmark(string sid, int appId, int folderId, int subfolderId, int lsmAreaId, int lsmFileId, string bookmark)
+        {
+            return base.Channel.XMSetPageBookmark(sid, appId, folderId, subfolderId, lsmAreaId, lsmFileId, bookmark);
+        }
+        
         public System.Threading.Tasks.Task<int> XMSetPageBookmarkAsync(string sid, int appId, int folderId, int subfolderId, int lsmAreaId, int lsmFileId, string bookmark)
         {
             return base.Channel.XMSetPageBookmarkAsync(sid, appId, folderId, subfolderId, lsmAreaId, lsmFileId, bookmark);
+        }
+        
+        public int XMAddPageNotes(string sid, int appId, int folderId, int subfolderId, int lsmAreaId, int lsmFileId, string notesText)
+        {
+            return base.Channel.XMAddPageNotes(sid, appId, folderId, subfolderId, lsmAreaId, lsmFileId, notesText);
         }
         
         public System.Threading.Tasks.Task<int> XMAddPageNotesAsync(string sid, int appId, int folderId, int subfolderId, int lsmAreaId, int lsmFileId, string notesText)
@@ -10815,9 +11206,19 @@ namespace ICMCoreService
             return base.Channel.XMAddPageNotesAsync(sid, appId, folderId, subfolderId, lsmAreaId, lsmFileId, notesText);
         }
         
+        public int XMDeletePageNotes(string sid, int appId, int folderId, int subfolderId, int lsmAreaId, int lsmFileId)
+        {
+            return base.Channel.XMDeletePageNotes(sid, appId, folderId, subfolderId, lsmAreaId, lsmFileId);
+        }
+        
         public System.Threading.Tasks.Task<int> XMDeletePageNotesAsync(string sid, int appId, int folderId, int subfolderId, int lsmAreaId, int lsmFileId)
         {
             return base.Channel.XMDeletePageNotesAsync(sid, appId, folderId, subfolderId, lsmAreaId, lsmFileId);
+        }
+        
+        public int XMSetPageAccessLevel(string sid, int appId, int folderId, int subfolderId, int lsmAreaId, int lsmFileId, int accessLevel)
+        {
+            return base.Channel.XMSetPageAccessLevel(sid, appId, folderId, subfolderId, lsmAreaId, lsmFileId, accessLevel);
         }
         
         public System.Threading.Tasks.Task<int> XMSetPageAccessLevelAsync(string sid, int appId, int folderId, int subfolderId, int lsmAreaId, int lsmFileId, int accessLevel)
@@ -10825,39 +11226,79 @@ namespace ICMCoreService
             return base.Channel.XMSetPageAccessLevelAsync(sid, appId, folderId, subfolderId, lsmAreaId, lsmFileId, accessLevel);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.XMModifyResponse> XMModifyFolderIndexesAsync(string sid, int appId, int[] folderIds, ICMCoreService.XMDataFieldInput[] fields)
+        public WsCore.XMModifyResponse XMModifyFolderIndexes(string sid, int appId, int[] folderIds, WsCore.XMDataFieldInput[] fields)
+        {
+            return base.Channel.XMModifyFolderIndexes(sid, appId, folderIds, fields);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.XMModifyResponse> XMModifyFolderIndexesAsync(string sid, int appId, int[] folderIds, WsCore.XMDataFieldInput[] fields)
         {
             return base.Channel.XMModifyFolderIndexesAsync(sid, appId, folderIds, fields);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.XMModifyResponse> XMModifyDocumentAttributesAsync(string sid, int appId, int[] documentIds, ICMCoreService.XMDataFieldInput[] fields)
+        public WsCore.XMModifyResponse XMModifyDocumentAttributes(string sid, int appId, int[] documentIds, WsCore.XMDataFieldInput[] fields)
+        {
+            return base.Channel.XMModifyDocumentAttributes(sid, appId, documentIds, fields);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.XMModifyResponse> XMModifyDocumentAttributesAsync(string sid, int appId, int[] documentIds, WsCore.XMDataFieldInput[] fields)
         {
             return base.Channel.XMModifyDocumentAttributesAsync(sid, appId, documentIds, fields);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.XMTransferResponse> XMMoveDocumentsAsync(string sid, int appId, int fromFolderId, int toFolderId, ICMCoreService.XMTransferMap[] transferMaps)
+        public WsCore.XMTransferResponse XMMoveDocuments(string sid, int appId, int fromFolderId, int toFolderId, WsCore.XMTransferMap[] transferMaps)
+        {
+            return base.Channel.XMMoveDocuments(sid, appId, fromFolderId, toFolderId, transferMaps);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.XMTransferResponse> XMMoveDocumentsAsync(string sid, int appId, int fromFolderId, int toFolderId, WsCore.XMTransferMap[] transferMaps)
         {
             return base.Channel.XMMoveDocumentsAsync(sid, appId, fromFolderId, toFolderId, transferMaps);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.LoginUserResult> LoginUserAsync(string userID, string passWord, int authType)
+        public WsCore.LoginUserResult LoginUser(string userID, string passWord, int authType)
+        {
+            return base.Channel.LoginUser(userID, passWord, authType);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.LoginUserResult> LoginUserAsync(string userID, string passWord, int authType)
         {
             return base.Channel.LoginUserAsync(userID, passWord, authType);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.LoginUserResult> LoginUserGXPAsync(string userID, string passWord, int authType, int programId)
+        public WsCore.LoginUserResult LoginUserGXP(string userID, string passWord, int authType, int programId)
+        {
+            return base.Channel.LoginUserGXP(userID, passWord, authType, programId);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.LoginUserResult> LoginUserGXPAsync(string userID, string passWord, int authType, int programId)
         {
             return base.Channel.LoginUserGXPAsync(userID, passWord, authType, programId);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.LoginUserResult> LoginUserHostedAsync(string clientDomain, string userId, string password)
+        public WsCore.LoginUserResult LoginUserHosted(string clientDomain, string userId, string password)
+        {
+            return base.Channel.LoginUserHosted(clientDomain, userId, password);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.LoginUserResult> LoginUserHostedAsync(string clientDomain, string userId, string password)
         {
             return base.Channel.LoginUserHostedAsync(clientDomain, userId, password);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.LoginUserResult> LoginUserHostedGXPAsync(string clientDomain, string userId, string password, int programId)
+        public WsCore.LoginUserResult LoginUserHostedGXP(string clientDomain, string userId, string password, int programId)
+        {
+            return base.Channel.LoginUserHostedGXP(clientDomain, userId, password, programId);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.LoginUserResult> LoginUserHostedGXPAsync(string clientDomain, string userId, string password, int programId)
         {
             return base.Channel.LoginUserHostedGXPAsync(clientDomain, userId, password, programId);
+        }
+        
+        public void LogoutUser(string loginSessionID)
+        {
+            base.Channel.LogoutUser(loginSessionID);
         }
         
         public System.Threading.Tasks.Task LogoutUserAsync(string loginSessionID)
@@ -10865,72 +11306,146 @@ namespace ICMCoreService
             return base.Channel.LogoutUserAsync(loginSessionID);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.GetUserAccessResult> GetUserAccessAsync(string userID, string passWord, int authType)
+        public WsCore.GetUserAccessResult GetUserAccess(string userID, string passWord, int authType)
+        {
+            return base.Channel.GetUserAccess(userID, passWord, authType);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.GetUserAccessResult> GetUserAccessAsync(string userID, string passWord, int authType)
         {
             return base.Channel.GetUserAccessAsync(userID, passWord, authType);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.GetUserAccessResult> GetUserAccessHostedAsync(string hostDomain, string userId, string password)
+        public WsCore.GetUserAccessResult GetUserAccessHosted(string hostDomain, string userId, string password)
+        {
+            return base.Channel.GetUserAccessHosted(hostDomain, userId, password);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.GetUserAccessResult> GetUserAccessHostedAsync(string hostDomain, string userId, string password)
         {
             return base.Channel.GetUserAccessHostedAsync(hostDomain, userId, password);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ICMCoreService.GetLogoResponse> ICMCoreService.ICMCoreServiceSoap.GetLogoAsync(ICMCoreService.GetLogoRequest request)
+        WsCore.GetLogoResponse WsCore.ICMCoreServiceSoap.GetLogo(WsCore.GetLogoRequest request)
+        {
+            return base.Channel.GetLogo(request);
+        }
+        
+        public byte[] GetLogo(string domainName)
+        {
+            WsCore.GetLogoRequest inValue = new WsCore.GetLogoRequest();
+            inValue.domainName = domainName;
+            WsCore.GetLogoResponse retVal = ((WsCore.ICMCoreServiceSoap)(this)).GetLogo(inValue);
+            return retVal.GetLogoResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<WsCore.GetLogoResponse> WsCore.ICMCoreServiceSoap.GetLogoAsync(WsCore.GetLogoRequest request)
         {
             return base.Channel.GetLogoAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.GetLogoResponse> GetLogoAsync(string domainName)
+        public System.Threading.Tasks.Task<WsCore.GetLogoResponse> GetLogoAsync(string domainName)
         {
-            ICMCoreService.GetLogoRequest inValue = new ICMCoreService.GetLogoRequest();
+            WsCore.GetLogoRequest inValue = new WsCore.GetLogoRequest();
             inValue.domainName = domainName;
-            return ((ICMCoreService.ICMCoreServiceSoap)(this)).GetLogoAsync(inValue);
+            return ((WsCore.ICMCoreServiceSoap)(this)).GetLogoAsync(inValue);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.ListApplicationsResult> ListApplicationsAsync()
+        public WsCore.ListApplicationsResult ListApplications()
+        {
+            return base.Channel.ListApplications();
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.ListApplicationsResult> ListApplicationsAsync()
         {
             return base.Channel.ListApplicationsAsync();
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.ListApplicationsResult> ListApplicationsHostedAsync(string hostDomain)
+        public WsCore.ListApplicationsResult ListApplicationsHosted(string hostDomain)
+        {
+            return base.Channel.ListApplicationsHosted(hostDomain);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.ListApplicationsResult> ListApplicationsHostedAsync(string hostDomain)
         {
             return base.Channel.ListApplicationsHostedAsync(hostDomain);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.ListApplicationsResult> ListApplicationsHostedWithUserAsync(string hostDomain, string userName)
+        public WsCore.ListApplicationsResult ListApplicationsHostedWithUser(string hostDomain, string userName)
+        {
+            return base.Channel.ListApplicationsHostedWithUser(hostDomain, userName);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.ListApplicationsResult> ListApplicationsHostedWithUserAsync(string hostDomain, string userName)
         {
             return base.Channel.ListApplicationsHostedWithUserAsync(hostDomain, userName);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.ListApplicationsUserRightsResult> ListApplicationsUserRightsAsync(string hostDomain, string userName)
+        public WsCore.ListApplicationsUserRightsResult ListApplicationsUserRights(string hostDomain, string userName)
+        {
+            return base.Channel.ListApplicationsUserRights(hostDomain, userName);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.ListApplicationsUserRightsResult> ListApplicationsUserRightsAsync(string hostDomain, string userName)
         {
             return base.Channel.ListApplicationsUserRightsAsync(hostDomain, userName);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.ApplicationItem[]> GetApplicationsCollectionAsync(string loginSessionId)
+        public WsCore.ApplicationItem[] GetApplicationsCollection(string loginSessionId)
+        {
+            return base.Channel.GetApplicationsCollection(loginSessionId);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.ApplicationItem[]> GetApplicationsCollectionAsync(string loginSessionId)
         {
             return base.Channel.GetApplicationsCollectionAsync(loginSessionId);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.GetApplicationDesignResult> GetApplicationDesignExAsync(string loginSessionId, int appId)
+        public WsCore.GetApplicationDesignResult GetApplicationDesignEx(string loginSessionId, int appId)
+        {
+            return base.Channel.GetApplicationDesignEx(loginSessionId, appId);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.GetApplicationDesignResult> GetApplicationDesignExAsync(string loginSessionId, int appId)
         {
             return base.Channel.GetApplicationDesignExAsync(loginSessionId, appId);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.GetApplicationDesignResult> GetApplicationDesignHostedAsync(string hostDomain, int appId)
+        public WsCore.GetApplicationDesignResult GetApplicationDesignHosted(string hostDomain, int appId)
+        {
+            return base.Channel.GetApplicationDesignHosted(hostDomain, appId);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.GetApplicationDesignResult> GetApplicationDesignHostedAsync(string hostDomain, int appId)
         {
             return base.Channel.GetApplicationDesignHostedAsync(hostDomain, appId);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.GetApplicationDesignResult> GetApplicationDesignAsync(int appId)
+        public WsCore.GetApplicationDesignResult GetApplicationDesign(int appId)
+        {
+            return base.Channel.GetApplicationDesign(appId);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.GetApplicationDesignResult> GetApplicationDesignAsync(int appId)
         {
             return base.Channel.GetApplicationDesignAsync(appId);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.GetApplicationDesignResult> GetApplicationDesignHostedWithUserAsync(string hostDomain, int appId, string userName)
+        public WsCore.GetApplicationDesignResult GetApplicationDesignHostedWithUser(string hostDomain, int appId, string userName)
+        {
+            return base.Channel.GetApplicationDesignHostedWithUser(hostDomain, appId, userName);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.GetApplicationDesignResult> GetApplicationDesignHostedWithUserAsync(string hostDomain, int appId, string userName)
         {
             return base.Channel.GetApplicationDesignHostedWithUserAsync(hostDomain, appId, userName);
+        }
+        
+        public bool ChangeUserPasswordHosted(string loginSessionID, string newPassword)
+        {
+            return base.Channel.ChangeUserPasswordHosted(loginSessionID, newPassword);
         }
         
         public System.Threading.Tasks.Task<bool> ChangeUserPasswordHostedAsync(string loginSessionID, string newPassword)
@@ -10938,152 +11453,307 @@ namespace ICMCoreService
             return base.Channel.ChangeUserPasswordHostedAsync(loginSessionID, newPassword);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.GetUserInformationResult> GetUserInformationAsync(string loginSessionID, int appId)
+        public WsCore.GetUserInformationResult GetUserInformation(string loginSessionID, int appId)
+        {
+            return base.Channel.GetUserInformation(loginSessionID, appId);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.GetUserInformationResult> GetUserInformationAsync(string loginSessionID, int appId)
         {
             return base.Channel.GetUserInformationAsync(loginSessionID, appId);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.AcquireFolderResult> AcquireFolderAsync(string loginSessionID, int appID, int folderID)
+        public WsCore.AcquireFolderResult AcquireFolder(string loginSessionID, int appID, int folderID)
+        {
+            return base.Channel.AcquireFolder(loginSessionID, appID, folderID);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.AcquireFolderResult> AcquireFolderAsync(string loginSessionID, int appID, int folderID)
         {
             return base.Channel.AcquireFolderAsync(loginSessionID, appID, folderID);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.AcquireFolderResult> AcquireFolderExAsync(string loginSessionID, int appID, string indexKey, string indexValue)
+        public WsCore.AcquireFolderResult AcquireFolderEx(string loginSessionID, int appID, string indexKey, string indexValue)
+        {
+            return base.Channel.AcquireFolderEx(loginSessionID, appID, indexKey, indexValue);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.AcquireFolderResult> AcquireFolderExAsync(string loginSessionID, int appID, string indexKey, string indexValue)
         {
             return base.Channel.AcquireFolderExAsync(loginSessionID, appID, indexKey, indexValue);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.PublishPDFResult> PublishPDFAsync(string loginSessionID, ICMCoreService.PDFComposition pdfComposition)
+        public WsCore.PublishPDFResult PublishPDF(string loginSessionID, WsCore.PDFComposition pdfComposition)
+        {
+            return base.Channel.PublishPDF(loginSessionID, pdfComposition);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.PublishPDFResult> PublishPDFAsync(string loginSessionID, WsCore.PDFComposition pdfComposition)
         {
             return base.Channel.PublishPDFAsync(loginSessionID, pdfComposition);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.CreatePDFResult> CreatePDFAsync(string loginSessionID, int appID, int folderID, int scope, string refID, string optionSwitches, bool recycle)
+        public WsCore.CreatePDFResult CreatePDF(string loginSessionID, int appID, int folderID, int scope, string refID, string optionSwitches, bool recycle)
+        {
+            return base.Channel.CreatePDF(loginSessionID, appID, folderID, scope, refID, optionSwitches, recycle);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.CreatePDFResult> CreatePDFAsync(string loginSessionID, int appID, int folderID, int scope, string refID, string optionSwitches, bool recycle)
         {
             return base.Channel.CreatePDFAsync(loginSessionID, appID, folderID, scope, refID, optionSwitches, recycle);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ICMCoreService.DownloadPageResponse> ICMCoreService.ICMCoreServiceSoap.DownloadPageAsync(ICMCoreService.DownloadPageRequest request)
+        WsCore.DownloadPageResponse WsCore.ICMCoreServiceSoap.DownloadPage(WsCore.DownloadPageRequest request)
         {
-            return base.Channel.DownloadPageAsync(request);
+            return base.Channel.DownloadPage(request);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.DownloadPageResponse> DownloadPageAsync(string loginSessionID, int appID, byte[] pageAddress, bool contentOnly, int redactPAL)
+        public WsCore.DownloadPageResult DownloadPage(string loginSessionID, int appID, byte[] pageAddress, bool contentOnly, int redactPAL)
         {
-            ICMCoreService.DownloadPageRequest inValue = new ICMCoreService.DownloadPageRequest();
+            WsCore.DownloadPageRequest inValue = new WsCore.DownloadPageRequest();
             inValue.loginSessionID = loginSessionID;
             inValue.appID = appID;
             inValue.pageAddress = pageAddress;
             inValue.contentOnly = contentOnly;
             inValue.redactPAL = redactPAL;
-            return ((ICMCoreService.ICMCoreServiceSoap)(this)).DownloadPageAsync(inValue);
+            WsCore.DownloadPageResponse retVal = ((WsCore.ICMCoreServiceSoap)(this)).DownloadPage(inValue);
+            return retVal.DownloadPageResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ICMCoreService.ImageRotatePageResponse> ICMCoreService.ICMCoreServiceSoap.ImageRotatePageAsync(ICMCoreService.ImageRotatePageRequest request)
+        System.Threading.Tasks.Task<WsCore.DownloadPageResponse> WsCore.ICMCoreServiceSoap.DownloadPageAsync(WsCore.DownloadPageRequest request)
         {
-            return base.Channel.ImageRotatePageAsync(request);
+            return base.Channel.DownloadPageAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.ImageRotatePageResponse> ImageRotatePageAsync(string loginSessionId, int appId, byte[] pageAddress, int rotation)
+        public System.Threading.Tasks.Task<WsCore.DownloadPageResponse> DownloadPageAsync(string loginSessionID, int appID, byte[] pageAddress, bool contentOnly, int redactPAL)
         {
-            ICMCoreService.ImageRotatePageRequest inValue = new ICMCoreService.ImageRotatePageRequest();
+            WsCore.DownloadPageRequest inValue = new WsCore.DownloadPageRequest();
+            inValue.loginSessionID = loginSessionID;
+            inValue.appID = appID;
+            inValue.pageAddress = pageAddress;
+            inValue.contentOnly = contentOnly;
+            inValue.redactPAL = redactPAL;
+            return ((WsCore.ICMCoreServiceSoap)(this)).DownloadPageAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        WsCore.ImageRotatePageResponse WsCore.ICMCoreServiceSoap.ImageRotatePage(WsCore.ImageRotatePageRequest request)
+        {
+            return base.Channel.ImageRotatePage(request);
+        }
+        
+        public int ImageRotatePage(string loginSessionId, int appId, byte[] pageAddress, int rotation)
+        {
+            WsCore.ImageRotatePageRequest inValue = new WsCore.ImageRotatePageRequest();
             inValue.loginSessionId = loginSessionId;
             inValue.appId = appId;
             inValue.pageAddress = pageAddress;
             inValue.rotation = rotation;
-            return ((ICMCoreService.ICMCoreServiceSoap)(this)).ImageRotatePageAsync(inValue);
+            WsCore.ImageRotatePageResponse retVal = ((WsCore.ICMCoreServiceSoap)(this)).ImageRotatePage(inValue);
+            return retVal.ImageRotatePageResult;
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.SubmitFilesResult> SubmitFilesAsync(string loginSessionID, int appId, int folderId, int subfolderId, int permAccessLevel, int contentType, ICMCoreService.SourceFile[] sourceFiles)
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<WsCore.ImageRotatePageResponse> WsCore.ICMCoreServiceSoap.ImageRotatePageAsync(WsCore.ImageRotatePageRequest request)
+        {
+            return base.Channel.ImageRotatePageAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.ImageRotatePageResponse> ImageRotatePageAsync(string loginSessionId, int appId, byte[] pageAddress, int rotation)
+        {
+            WsCore.ImageRotatePageRequest inValue = new WsCore.ImageRotatePageRequest();
+            inValue.loginSessionId = loginSessionId;
+            inValue.appId = appId;
+            inValue.pageAddress = pageAddress;
+            inValue.rotation = rotation;
+            return ((WsCore.ICMCoreServiceSoap)(this)).ImageRotatePageAsync(inValue);
+        }
+        
+        public WsCore.SubmitFilesResult SubmitFiles(string loginSessionID, int appId, int folderId, int subfolderId, int permAccessLevel, int contentType, WsCore.SourceFile[] sourceFiles)
+        {
+            return base.Channel.SubmitFiles(loginSessionID, appId, folderId, subfolderId, permAccessLevel, contentType, sourceFiles);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.SubmitFilesResult> SubmitFilesAsync(string loginSessionID, int appId, int folderId, int subfolderId, int permAccessLevel, int contentType, WsCore.SourceFile[] sourceFiles)
         {
             return base.Channel.SubmitFilesAsync(loginSessionID, appId, folderId, subfolderId, permAccessLevel, contentType, sourceFiles);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.FMResult> FMCreateFolderAsync(string loginSessionId, int appId, ICMCoreService.FMIndexItem[] indexItems, int accessLevel)
+        public WsCore.FMResult FMCreateFolder(string loginSessionId, int appId, WsCore.FMIndexItem[] indexItems, int accessLevel)
+        {
+            return base.Channel.FMCreateFolder(loginSessionId, appId, indexItems, accessLevel);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.FMResult> FMCreateFolderAsync(string loginSessionId, int appId, WsCore.FMIndexItem[] indexItems, int accessLevel)
         {
             return base.Channel.FMCreateFolderAsync(loginSessionId, appId, indexItems, accessLevel);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.FMResult> FMModifyFolderIndexesAsync(string loginSessionId, int appId, int folderId, ICMCoreService.FMIndexItem[] indexItems)
+        public WsCore.FMResult FMModifyFolderIndexes(string loginSessionId, int appId, int folderId, WsCore.FMIndexItem[] indexItems)
+        {
+            return base.Channel.FMModifyFolderIndexes(loginSessionId, appId, folderId, indexItems);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.FMResult> FMModifyFolderIndexesAsync(string loginSessionId, int appId, int folderId, WsCore.FMIndexItem[] indexItems)
         {
             return base.Channel.FMModifyFolderIndexesAsync(loginSessionId, appId, folderId, indexItems);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.FMResult> FMPutFolderNoteAsync(string loginSessionId, int appId, int folderId, string notetext)
+        public WsCore.FMResult FMPutFolderNote(string loginSessionId, int appId, int folderId, string notetext)
+        {
+            return base.Channel.FMPutFolderNote(loginSessionId, appId, folderId, notetext);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.FMResult> FMPutFolderNoteAsync(string loginSessionId, int appId, int folderId, string notetext)
         {
             return base.Channel.FMPutFolderNoteAsync(loginSessionId, appId, folderId, notetext);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.FMResult> FMModifyPagesetIndexesAsync(string loginSessionId, int appId, int objRef, ICMCoreService.FMIndexItem[] indexItems)
+        public WsCore.FMResult FMModifyPagesetIndexes(string loginSessionId, int appId, int objRef, WsCore.FMIndexItem[] indexItems)
+        {
+            return base.Channel.FMModifyPagesetIndexes(loginSessionId, appId, objRef, indexItems);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.FMResult> FMModifyPagesetIndexesAsync(string loginSessionId, int appId, int objRef, WsCore.FMIndexItem[] indexItems)
         {
             return base.Channel.FMModifyPagesetIndexesAsync(loginSessionId, appId, objRef, indexItems);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.FMResult> FMModifyPagesetIndexesAllAsync(string loginSessionId, int appId, int folderId, int subfolderId, ICMCoreService.FMIndexItem[] indexItems)
+        public WsCore.FMResult FMModifyPagesetIndexesAll(string loginSessionId, int appId, int folderId, int subfolderId, WsCore.FMIndexItem[] indexItems)
+        {
+            return base.Channel.FMModifyPagesetIndexesAll(loginSessionId, appId, folderId, subfolderId, indexItems);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.FMResult> FMModifyPagesetIndexesAllAsync(string loginSessionId, int appId, int folderId, int subfolderId, WsCore.FMIndexItem[] indexItems)
         {
             return base.Channel.FMModifyPagesetIndexesAllAsync(loginSessionId, appId, folderId, subfolderId, indexItems);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.FMResult> FMAddPagesetIndexesAsync(string loginSessionId, int appId, int folderId, int objRef, ICMCoreService.FMIndexItem[] indexItems)
+        public WsCore.FMResult FMAddPagesetIndexes(string loginSessionId, int appId, int folderId, int objRef, WsCore.FMIndexItem[] indexItems)
+        {
+            return base.Channel.FMAddPagesetIndexes(loginSessionId, appId, folderId, objRef, indexItems);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.FMResult> FMAddPagesetIndexesAsync(string loginSessionId, int appId, int folderId, int objRef, WsCore.FMIndexItem[] indexItems)
         {
             return base.Channel.FMAddPagesetIndexesAsync(loginSessionId, appId, folderId, objRef, indexItems);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.FMResult> FMPutPageBookmarkAsync(string loginSessionId, int appId, int folderId, int subfolderId, int areaId, int fileId, string bookmark)
+        public WsCore.FMResult FMPutPageBookmark(string loginSessionId, int appId, int folderId, int subfolderId, int areaId, int fileId, string bookmark)
+        {
+            return base.Channel.FMPutPageBookmark(loginSessionId, appId, folderId, subfolderId, areaId, fileId, bookmark);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.FMResult> FMPutPageBookmarkAsync(string loginSessionId, int appId, int folderId, int subfolderId, int areaId, int fileId, string bookmark)
         {
             return base.Channel.FMPutPageBookmarkAsync(loginSessionId, appId, folderId, subfolderId, areaId, fileId, bookmark);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.FMResult> FMPutPageNoteAsync(string loginSessionId, int appId, int folderId, int subfolderId, int areaId, int fileId, string notetext)
+        public WsCore.FMResult FMPutPageNote(string loginSessionId, int appId, int folderId, int subfolderId, int areaId, int fileId, string notetext)
+        {
+            return base.Channel.FMPutPageNote(loginSessionId, appId, folderId, subfolderId, areaId, fileId, notetext);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.FMResult> FMPutPageNoteAsync(string loginSessionId, int appId, int folderId, int subfolderId, int areaId, int fileId, string notetext)
         {
             return base.Channel.FMPutPageNoteAsync(loginSessionId, appId, folderId, subfolderId, areaId, fileId, notetext);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.FMResult> FMPutPageRedactionsAsync(string loginSessionId, int appId, int folderId, int subfolderId, int areaId, int fileId, string[] zones)
+        public WsCore.FMResult FMPutPageRedactions(string loginSessionId, int appId, int folderId, int subfolderId, int areaId, int fileId, string[] zones)
+        {
+            return base.Channel.FMPutPageRedactions(loginSessionId, appId, folderId, subfolderId, areaId, fileId, zones);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.FMResult> FMPutPageRedactionsAsync(string loginSessionId, int appId, int folderId, int subfolderId, int areaId, int fileId, string[] zones)
         {
             return base.Channel.FMPutPageRedactionsAsync(loginSessionId, appId, folderId, subfolderId, areaId, fileId, zones);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.FMResult> FMPutPageAccessLevelAsync(string loginSessionId, int appId, int folderId, int subfolderId, int areaId, int fileId, int level)
+        public WsCore.FMResult FMPutPageAccessLevel(string loginSessionId, int appId, int folderId, int subfolderId, int areaId, int fileId, int level)
+        {
+            return base.Channel.FMPutPageAccessLevel(loginSessionId, appId, folderId, subfolderId, areaId, fileId, level);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.FMResult> FMPutPageAccessLevelAsync(string loginSessionId, int appId, int folderId, int subfolderId, int areaId, int fileId, int level)
         {
             return base.Channel.FMPutPageAccessLevelAsync(loginSessionId, appId, folderId, subfolderId, areaId, fileId, level);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.FMResult> FMPutPagesetAccessLevelAsync(string loginSessionId, int appId, int folderId, int objRef, int level)
+        public WsCore.FMResult FMPutPagesetAccessLevel(string loginSessionId, int appId, int folderId, int objRef, int level)
+        {
+            return base.Channel.FMPutPagesetAccessLevel(loginSessionId, appId, folderId, objRef, level);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.FMResult> FMPutPagesetAccessLevelAsync(string loginSessionId, int appId, int folderId, int objRef, int level)
         {
             return base.Channel.FMPutPagesetAccessLevelAsync(loginSessionId, appId, folderId, objRef, level);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.FMResult> FMPutFolderAccessLevelAsync(string loginSessionId, int appId, int folderId, int level)
+        public WsCore.FMResult FMPutFolderAccessLevel(string loginSessionId, int appId, int folderId, int level)
+        {
+            return base.Channel.FMPutFolderAccessLevel(loginSessionId, appId, folderId, level);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.FMResult> FMPutFolderAccessLevelAsync(string loginSessionId, int appId, int folderId, int level)
         {
             return base.Channel.FMPutFolderAccessLevelAsync(loginSessionId, appId, folderId, level);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.FMResult> FMDeleteFolderAsync(string loginSessionId, int appId, int folderId)
+        public WsCore.FMResult FMDeleteFolder(string loginSessionId, int appId, int folderId)
+        {
+            return base.Channel.FMDeleteFolder(loginSessionId, appId, folderId);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.FMResult> FMDeleteFolderAsync(string loginSessionId, int appId, int folderId)
         {
             return base.Channel.FMDeleteFolderAsync(loginSessionId, appId, folderId);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.FMResult> FMDeleteSubfolderAsync(string loginSessionId, int appId, int folderId, int subfolderId)
+        public WsCore.FMResult FMDeleteSubfolder(string loginSessionId, int appId, int folderId, int subfolderId)
+        {
+            return base.Channel.FMDeleteSubfolder(loginSessionId, appId, folderId, subfolderId);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.FMResult> FMDeleteSubfolderAsync(string loginSessionId, int appId, int folderId, int subfolderId)
         {
             return base.Channel.FMDeleteSubfolderAsync(loginSessionId, appId, folderId, subfolderId);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.FMResult> FMDeletePagesetAsync(string loginSessionId, int appId, int folderId, int objRef)
+        public WsCore.FMResult FMDeletePageset(string loginSessionId, int appId, int folderId, int objRef)
+        {
+            return base.Channel.FMDeletePageset(loginSessionId, appId, folderId, objRef);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.FMResult> FMDeletePagesetAsync(string loginSessionId, int appId, int folderId, int objRef)
         {
             return base.Channel.FMDeletePagesetAsync(loginSessionId, appId, folderId, objRef);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.FMResult> FMMoveFolderAsync(string loginSessionId, int appId, int fromFolderId, int toFolderId, bool deleteSource)
+        public WsCore.FMResult FMMoveFolder(string loginSessionId, int appId, int fromFolderId, int toFolderId, bool deleteSource)
+        {
+            return base.Channel.FMMoveFolder(loginSessionId, appId, fromFolderId, toFolderId, deleteSource);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.FMResult> FMMoveFolderAsync(string loginSessionId, int appId, int fromFolderId, int toFolderId, bool deleteSource)
         {
             return base.Channel.FMMoveFolderAsync(loginSessionId, appId, fromFolderId, toFolderId, deleteSource);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.FMResult> FMMoveDocumentsAsync(string loginSessionId, int appId, int fromFolderId, int fromObjRef, int fromPageFileId, int toFolderId, int toSubfolderId)
+        public WsCore.FMResult FMMoveDocuments(string loginSessionId, int appId, int fromFolderId, int fromObjRef, int fromPageFileId, int toFolderId, int toSubfolderId)
+        {
+            return base.Channel.FMMoveDocuments(loginSessionId, appId, fromFolderId, fromObjRef, fromPageFileId, toFolderId, toSubfolderId);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.FMResult> FMMoveDocumentsAsync(string loginSessionId, int appId, int fromFolderId, int fromObjRef, int fromPageFileId, int toFolderId, int toSubfolderId)
         {
             return base.Channel.FMMoveDocumentsAsync(loginSessionId, appId, fromFolderId, fromObjRef, fromPageFileId, toFolderId, toSubfolderId);
+        }
+        
+        public void GetErrorLog(string loginSessionId)
+        {
+            base.Channel.GetErrorLog(loginSessionId);
         }
         
         public System.Threading.Tasks.Task GetErrorLogAsync(string loginSessionId)
@@ -11091,74 +11761,149 @@ namespace ICMCoreService
             return base.Channel.GetErrorLogAsync(loginSessionId);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.TaskResponse> ExecuteTaskFromCodeStoreAsync(string loginSessionId, int appId, string[] args)
+        public WsCore.TaskResponse ExecuteTaskFromCodeStore(string loginSessionId, int appId, string[] args)
+        {
+            return base.Channel.ExecuteTaskFromCodeStore(loginSessionId, appId, args);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.TaskResponse> ExecuteTaskFromCodeStoreAsync(string loginSessionId, int appId, string[] args)
         {
             return base.Channel.ExecuteTaskFromCodeStoreAsync(loginSessionId, appId, args);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.ApplicationsResponse> RetrieveApplicationsAsync(ICMCoreService.ApplicationsRequest request)
+        public WsCore.ApplicationsResponse RetrieveApplications(WsCore.ApplicationsRequest request)
+        {
+            return base.Channel.RetrieveApplications(request);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.ApplicationsResponse> RetrieveApplicationsAsync(WsCore.ApplicationsRequest request)
         {
             return base.Channel.RetrieveApplicationsAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.ApplicationMetadataResponse> RetrieveApplicationMetadataAsync(ICMCoreService.ApplicationMetadataRequest request)
+        public WsCore.ApplicationMetadataResponse RetrieveApplicationMetadata(WsCore.ApplicationMetadataRequest request)
+        {
+            return base.Channel.RetrieveApplicationMetadata(request);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.ApplicationMetadataResponse> RetrieveApplicationMetadataAsync(WsCore.ApplicationMetadataRequest request)
         {
             return base.Channel.RetrieveApplicationMetadataAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.ApplicationMetadataResponseEx> RetrieveApplicationMetadataExAsync(ICMCoreService.ApplicationMetadataRequest request)
+        public WsCore.ApplicationMetadataResponseEx RetrieveApplicationMetadataEx(WsCore.ApplicationMetadataRequest request)
+        {
+            return base.Channel.RetrieveApplicationMetadataEx(request);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.ApplicationMetadataResponseEx> RetrieveApplicationMetadataExAsync(WsCore.ApplicationMetadataRequest request)
         {
             return base.Channel.RetrieveApplicationMetadataExAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.ApplicationMetadataResponseTest> RetrieveApplicationMetadataTestAsync(int appid)
+        public WsCore.ApplicationMetadataResponseTest RetrieveApplicationMetadataTest(int appid)
+        {
+            return base.Channel.RetrieveApplicationMetadataTest(appid);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.ApplicationMetadataResponseTest> RetrieveApplicationMetadataTestAsync(int appid)
         {
             return base.Channel.RetrieveApplicationMetadataTestAsync(appid);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.FolderUpdateResponse> ExecuteFolderUpdateAsync(string sid, ICMCoreService.FolderUpdateRequest request)
+        public WsCore.FolderUpdateResponse ExecuteFolderUpdate(string sid, WsCore.FolderUpdateRequest request)
+        {
+            return base.Channel.ExecuteFolderUpdate(sid, request);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.FolderUpdateResponse> ExecuteFolderUpdateAsync(string sid, WsCore.FolderUpdateRequest request)
         {
             return base.Channel.ExecuteFolderUpdateAsync(sid, request);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.GetFolderIndexDataResponseGetFolderIndexDataResult> GetFolderIndexDataAsync(string sid, int appId, int folderId)
+        public WsCore.GetFolderIndexDataResponseGetFolderIndexDataResult GetFolderIndexData(string sid, int appId, int folderId)
+        {
+            return base.Channel.GetFolderIndexData(sid, appId, folderId);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.GetFolderIndexDataResponseGetFolderIndexDataResult> GetFolderIndexDataAsync(string sid, int appId, int folderId)
         {
             return base.Channel.GetFolderIndexDataAsync(sid, appId, folderId);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.ICMDataEntity2[]> GetDocumentAttributeDataAsync(string sid, int appId, int folderId, int objRef)
+        public WsCore.ICMDataEntity2[] GetDocumentAttributeData(string sid, int appId, int folderId, int objRef)
+        {
+            return base.Channel.GetDocumentAttributeData(sid, appId, folderId, objRef);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.ICMDataEntity2[]> GetDocumentAttributeDataAsync(string sid, int appId, int folderId, int objRef)
         {
             return base.Channel.GetDocumentAttributeDataAsync(sid, appId, folderId, objRef);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.GetDocumentXObjectResult> GetDocumentXObjectAsync(string sid, int appId, int folderId, int objRef)
+        public WsCore.GetDocumentXObjectResult GetDocumentXObject(string sid, int appId, int folderId, int objRef)
+        {
+            return base.Channel.GetDocumentXObject(sid, appId, folderId, objRef);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.GetDocumentXObjectResult> GetDocumentXObjectAsync(string sid, int appId, int folderId, int objRef)
         {
             return base.Channel.GetDocumentXObjectAsync(sid, appId, folderId, objRef);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.DocumentUpdateResponse> ExecuteDocumentUpdateAsync(string sid, ICMCoreService.DocumentUpdateRequest request)
+        public WsCore.DocumentUpdateResponse ExecuteDocumentUpdate(string sid, WsCore.DocumentUpdateRequest request)
+        {
+            return base.Channel.ExecuteDocumentUpdate(sid, request);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.DocumentUpdateResponse> ExecuteDocumentUpdateAsync(string sid, WsCore.DocumentUpdateRequest request)
         {
             return base.Channel.ExecuteDocumentUpdateAsync(sid, request);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.DocumentUpdateResponse> ExecuteDocumentAttributesUpdateAsync(string sid, ICMCoreService.DocumentAttributesUpdateRequest request)
+        public WsCore.DocumentUpdateResponse ExecuteDocumentAttributesUpdate(string sid, WsCore.DocumentAttributesUpdateRequest request)
+        {
+            return base.Channel.ExecuteDocumentAttributesUpdate(sid, request);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.DocumentUpdateResponse> ExecuteDocumentAttributesUpdateAsync(string sid, WsCore.DocumentAttributesUpdateRequest request)
         {
             return base.Channel.ExecuteDocumentAttributesUpdateAsync(sid, request);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.FolderManagementResponse> ExecuteFolderManagementAsync(string sid, ICMCoreService.FolderManagementRequest request)
+        public WsCore.FolderManagementResponse ExecuteFolderManagement(string sid, WsCore.FolderManagementRequest request)
+        {
+            return base.Channel.ExecuteFolderManagement(sid, request);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.FolderManagementResponse> ExecuteFolderManagementAsync(string sid, WsCore.FolderManagementRequest request)
         {
             return base.Channel.ExecuteFolderManagementAsync(sid, request);
         }
         
-        public System.Threading.Tasks.Task<int> UpdateImageOverlayObjectsAsync(string sid, ICMCoreService.TransformImageOverlayObjectsRequest request)
+        public int UpdateImageOverlayObjects(string sid, WsCore.TransformImageOverlayObjectsRequest request)
+        {
+            return base.Channel.UpdateImageOverlayObjects(sid, request);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateImageOverlayObjectsAsync(string sid, WsCore.TransformImageOverlayObjectsRequest request)
         {
             return base.Channel.UpdateImageOverlayObjectsAsync(sid, request);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.GetNoteReferencesResult[]> GetNoteReferencesAsync(string sid, int appId, int[] folderIds)
+        public WsCore.GetNoteReferencesResult[] GetNoteReferences(string sid, int appId, int[] folderIds)
+        {
+            return base.Channel.GetNoteReferences(sid, appId, folderIds);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.GetNoteReferencesResult[]> GetNoteReferencesAsync(string sid, int appId, int[] folderIds)
         {
             return base.Channel.GetNoteReferencesAsync(sid, appId, folderIds);
+        }
+        
+        public string GetNote(string sid, int appId, int objRef)
+        {
+            return base.Channel.GetNote(sid, appId, objRef);
         }
         
         public System.Threading.Tasks.Task<string> GetNoteAsync(string sid, int appId, int objRef)
@@ -11166,54 +11911,110 @@ namespace ICMCoreService
             return base.Channel.GetNoteAsync(sid, appId, objRef);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.RetrievePageResponse> RetrievePageAsync(string loginSessionID, ICMCoreService.RetrievePageRequest request)
+        public WsCore.RetrievePageResponse RetrievePage(string loginSessionID, WsCore.RetrievePageRequest request)
+        {
+            return base.Channel.RetrievePage(loginSessionID, request);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.RetrievePageResponse> RetrievePageAsync(string loginSessionID, WsCore.RetrievePageRequest request)
         {
             return base.Channel.RetrievePageAsync(loginSessionID, request);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.RetrievePageResponse> RetrievePage2Async(string loginSessionID, ICMCoreService.RetrievePageRequest request)
+        public WsCore.RetrievePageResponse RetrievePage2(string loginSessionID, WsCore.RetrievePageRequest request)
+        {
+            return base.Channel.RetrievePage2(loginSessionID, request);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.RetrievePageResponse> RetrievePage2Async(string loginSessionID, WsCore.RetrievePageRequest request)
         {
             return base.Channel.RetrievePage2Async(loginSessionID, request);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.RetrievePageResponse> RetrievePageAsThumbnailAsync(string loginSessionID, ICMCoreService.RetrievePageRequest request)
+        public WsCore.RetrievePageResponse RetrievePageAsThumbnail(string loginSessionID, WsCore.RetrievePageRequest request)
+        {
+            return base.Channel.RetrievePageAsThumbnail(loginSessionID, request);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.RetrievePageResponse> RetrievePageAsThumbnailAsync(string loginSessionID, WsCore.RetrievePageRequest request)
         {
             return base.Channel.RetrievePageAsThumbnailAsync(loginSessionID, request);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.GetDocumentContentResponse> GetDocumentContentAsync(string loginSessionID, ICMCoreService.GetDocumentContentRequest request)
+        public WsCore.GetDocumentContentResponse GetDocumentContent(string loginSessionID, WsCore.GetDocumentContentRequest request)
+        {
+            return base.Channel.GetDocumentContent(loginSessionID, request);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.GetDocumentContentResponse> GetDocumentContentAsync(string loginSessionID, WsCore.GetDocumentContentRequest request)
         {
             return base.Channel.GetDocumentContentAsync(loginSessionID, request);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.ListDocumentsResponseListDocumentsResult> ListDocumentsAsync(string loginSessionID, int appId, int folderId)
+        public WsCore.ListDocumentsResponseListDocumentsResult ListDocuments(string loginSessionID, int appId, int folderId)
+        {
+            return base.Channel.ListDocuments(loginSessionID, appId, folderId);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.ListDocumentsResponseListDocumentsResult> ListDocumentsAsync(string loginSessionID, int appId, int folderId)
         {
             return base.Channel.ListDocumentsAsync(loginSessionID, appId, folderId);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.ExecuteSubmitContentResponse> ExecuteSubmitContentAsync(string sid, ICMCoreService.ExecuteSubmitContentRequest request)
+        public WsCore.ExecuteSubmitContentResponse ExecuteSubmitContent(string sid, WsCore.ExecuteSubmitContentRequest request)
+        {
+            return base.Channel.ExecuteSubmitContent(sid, request);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.ExecuteSubmitContentResponse> ExecuteSubmitContentAsync(string sid, WsCore.ExecuteSubmitContentRequest request)
         {
             return base.Channel.ExecuteSubmitContentAsync(sid, request);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.ExecuteSubmitContentResponse> ExecuteSubmitContent2Async(string sid, ICMCoreService.ExecuteSubmitContentRequest2 request)
+        public WsCore.ExecuteSubmitContentResponse ExecuteSubmitContent2(string sid, WsCore.ExecuteSubmitContentRequest2 request)
+        {
+            return base.Channel.ExecuteSubmitContent2(sid, request);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.ExecuteSubmitContentResponse> ExecuteSubmitContent2Async(string sid, WsCore.ExecuteSubmitContentRequest2 request)
         {
             return base.Channel.ExecuteSubmitContent2Async(sid, request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ICMCoreService.UploadFileResponse> ICMCoreService.ICMCoreServiceSoap.UploadFileAsync(ICMCoreService.UploadFileRequest request)
+        WsCore.UploadFileResponse WsCore.ICMCoreServiceSoap.UploadFile(WsCore.UploadFileRequest request)
+        {
+            return base.Channel.UploadFile(request);
+        }
+        
+        public int UploadFile(string sid, string fileName, byte[] fileContents)
+        {
+            WsCore.UploadFileRequest inValue = new WsCore.UploadFileRequest();
+            inValue.sid = sid;
+            inValue.fileName = fileName;
+            inValue.fileContents = fileContents;
+            WsCore.UploadFileResponse retVal = ((WsCore.ICMCoreServiceSoap)(this)).UploadFile(inValue);
+            return retVal.UploadFileResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<WsCore.UploadFileResponse> WsCore.ICMCoreServiceSoap.UploadFileAsync(WsCore.UploadFileRequest request)
         {
             return base.Channel.UploadFileAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.UploadFileResponse> UploadFileAsync(string sid, string fileName, byte[] fileContents)
+        public System.Threading.Tasks.Task<WsCore.UploadFileResponse> UploadFileAsync(string sid, string fileName, byte[] fileContents)
         {
-            ICMCoreService.UploadFileRequest inValue = new ICMCoreService.UploadFileRequest();
+            WsCore.UploadFileRequest inValue = new WsCore.UploadFileRequest();
             inValue.sid = sid;
             inValue.fileName = fileName;
             inValue.fileContents = fileContents;
-            return ((ICMCoreService.ICMCoreServiceSoap)(this)).UploadFileAsync(inValue);
+            return ((WsCore.ICMCoreServiceSoap)(this)).UploadFileAsync(inValue);
+        }
+        
+        public void DeleteFiles(string sid, string fileNamePrefix)
+        {
+            base.Channel.DeleteFiles(sid, fileNamePrefix);
         }
         
         public System.Threading.Tasks.Task DeleteFilesAsync(string sid, string fileNamePrefix)
@@ -11221,39 +12022,79 @@ namespace ICMCoreService
             return base.Channel.DeleteFilesAsync(sid, fileNamePrefix);
         }
         
-        public System.Threading.Tasks.Task<System.Xml.XmlNode> RetrieveFolderAsync(string sid, ICMCoreService.RetrieveFolderRequest request)
+        public System.Xml.XmlNode RetrieveFolder(string sid, WsCore.RetrieveFolderRequest request)
+        {
+            return base.Channel.RetrieveFolder(sid, request);
+        }
+        
+        public System.Threading.Tasks.Task<System.Xml.XmlNode> RetrieveFolderAsync(string sid, WsCore.RetrieveFolderRequest request)
         {
             return base.Channel.RetrieveFolderAsync(sid, request);
         }
         
-        public System.Threading.Tasks.Task<int> SubmitDocumentAsync(string sid, ICMCoreService.SubmitDocumentRequest request)
+        public int SubmitDocument(string sid, WsCore.SubmitDocumentRequest request)
+        {
+            return base.Channel.SubmitDocument(sid, request);
+        }
+        
+        public System.Threading.Tasks.Task<int> SubmitDocumentAsync(string sid, WsCore.SubmitDocumentRequest request)
         {
             return base.Channel.SubmitDocumentAsync(sid, request);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.PublishPDF2Result> PublishPDF2Async(string loginSessionID, int appId, ICMCoreService.PDFOpus opus, ICMCoreService.PDFOpusDetail[] opusDetails)
+        public WsCore.PublishPDF2Result PublishPDF2(string loginSessionID, int appId, WsCore.PDFOpus opus, WsCore.PDFOpusDetail[] opusDetails)
+        {
+            return base.Channel.PublishPDF2(loginSessionID, appId, opus, opusDetails);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.PublishPDF2Result> PublishPDF2Async(string loginSessionID, int appId, WsCore.PDFOpus opus, WsCore.PDFOpusDetail[] opusDetails)
         {
             return base.Channel.PublishPDF2Async(loginSessionID, appId, opus, opusDetails);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.CreateFolderResponse> CreateFolderAsync(string sid, ICMCoreService.CreateFolderRequest request)
+        public WsCore.CreateFolderResponse CreateFolder(string sid, WsCore.CreateFolderRequest request)
+        {
+            return base.Channel.CreateFolder(sid, request);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.CreateFolderResponse> CreateFolderAsync(string sid, WsCore.CreateFolderRequest request)
         {
             return base.Channel.CreateFolderAsync(sid, request);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.SubmitContentResponse> SubmitContentAsync(string sid, ICMCoreService.SubmitContentRequest request)
+        public WsCore.SubmitContentResponse SubmitContent(string sid, WsCore.SubmitContentRequest request)
+        {
+            return base.Channel.SubmitContent(sid, request);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.SubmitContentResponse> SubmitContentAsync(string sid, WsCore.SubmitContentRequest request)
         {
             return base.Channel.SubmitContentAsync(sid, request);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.VFVHListContainerResult> VFVHListContainerAsync(string sid, int appId, int containerId)
+        public WsCore.VFVHListContainerResult VFVHListContainer(string sid, int appId, int containerId)
+        {
+            return base.Channel.VFVHListContainer(sid, appId, containerId);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.VFVHListContainerResult> VFVHListContainerAsync(string sid, int appId, int containerId)
         {
             return base.Channel.VFVHListContainerAsync(sid, appId, containerId);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.VFVHCheckoutResult> VFVHCheckoutAsync(string sid, int appId, int folderId, int containerId)
+        public WsCore.VFVHCheckoutResult VFVHCheckout(string sid, int appId, int folderId, int containerId)
+        {
+            return base.Channel.VFVHCheckout(sid, appId, folderId, containerId);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.VFVHCheckoutResult> VFVHCheckoutAsync(string sid, int appId, int folderId, int containerId)
         {
             return base.Channel.VFVHCheckoutAsync(sid, appId, folderId, containerId);
+        }
+        
+        public int VFVHCheckin(string sid, int appId, int containerId)
+        {
+            return base.Channel.VFVHCheckin(sid, appId, containerId);
         }
         
         public System.Threading.Tasks.Task<int> VFVHCheckinAsync(string sid, int appId, int containerId)
@@ -11262,14 +12103,14 @@ namespace ICMCoreService
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ICMCoreService.VFVHSubmitVersionResponse> ICMCoreService.ICMCoreServiceSoap.VFVHSubmitVersionAsync(ICMCoreService.VFVHSubmitVersionRequest request)
+        WsCore.VFVHSubmitVersionResponse WsCore.ICMCoreServiceSoap.VFVHSubmitVersion(WsCore.VFVHSubmitVersionRequest request)
         {
-            return base.Channel.VFVHSubmitVersionAsync(request);
+            return base.Channel.VFVHSubmitVersion(request);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.VFVHSubmitVersionResponse> VFVHSubmitVersionAsync(string sid, int appId, int folderId, int containerId, byte[] contents, string ext, string comment)
+        public int VFVHSubmitVersion(string sid, int appId, int folderId, int containerId, byte[] contents, string ext, string comment)
         {
-            ICMCoreService.VFVHSubmitVersionRequest inValue = new ICMCoreService.VFVHSubmitVersionRequest();
+            WsCore.VFVHSubmitVersionRequest inValue = new WsCore.VFVHSubmitVersionRequest();
             inValue.sid = sid;
             inValue.appId = appId;
             inValue.folderId = folderId;
@@ -11277,7 +12118,32 @@ namespace ICMCoreService
             inValue.contents = contents;
             inValue.ext = ext;
             inValue.comment = comment;
-            return ((ICMCoreService.ICMCoreServiceSoap)(this)).VFVHSubmitVersionAsync(inValue);
+            WsCore.VFVHSubmitVersionResponse retVal = ((WsCore.ICMCoreServiceSoap)(this)).VFVHSubmitVersion(inValue);
+            return retVal.VFVHSubmitVersionResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<WsCore.VFVHSubmitVersionResponse> WsCore.ICMCoreServiceSoap.VFVHSubmitVersionAsync(WsCore.VFVHSubmitVersionRequest request)
+        {
+            return base.Channel.VFVHSubmitVersionAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.VFVHSubmitVersionResponse> VFVHSubmitVersionAsync(string sid, int appId, int folderId, int containerId, byte[] contents, string ext, string comment)
+        {
+            WsCore.VFVHSubmitVersionRequest inValue = new WsCore.VFVHSubmitVersionRequest();
+            inValue.sid = sid;
+            inValue.appId = appId;
+            inValue.folderId = folderId;
+            inValue.containerId = containerId;
+            inValue.contents = contents;
+            inValue.ext = ext;
+            inValue.comment = comment;
+            return ((WsCore.ICMCoreServiceSoap)(this)).VFVHSubmitVersionAsync(inValue);
+        }
+        
+        public void VFVHUpdateLastAccess(string sid, int appId, int containerId, int version)
+        {
+            base.Channel.VFVHUpdateLastAccess(sid, appId, containerId, version);
         }
         
         public System.Threading.Tasks.Task VFVHUpdateLastAccessAsync(string sid, int appId, int containerId, int version)
@@ -11285,14 +12151,29 @@ namespace ICMCoreService
             return base.Channel.VFVHUpdateLastAccessAsync(sid, appId, containerId, version);
         }
         
+        public int VFVHDeleteVersion(string sid, int appId, int containerId, int version)
+        {
+            return base.Channel.VFVHDeleteVersion(sid, appId, containerId, version);
+        }
+        
         public System.Threading.Tasks.Task<int> VFVHDeleteVersionAsync(string sid, int appId, int containerId, int version)
         {
             return base.Channel.VFVHDeleteVersionAsync(sid, appId, containerId, version);
         }
         
-        public System.Threading.Tasks.Task<ICMCoreService.VirtualFileCheckout[]> VFVHListCheckoutsAsync(string sid, int appId, int containerId, int userId)
+        public WsCore.VirtualFileCheckout[] VFVHListCheckouts(string sid, int appId, int containerId, int userId)
+        {
+            return base.Channel.VFVHListCheckouts(sid, appId, containerId, userId);
+        }
+        
+        public System.Threading.Tasks.Task<WsCore.VirtualFileCheckout[]> VFVHListCheckoutsAsync(string sid, int appId, int containerId, int userId)
         {
             return base.Channel.VFVHListCheckoutsAsync(sid, appId, containerId, userId);
+        }
+        
+        public int VFVHChangeToVersion(string sid, int appId, int folderId, int objId)
+        {
+            return base.Channel.VFVHChangeToVersion(sid, appId, folderId, objId);
         }
         
         public System.Threading.Tasks.Task<int> VFVHChangeToVersionAsync(string sid, int appId, int folderId, int objId)

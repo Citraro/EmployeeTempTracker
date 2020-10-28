@@ -3,14 +3,14 @@
   "Version": "15.0.40203.910",
   "ExtendedData": {
     "inputs": [
-      "https://beta.intellinetics.com/IntellivueWebAPI/GXPAuthentication.asmx"
+      "https://beta.intellinetics.com/IntellivueWebAPI/ICMCoreService.asmx"
     ],
     "collectionTypes": [
       "System.Array",
       "System.Collections.Generic.Dictionary`2"
     ],
     "namespaceMappings": [
-      "*, GXPAuthentication"
+      "*, WsCore"
     ],
     "references": [
       "System.ServiceModel, {System.ServiceModel.Primitives, 4.4.4}",
@@ -20,6 +20,7 @@
       "System.ServiceModel.Primitives, {System.ServiceModel.Primitives, 4.4.4}",
       "System.ServiceModel.Security, {System.ServiceModel.Security, 4.4.4}"
     ],
+    "sync": true,
     "targetFramework": "netcoreapp3.1",
     "typeReuseMode": "All"
   }
