@@ -7,49 +7,77 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GXPAuthentication
+namespace WsAuth
 {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://www.intellinetics.com/", ConfigurationName="GXPAuthentication.GXPAuthenticationSoap")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://www.intellinetics.com/", ConfigurationName="WsAuth.GXPAuthenticationSoap")]
     public interface GXPAuthenticationSoap
     {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/LogoutS", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool LogoutS(string sessionId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/LogoutS", ReplyAction="*")]
         System.Threading.Tasks.Task<bool> LogoutSAsync(string sessionId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/Logout", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool Logout(string sessionId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/Logout", ReplyAction="*")]
         System.Threading.Tasks.Task<bool> LogoutAsync(string sessionId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/LoginS", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<GXPAuthentication.LoginSResult> LoginSAsync(string domainName, string loginUserName, string password);
+        WsAuth.LoginSResult LoginS(string domainName, string loginUserName, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/LoginS", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsAuth.LoginSResult> LoginSAsync(string domainName, string loginUserName, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/LoginProxy", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<GXPAuthentication.LoginResult> LoginProxyAsync(string sid, string proxyUserName);
+        WsAuth.LoginResult LoginProxy(string sid, string proxyUserName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/LoginProxy", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsAuth.LoginResult> LoginProxyAsync(string sid, string proxyUserName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/Login", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<GXPAuthentication.LoginResult> LoginAsync(string domainName, string loginUserName, string password, int callerId);
+        WsAuth.LoginResult Login(string domainName, string loginUserName, string password, int callerId);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/Login", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsAuth.LoginResult> LoginAsync(string domainName, string loginUserName, string password, int callerId);
+        
+        // CODEGEN: Parameter 'GetEULAResult' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'Microsoft.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetEULA", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<GXPAuthentication.GetEULAResponse> GetEULAAsync(GXPAuthentication.GetEULARequest request);
+        WsAuth.GetEULAResponse GetEULA(WsAuth.GetEULARequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/GetEULA", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsAuth.GetEULAResponse> GetEULAAsync(WsAuth.GetEULARequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/IsSessionValid", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool IsSessionValid(string loginSessionId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/IsSessionValid", ReplyAction="*")]
         System.Threading.Tasks.Task<bool> IsSessionValidAsync(string loginSessionId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ChangeLoginUserPassword", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool ChangeLoginUserPassword(string loginSessionId, string newPassword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ChangeLoginUserPassword", ReplyAction="*")]
         System.Threading.Tasks.Task<bool> ChangeLoginUserPasswordAsync(string loginSessionId, string newPassword);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ResetLoginUserPassword", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int ResetLoginUserPassword(string domainName, string loginUserName, string loginUserEmail);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/ResetLoginUserPassword", ReplyAction="*")]
         System.Threading.Tasks.Task<int> ResetLoginUserPasswordAsync(string domainName, string loginUserName, string loginUserEmail);
     }
     
@@ -488,13 +516,13 @@ namespace GXPAuthentication
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    public interface GXPAuthenticationSoapChannel : GXPAuthentication.GXPAuthenticationSoap, System.ServiceModel.IClientChannel
+    public interface GXPAuthenticationSoapChannel : WsAuth.GXPAuthenticationSoap, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    public partial class GXPAuthenticationSoapClient : System.ServiceModel.ClientBase<GXPAuthentication.GXPAuthenticationSoap>, GXPAuthentication.GXPAuthenticationSoap
+    public partial class GXPAuthenticationSoapClient : System.ServiceModel.ClientBase<WsAuth.GXPAuthenticationSoap>, WsAuth.GXPAuthenticationSoap
     {
         
         /// <summary>
@@ -530,9 +558,19 @@ namespace GXPAuthentication
         {
         }
         
+        public bool LogoutS(string sessionId)
+        {
+            return base.Channel.LogoutS(sessionId);
+        }
+        
         public System.Threading.Tasks.Task<bool> LogoutSAsync(string sessionId)
         {
             return base.Channel.LogoutSAsync(sessionId);
+        }
+        
+        public bool Logout(string sessionId)
+        {
+            return base.Channel.Logout(sessionId);
         }
         
         public System.Threading.Tasks.Task<bool> LogoutAsync(string sessionId)
@@ -540,33 +578,68 @@ namespace GXPAuthentication
             return base.Channel.LogoutAsync(sessionId);
         }
         
-        public System.Threading.Tasks.Task<GXPAuthentication.LoginSResult> LoginSAsync(string domainName, string loginUserName, string password)
+        public WsAuth.LoginSResult LoginS(string domainName, string loginUserName, string password)
+        {
+            return base.Channel.LoginS(domainName, loginUserName, password);
+        }
+        
+        public System.Threading.Tasks.Task<WsAuth.LoginSResult> LoginSAsync(string domainName, string loginUserName, string password)
         {
             return base.Channel.LoginSAsync(domainName, loginUserName, password);
         }
         
-        public System.Threading.Tasks.Task<GXPAuthentication.LoginResult> LoginProxyAsync(string sid, string proxyUserName)
+        public WsAuth.LoginResult LoginProxy(string sid, string proxyUserName)
+        {
+            return base.Channel.LoginProxy(sid, proxyUserName);
+        }
+        
+        public System.Threading.Tasks.Task<WsAuth.LoginResult> LoginProxyAsync(string sid, string proxyUserName)
         {
             return base.Channel.LoginProxyAsync(sid, proxyUserName);
         }
         
-        public System.Threading.Tasks.Task<GXPAuthentication.LoginResult> LoginAsync(string domainName, string loginUserName, string password, int callerId)
+        public WsAuth.LoginResult Login(string domainName, string loginUserName, string password, int callerId)
+        {
+            return base.Channel.Login(domainName, loginUserName, password, callerId);
+        }
+        
+        public System.Threading.Tasks.Task<WsAuth.LoginResult> LoginAsync(string domainName, string loginUserName, string password, int callerId)
         {
             return base.Channel.LoginAsync(domainName, loginUserName, password, callerId);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<GXPAuthentication.GetEULAResponse> GXPAuthentication.GXPAuthenticationSoap.GetEULAAsync(GXPAuthentication.GetEULARequest request)
+        WsAuth.GetEULAResponse WsAuth.GXPAuthenticationSoap.GetEULA(WsAuth.GetEULARequest request)
+        {
+            return base.Channel.GetEULA(request);
+        }
+        
+        public byte[] GetEULA(string domainName, string userName)
+        {
+            WsAuth.GetEULARequest inValue = new WsAuth.GetEULARequest();
+            inValue.domainName = domainName;
+            inValue.userName = userName;
+            WsAuth.GetEULAResponse retVal = ((WsAuth.GXPAuthenticationSoap)(this)).GetEULA(inValue);
+            return retVal.GetEULAResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<WsAuth.GetEULAResponse> WsAuth.GXPAuthenticationSoap.GetEULAAsync(WsAuth.GetEULARequest request)
         {
             return base.Channel.GetEULAAsync(request);
         }
         
-        public System.Threading.Tasks.Task<GXPAuthentication.GetEULAResponse> GetEULAAsync(string domainName, string userName)
+        public System.Threading.Tasks.Task<WsAuth.GetEULAResponse> GetEULAAsync(string domainName, string userName)
         {
-            GXPAuthentication.GetEULARequest inValue = new GXPAuthentication.GetEULARequest();
+            WsAuth.GetEULARequest inValue = new WsAuth.GetEULARequest();
             inValue.domainName = domainName;
             inValue.userName = userName;
-            return ((GXPAuthentication.GXPAuthenticationSoap)(this)).GetEULAAsync(inValue);
+            return ((WsAuth.GXPAuthenticationSoap)(this)).GetEULAAsync(inValue);
+        }
+        
+        public bool IsSessionValid(string loginSessionId)
+        {
+            return base.Channel.IsSessionValid(loginSessionId);
         }
         
         public System.Threading.Tasks.Task<bool> IsSessionValidAsync(string loginSessionId)
@@ -574,9 +647,19 @@ namespace GXPAuthentication
             return base.Channel.IsSessionValidAsync(loginSessionId);
         }
         
+        public bool ChangeLoginUserPassword(string loginSessionId, string newPassword)
+        {
+            return base.Channel.ChangeLoginUserPassword(loginSessionId, newPassword);
+        }
+        
         public System.Threading.Tasks.Task<bool> ChangeLoginUserPasswordAsync(string loginSessionId, string newPassword)
         {
             return base.Channel.ChangeLoginUserPasswordAsync(loginSessionId, newPassword);
+        }
+        
+        public int ResetLoginUserPassword(string domainName, string loginUserName, string loginUserEmail)
+        {
+            return base.Channel.ResetLoginUserPassword(domainName, loginUserName, loginUserEmail);
         }
         
         public System.Threading.Tasks.Task<int> ResetLoginUserPasswordAsync(string domainName, string loginUserName, string loginUserEmail)

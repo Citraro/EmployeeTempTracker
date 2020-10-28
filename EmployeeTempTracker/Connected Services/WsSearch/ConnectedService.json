@@ -10,7 +10,7 @@
       "System.Collections.Generic.Dictionary`2"
     ],
     "namespaceMappings": [
-      "*, ICMSearchService"
+      "*, WsSearch"
     ],
     "references": [
       "System.ServiceModel, {System.ServiceModel.Primitives, 4.4.4}",
@@ -20,6 +20,7 @@
       "System.ServiceModel.Primitives, {System.ServiceModel.Primitives, 4.4.4}",
       "System.ServiceModel.Security, {System.ServiceModel.Security, 4.4.4}"
     ],
+    "sync": true,
     "targetFramework": "netcoreapp3.1",
     "typeReuseMode": "All"
   }

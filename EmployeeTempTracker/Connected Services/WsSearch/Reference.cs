@@ -7,22 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ICMSearchService
+namespace WsSearch
 {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://www.intellinetics.com", ConfigurationName="ICMSearchService.ICMSearchServiceSoap")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://www.intellinetics.com", ConfigurationName="WsSearch.ICMSearchServiceSoap")]
     public interface ICMSearchServiceSoap
     {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/Query", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<ICMSearchService.QueryResult> QueryAsync(string loginSessionID, int appID, string columnList, string folderSearchFilter, string documentSearchFilter, int dataShape, int dataMode, int maxResults);
+        WsSearch.QueryResult Query(string loginSessionID, int appID, string columnList, string folderSearchFilter, string documentSearchFilter, int dataShape, int dataMode, int maxResults);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/Query", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsSearch.QueryResult> QueryAsync(string loginSessionID, int appID, string columnList, string folderSearchFilter, string documentSearchFilter, int dataShape, int dataMode, int maxResults);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/QueryEx", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<ICMSearchService.QueryResult> QueryExAsync(string loginSessionID, int appID, string columnList, string folderSearchFilter, string objectSearchFilter, int dataMode, int maxResults);
+        WsSearch.QueryResult QueryEx(string loginSessionID, int appID, string columnList, string folderSearchFilter, string objectSearchFilter, int dataMode, int maxResults);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.intellinetics.com/QueryEx", ReplyAction="*")]
+        System.Threading.Tasks.Task<WsSearch.QueryResult> QueryExAsync(string loginSessionID, int appID, string columnList, string folderSearchFilter, string objectSearchFilter, int dataMode, int maxResults);
     }
     
     /// <remarks/>
@@ -138,13 +144,13 @@ namespace ICMSearchService
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    public interface ICMSearchServiceSoapChannel : ICMSearchService.ICMSearchServiceSoap, System.ServiceModel.IClientChannel
+    public interface ICMSearchServiceSoapChannel : WsSearch.ICMSearchServiceSoap, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    public partial class CMSearchServiceSoapClient : System.ServiceModel.ClientBase<ICMSearchService.ICMSearchServiceSoap>, ICMSearchService.ICMSearchServiceSoap
+    public partial class CMSearchServiceSoapClient : System.ServiceModel.ClientBase<WsSearch.ICMSearchServiceSoap>, WsSearch.ICMSearchServiceSoap
     {
         
         /// <summary>
@@ -180,12 +186,22 @@ namespace ICMSearchService
         {
         }
         
-        public System.Threading.Tasks.Task<ICMSearchService.QueryResult> QueryAsync(string loginSessionID, int appID, string columnList, string folderSearchFilter, string documentSearchFilter, int dataShape, int dataMode, int maxResults)
+        public WsSearch.QueryResult Query(string loginSessionID, int appID, string columnList, string folderSearchFilter, string documentSearchFilter, int dataShape, int dataMode, int maxResults)
+        {
+            return base.Channel.Query(loginSessionID, appID, columnList, folderSearchFilter, documentSearchFilter, dataShape, dataMode, maxResults);
+        }
+        
+        public System.Threading.Tasks.Task<WsSearch.QueryResult> QueryAsync(string loginSessionID, int appID, string columnList, string folderSearchFilter, string documentSearchFilter, int dataShape, int dataMode, int maxResults)
         {
             return base.Channel.QueryAsync(loginSessionID, appID, columnList, folderSearchFilter, documentSearchFilter, dataShape, dataMode, maxResults);
         }
         
-        public System.Threading.Tasks.Task<ICMSearchService.QueryResult> QueryExAsync(string loginSessionID, int appID, string columnList, string folderSearchFilter, string objectSearchFilter, int dataMode, int maxResults)
+        public WsSearch.QueryResult QueryEx(string loginSessionID, int appID, string columnList, string folderSearchFilter, string objectSearchFilter, int dataMode, int maxResults)
+        {
+            return base.Channel.QueryEx(loginSessionID, appID, columnList, folderSearchFilter, objectSearchFilter, dataMode, maxResults);
+        }
+        
+        public System.Threading.Tasks.Task<WsSearch.QueryResult> QueryExAsync(string loginSessionID, int appID, string columnList, string folderSearchFilter, string objectSearchFilter, int dataMode, int maxResults)
         {
             return base.Channel.QueryExAsync(loginSessionID, appID, columnList, folderSearchFilter, objectSearchFilter, dataMode, maxResults);
         }
