@@ -131,7 +131,29 @@ namespace EmployeeTempTracker.Controllers
 
             //if (flag) return RedirectToAction("SendHome", "Home", new {screening});
             //else return View();
-            return View();
+
+            //TODO: SOME LOGIC TO ADD SCREENING TO DATABASE
+
+            return RedirectToAction("ReviewScreening", screening); //pass screening EmpId after adding to db instead of passing screening
+        }
+
+        public IActionResult ReviewScreening(ScreeningModel screening){ //TODO: instead of screening param here, pass Emp.Id
+            ViewData["Title"] = "Review Screening";
+            ViewData["Screening"] = screening; //instead of using screening as param, search db via API for screening matching Emp.Id
+        
+            return View(); //pass screening to here
+        }
+
+        [HttpPost]
+        public IActionResult Edit(ScreeningModel updatedScreening){
+            //update screening in DB using EntityFramework in real-life application
+            
+            //update list by removing old screening and adding new
+            // var oldScreening = screeningList.Where(s => s.EmpId == updatedScreening.EmpId).FirstOrDefault();
+            // screeningList.Remove(oldScreening);
+            // screeningList.Add(updatedScreening);
+
+            return RedirectToAction("Index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
