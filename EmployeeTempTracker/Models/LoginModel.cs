@@ -17,5 +17,6 @@ namespace EmployeeTempTracker.Models
         [DisplayName("Keep Me Logged In")]
         public bool RememberMe { get; set; }
         public bool SessionValid { get; set; }
+        public string SessionId { get; set; }
     }
 }
