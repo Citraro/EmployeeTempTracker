@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 using EmployeeTempTracker.Models;
 
 namespace EmployeeTempTracker.Controllers {
-    public class LoginControllerLogic : Controller {
+    class LoginControllerLogic : Controller {
         
         // GET https://capstone.ohitski.org/Login
         public IActionResult Index(){

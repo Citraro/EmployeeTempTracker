@@ -14,6 +14,7 @@ using WsAuth;
 namespace EmployeeTempTracker.Controllers {
     
     class HomeControllerLogic : Controller {
+        // GET https://capstone.ohitski.org/Home
         public IActionResult Index() {
             ViewData["Title"] = "Home";
             return View("Index");
@@ -76,6 +77,7 @@ namespace EmployeeTempTracker.Controllers {
             }
         }
 
+        // GET https://capstone.ohitski.org/Home/Dashboard
         public IActionResult Dashboard() {
             bool authenticated = true; // TODO: Replace with session check
             if (authenticated) return View("Dashboard");
@@ -142,10 +144,12 @@ namespace EmployeeTempTracker.Controllers {
             return RedirectToAction("Index");
         }
 
+        // GET https://capstone.ohitski.org/Home/Privacy
         public IActionResult Privacy() {
             return View("Privacy");
         }
-    
+
+        // GET https://capstone.ohitski.org/Home
         public IActionResult Error() {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
