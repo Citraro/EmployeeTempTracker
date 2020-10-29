@@ -13,147 +13,72 @@ using WsAuth;
 
 namespace EmployeeTempTracker.Controllers
 {
-    public class HomeController : Controller
-    {
-        public IActionResult Index()
-        {
-            ViewData["Title"] = "Login";
-            return View();
-        }
-
-        [AllowAnonymous]
-        [HttpGet]
-        public ActionResult Login(string DomainName, bool? SessionValid, string Username)
-        {
-            LoginModel mod = new LoginModel();
-            mod.DomainName = DomainName;
-            if (SessionValid.HasValue)
-            {
-                mod.SessionValid = SessionValid.Value;
-                if (!SessionValid.Value)
-                {
-                    TempData["UserMessageErrorHeader"] = "Error";
-                    TempData["UserMessageErrorBody"] = "Invalid Session.  Please login.";
-                }
-            }
-            mod.Username = Username;
-
-            return View(mod);
-        }
-
-        [AllowAnonymous]
-        [HttpPost]
-        public IActionResult Login(LoginModel lm)
-        {
-            int callerID = 117;
-            if (ModelState.IsValid)
-            {
-                //LoginModel am = new LoginModel();
-                AuthorizationModel am = new AuthorizationModel();
-                WsAuth.GXPAuthenticationSoapClient.EndpointConfiguration ec = WsAuth.GXPAuthenticationSoapClient.EndpointConfiguration.GXPAuthenticationSoap;
-                WsAuth.GXPAuthenticationSoapClient svc = new WsAuth.GXPAuthenticationSoapClient(ec);
-                WsAuth.LoginResult res = new WsAuth.LoginResult();
-                res = svc.Login(lm.DomainName, lm.Username, lm.Password, callerID);
-                //res.LoginSessionID;
-
-                if (String.IsNullOrEmpty(res.LoginSessionID))
-                {
-                    TempData["UserMessageErrorHeader"] = "Error";
-                    if (res.ServiceError != null)
-                    {
-                        TempData["UserMessageErrorBody"] = res.ServiceError.Message;
-                    }
-                    else
-                    {
-                        TempData["UserMessageErrorBody"] = "Login Failure";
-                    }
-                    // FormsAuthentication.SignOut();                   // does not exist
-                    return View(lm);
-                }
-                else
-                {
-                    am.SessionID = res.LoginSessionID;
-                    am.UserName = lm.Username;
-                    am.Domain = lm.DomainName;
-                    return View(lm);
-                }
-            }
-            else
-            {
-                return View(lm);
-            }
-        }
+    public class HomeController : Controller {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
+        public HomeController(ILogger<HomeController> logger) {
             _logger = logger;
         }
+        private HomeControllerLogic viewProcessor_ = new HomeControllerLogic();
 
-        // Get http://capstone.ohitski.org/Home/Privacy
-        public IActionResult Privacy()
-        {
-            return View();
+        // GET https://capstone.ohitski.org/Home
+        public IActionResult Index() {
+            return viewProcessor_.Index();
         }
 
-        // Get http://capstone.ohitski.org/Home/EnterScreening
-        public IActionResult EnterScreening() {
-            ViewData["Title"] = "Health Screening";
-            return View();
+        // GET https://capstone.ohitski.org/Home/Login
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult Login(string DomainName, bool? SessionValid, string Username) {
+            return viewProcessor_.Login(DomainName, SessionValid, Username);
         }
 
-        // Get http://capstone.ohitski.org/Home/EnterScreening
-        public IActionResult ProcessScreening(string fname, string lname, string id, string org, string temperature, string symptoms, string closeContact, string intlTravel) {
-            // Takes EnterScreening form data and creates a ScreeningModel object from it.
-            // Maybe have a popup that makes the signee verify everything is true?
-            
-            ScreeningModel screening = new ScreeningModel();
-            screening.EmpId = id;
-            screening.Temp = temperature;
-            screening.Symptoms = symptoms;
-            screening.CloseContact = closeContact;
-            screening.IntlTravel = intlTravel;
-            screening.Date = DateTime.Now;
-            ViewData["Screening"] = screening;
-            // STILL NEED SigPrintName, Time, SigDate
-
-            // Check for questionairre anomalies
-            bool flag = false;
-            if (screening.Symptoms == "Yes")        flag = true;
-            if (screening.CloseContact == "Yes")    flag = true;
-            if (screening.IntlTravel == "Yes")      flag = true;
-
-            //if (flag) return RedirectToAction("SendHome", "Home", new {screening});
-            //else return View();
-
-            //TODO: SOME LOGIC TO ADD SCREENING TO DATABASE
-
-            return RedirectToAction("ReviewScreening", screening); //pass screening EmpId after adding to db instead of passing screening
-        }
-
-        public IActionResult ReviewScreening(ScreeningModel screening){ //TODO: instead of screening param here, pass Emp.Id
-            ViewData["Title"] = "Review Screening";
-            ViewData["Screening"] = screening; //instead of using screening as param, search db via API for screening matching Emp.Id
-        
-            return View(); //pass screening to here
-        }
-
+        // POST https://capstone.ohitski.org/Home/Login
+        [AllowAnonymous]
         [HttpPost]
-        public IActionResult Edit(ScreeningModel updatedScreening){
-            //update screening in DB using EntityFramework in real-life application
-            
-            //update list by removing old screening and adding new
-            // var oldScreening = screeningList.Where(s => s.EmpId == updatedScreening.EmpId).FirstOrDefault();
-            // screeningList.Remove(oldScreening);
-            // screeningList.Add(updatedScreening);
-
-            return RedirectToAction("Index");
+        public IActionResult Login(LoginModel lm) {
+            return viewProcessor_.Login(lm);
         }
 
+        // GET https://capstone.ohitski.org/Home/Dashboard
+        public IActionResult Dashboard() {
+            return viewProcessor_.Dashboard();
+        }
+        
+        // GET https://capstone.ohitski.org/Home/EnterScreening
+        public IActionResult EnterScreening() {
+            return viewProcessor_.EnterScreening();
+        }
+
+        // Get https://capstone.ohitski.org/Home/ProcessScreening
+        public IActionResult ProcessScreening(string fname, string lname, string id, string org, string temperature, string symptoms, string closeContact, string intlTravel) {
+            return viewProcessor_.ProcessScreening(fname, lname, id, org, temperature, symptoms, closeContact, intlTravel);
+        }
+
+        // GET https://capstone.ohitski.org/Home/SendHome
+        public IActionResult SendHome(ScreeningModel screening) {
+            return viewProcessor_.SendHome(screening);
+        }
+
+        // GET https://capstone.ohitski.org/Home/ReviewScreening
+        public IActionResult ReviewScreening(ScreeningModel screening) { //TODO: instead of screening param here, pass Emp.Id
+            return viewProcessor_.ReviewScreening(screening);
+        }
+
+        // POST https://capstone.ohitski.org/Home/Edit
+        [HttpPost]
+        public IActionResult Edit(ScreeningModel updatedScreening) {
+            return viewProcessor_.Edit(updatedScreening);
+        }
+
+        // GET https://capstone.ohitski.org/Home/Privacy
+        public IActionResult Privacy() {
+            return viewProcessor_.Privacy();
+        }
+
+        // GET https://capstone.ohitski.org/Home/Error
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        public IActionResult Error() {
+            return viewProcessor_.Error();
         }
     }
 }

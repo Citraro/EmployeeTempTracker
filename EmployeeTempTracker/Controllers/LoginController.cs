@@ -12,61 +12,26 @@ namespace EmployeeTempTracker.Controllers {
     public class LoginController : Controller {
 
         private readonly ILogger<LoginController> _logger;
-
         public LoginController(ILogger<LoginController> logger) {
             _logger = logger;
         }
+        private LoginControllerLogic viewProcessor_ = new LoginControllerLogic();
 
-        // Get http://capstone.ohitski.org/Login
-        public IActionResult Index(){
-            // Returns Views/Login/Index.cshtml
-            ViewData["Title"] = "Login";
-            return View();
+        // GET https://capstone.ohitski.org/Login
+        public IActionResult Index() {
+            return viewProcessor_.Index();
         }
 
-        // Get http://capstone.ohitski.org/Login/AuthUser
+        // POST https://capstone.ohitski.org/Login/AuthUser
+        [HttpPost]
         public IActionResult AuthUser(string uname, string passwd, int id = 1) {
-            ViewData["Title"] = "Authenticate";
-            // Handle user login API call here, unless it will be implemented in APIController.cs
-            
-            //Will use something like below code when we have API/login calls available to compare input username/password to id database:
-
-            // var obj = db.UserProfiles.Where(a => a.UserName.Equals(objUser.UserName) && a.Password.Equals(objUser.Password)).FirstOrDefault();  
-            // if (obj != null){  
-            //     Session["UserID"] = obj.UserId.ToString();  
-            //     Session["UserName"] = obj.UserName.ToString();  
-            //     return RedirectToAction("UserDashBoard");  
-            // } 
-
-            Boolean someLogicToCheckDataBaseForUser = true; //TEMPORARY FIELD, REMOVE WHEN API CALLS ARE IMPLEMENTED
-            
-            if(someLogicToCheckDataBaseForUser){
-                // Redirect to http://capstone.ohitski.org/Login/Dashboard
-                return RedirectToAction("DashBoard", "Login", new {uname = uname, passwd = passwd, id = id});
-
-                // Example of how to redirect to another controller (http://capstone.ohitski.org/Home/EnterScreening):
-                // return RedirectToAction("EnterScreening", "Home");
-            }
-            else{
-                // Redirect to http://capstone.ohitski.org/Login/InvalidLogin
-                return RedirectToAction("InvalidLogin");
-            }
+            return viewProcessor_.AuthUser(uname, passwd, id);
         }
 
-        // Get http://capstone.ohitski.org/Login/UserDashboard
-        public IActionResult DashBoard(string uname, string passwd, int id = 1){
-            ViewData["Title"] = "Dashboard";
-            ViewData["Message"] = HtmlEncoder.Default.Encode($"Hello, {uname}, your id is {id} and you entered {passwd} as your password.");
-            return View();
+        // GET https://capstone.ohitski.org/Login/InvalidLogin
+        public IActionResult InvalidLogin() {
+            return viewProcessor_.InvalidLogin();
         }
-
-        // Get http://capstone.ohitski.org/Login/InvalidLogin
-        public IActionResult InvalidLogin(){
-            ViewData["Title"] = "InvalidLogin";
-            ViewData["Message"] = HtmlEncoder.Default.Encode($"Invalid username/password.");
-            return View();
-        }
-
 
     }
 }
