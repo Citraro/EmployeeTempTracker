@@ -27,11 +27,6 @@ namespace EmployeeTempTracker.Controllers {
             return viewProcessor_.AuthUser(uname, passwd, id);
         }
 
-        // GET https://capstone.ohitski.org/Login/UserDashboard
-        public IActionResult DashBoard(string uname, string passwd, int id = 1) {
-            return viewProcessor_.DashBoard(uname, passwd, id);
-        }
-
         // GET https://capstone.ohitski.org/Login/InvalidLogin
         public IActionResult InvalidLogin() {
             return viewProcessor_.InvalidLogin();

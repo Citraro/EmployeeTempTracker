@@ -32,7 +32,7 @@ namespace EmployeeTempTracker.Controllers {
             
             if(someLogicToCheckDataBaseForUser){
                 // Redirect to http://capstone.ohitski.org/Login/Dashboard
-                return RedirectToAction("DashBoard", "Login", new {uname = uname, passwd = passwd, id = id});
+                return RedirectToAction("DashBoard", "Home", new {uname = uname, passwd = passwd, id = id});
 
                 // Example of how to redirect to another controller (http://capstone.ohitski.org/Home/EnterScreening):
                 // return RedirectToAction("EnterScreening", "Home");
@@ -41,12 +41,6 @@ namespace EmployeeTempTracker.Controllers {
                 // Redirect to http://capstone.ohitski.org/Login/InvalidLogin
                 return RedirectToAction("InvalidLogin");
             }
-        }
-
-        public IActionResult DashBoard(string uname, string passwd, int id = 1){
-            ViewData["Title"] = "Dashboard";
-            ViewData["Message"] = HtmlEncoder.Default.Encode($"Hello, {uname}, your id is {id} and you entered {passwd} as your password.");
-            return View("Dashboard");
         }
 
         public IActionResult InvalidLogin(){

@@ -77,6 +77,10 @@ namespace EmployeeTempTracker.Controllers {
             }
         }
 
+        public IActionResult Dashboard() {
+            return View("Dashboard");
+        }
+
         public IActionResult EnterScreening() {
             ViewData["Title"] = "Health Screening";
             return View("EnterScreening");
@@ -109,7 +113,7 @@ namespace EmployeeTempTracker.Controllers {
 
             return RedirectToAction("ReviewScreening", screening); //pass screening EmpId after adding to db instead of passing screening
         }
-        
+
         public IActionResult ReviewScreening(ScreeningModel screening){ //TODO: instead of screening param here, pass Emp.Id
             ViewData["Title"] = "Review Screening";
             ViewData["Screening"] = screening; //instead of using screening as param, search db via API for screening matching Emp.Id
