@@ -36,8 +36,7 @@ namespace EmployeeTempTracker.Controllers {
             return View(mod);
         }
 
-        public IActionResult Login(LoginModel lm)
-        {
+        public IActionResult Login(LoginModel lm) {
             int callerID = 117;
             if (ModelState.IsValid)
             {
@@ -78,18 +77,27 @@ namespace EmployeeTempTracker.Controllers {
         }
 
         public IActionResult Dashboard() {
-            return View("Dashboard");
+            bool authenticated = true; // TODO: Replace with session check
+            if (authenticated) return View("Dashboard");
+            else return RedirectToAction("Index", "Login");
         }
 
         public IActionResult EnterScreening() {
-            ViewData["Title"] = "Health Screening";
-            return View("EnterScreening");
+            bool authenticated = true; // TODO: Replace with session check
+            if (authenticated) {
+                ViewData["Title"] = "Health Screening";
+                return View("EnterScreening");
+            }
+            else return RedirectToAction("Index", "Login");
         }
 
         public IActionResult ProcessScreening(string fname, string lname, string id, string org, string temperature, string symptoms, string closeContact, string intlTravel) {
             // Takes EnterScreening form data and creates a ScreeningModel object from it.
             // Maybe have a popup that makes the signee verify everything is true?
             
+            bool authenticated = true; // TODO: Replace with session check
+            if (!authenticated) return RedirectToAction("Index", "Login");
+
             ScreeningModel screening = new ScreeningModel();
             screening.EmpId = id;
             screening.Temp = temperature;
@@ -106,22 +114,24 @@ namespace EmployeeTempTracker.Controllers {
             if (screening.CloseContact == "Yes")    flag = true;
             if (screening.IntlTravel == "Yes")      flag = true;
 
-            //if (flag) return RedirectToAction("SendHome", "Home", new {screening});
-            //else return View();
-
+            if (flag) return RedirectToAction("SendHome", new {screening});
             //TODO: SOME LOGIC TO ADD SCREENING TO DATABASE
-
-            return RedirectToAction("ReviewScreening", screening); //pass screening EmpId after adding to db instead of passing screening
+            else return RedirectToAction("ReviewScreening", screening); //pass screening EmpId after adding to db instead of passing screening
         }
 
-        public IActionResult ReviewScreening(ScreeningModel screening){ //TODO: instead of screening param here, pass Emp.Id
+        public IActionResult SendHome(ScreeningModel screening) {
+            ViewData["Message"] = "You answered 'yes' to one or more questions on the questionairre. For the health and safety of us all, you are required to go home.";
+            return View("SendHome");
+        }
+
+        public IActionResult ReviewScreening(ScreeningModel screening) { //TODO: instead of screening param here, pass Emp.Id
             ViewData["Title"] = "Review Screening";
             ViewData["Screening"] = screening; //instead of using screening as param, search db via API for screening matching Emp.Id
         
             return View(); //pass screening to here
         }
 
-        public IActionResult Edit(ScreeningModel updatedScreening){
+        public IActionResult Edit(ScreeningModel updatedScreening) {
             //update screening in DB using EntityFramework in real-life application
             
             //update list by removing old screening and adding new
@@ -136,8 +146,7 @@ namespace EmployeeTempTracker.Controllers {
             return View("Privacy");
         }
     
-        public IActionResult Error()
-        {
+        public IActionResult Error() {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }

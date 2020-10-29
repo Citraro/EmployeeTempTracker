@@ -54,6 +54,11 @@ namespace EmployeeTempTracker.Controllers
             return viewProcessor_.ProcessScreening(fname, lname, id, org, temperature, symptoms, closeContact, intlTravel);
         }
 
+        // GET https://capstone.ohitski.org/Home/SendHome
+        public IActionResult SendHome(ScreeningModel screening) {
+            return viewProcessor_.SendHome(screening);
+        }
+
         // GET https://capstone.ohitski.org/Home/ReviewScreening
         public IActionResult ReviewScreening(ScreeningModel screening) { //TODO: instead of screening param here, pass Emp.Id
             return viewProcessor_.ReviewScreening(screening);

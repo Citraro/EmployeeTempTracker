@@ -22,7 +22,8 @@ namespace EmployeeTempTracker.Controllers {
             return viewProcessor_.Index();
         }
 
-        // GET https://capstone.ohitski.org/Login/AuthUser
+        // POST https://capstone.ohitski.org/Login/AuthUser
+        [HttpPost]
         public IActionResult AuthUser(string uname, string passwd, int id = 1) {
             return viewProcessor_.AuthUser(uname, passwd, id);
         }

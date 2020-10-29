@@ -10,11 +10,14 @@ using EmployeeTempTracker.Models;
 
 namespace EmployeeTempTracker.Controllers {
     public class LoginControllerLogic : Controller {
+        
+        // GET https://capstone.ohitski.org/Login
         public IActionResult Index(){
             ViewData["Title"] = "Login";
             return View("Index");
         }
 
+        // POST https://capstone.ohitski.org/Login/AuthUser
         public IActionResult AuthUser(string uname, string passwd, int id = 1) {
             ViewData["Title"] = "Authenticate";
             // Handle user login API call here, unless it will be implemented in APIController.cs
@@ -30,22 +33,18 @@ namespace EmployeeTempTracker.Controllers {
 
             Boolean someLogicToCheckDataBaseForUser = true; //TEMPORARY FIELD, REMOVE WHEN API CALLS ARE IMPLEMENTED
             
-            if(someLogicToCheckDataBaseForUser){
-                // Redirect to http://capstone.ohitski.org/Login/Dashboard
-                return RedirectToAction("DashBoard", "Home", new {uname = uname, passwd = passwd, id = id});
-
-                // Example of how to redirect to another controller (http://capstone.ohitski.org/Home/EnterScreening):
-                // return RedirectToAction("EnterScreening", "Home");
+            if(someLogicToCheckDataBaseForUser) {
+                return RedirectToAction("DashBoard", "Home", new {uname = uname});
             }
-            else{
-                // Redirect to http://capstone.ohitski.org/Login/InvalidLogin
+            else {
                 return RedirectToAction("InvalidLogin");
             }
         }
 
-        public IActionResult InvalidLogin(){
+        // GET https://capstone.ohitski.org/Login/InvalidLogin
+        public IActionResult InvalidLogin() {
             ViewData["Title"] = "InvalidLogin";
-            ViewData["Message"] = HtmlEncoder.Default.Encode($"Invalid username/password.");
+            ViewData["Message"] = HtmlEncoder.Default.Encode($"Invalid username or password.");
             return View("InvalidLogin");
         }
     }
