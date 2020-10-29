@@ -28,7 +28,7 @@ namespace EmployeeTempTracker.Controllers {
             // if (obj != null){  
             //     Session["UserID"] = obj.UserId.ToString();  
             //     Session["UserName"] = obj.UserName.ToString();  
-            //     return RedirectToAction("UserDashBoard");  
+            //     return RedirectToAction("Dashboard", "Home");  
             // } 
 
             Boolean someLogicToCheckDataBaseForUser = true; //TEMPORARY FIELD, REMOVE WHEN API CALLS ARE IMPLEMENTED
