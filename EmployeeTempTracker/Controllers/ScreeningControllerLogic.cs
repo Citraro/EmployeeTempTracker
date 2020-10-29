@@ -7,18 +7,18 @@ namespace EmployeeTempTracker.Controllers {
         // GET https://capstone.ohitski.org/Screening
         public IActionResult Index() {
             bool authenticated = true;
-            if (authenticated) return View("Index");
-            else return RedirectToAction("Index", "Login");
+            if (!authenticated) return RedirectToAction("Index", "Login");
+            
+            return View("Index");
         }
 
         // GET https://capstone.ohitski.org/Screening/EnterScreening
         public IActionResult EnterScreening() {
             bool authenticated = true; // TODO: Replace with session check
-            if (authenticated) {
-                ViewData["Title"] = "Health Screening";
-                return View("EnterScreening");
-            }
-            else return RedirectToAction("Index", "Login");
+            if (!authenticated) return RedirectToAction("Index", "Login");
+            
+            ViewData["Title"] = "Health Screening";
+            return View("EnterScreening"); 
         }
 
         // GET https://capstone.ohitski.org/Screening/ProcessScreening
@@ -52,20 +52,27 @@ namespace EmployeeTempTracker.Controllers {
 
         // GET https://capstone.ohitski.org/Screening/SendHome
         public IActionResult SendHome(ScreeningModel screening) {
+            bool authenticated = true;
+            if (!authenticated) return RedirectToAction("Index", "Login");
+            
             ViewData["Message"] = "You answered 'yes' to one or more questions on the questionairre. For the health and safety of us all, you are required to go home.";
             return View("SendHome");
         }
 
         // GET https://capstone.ohitski.org/Screening/ReviewScreening
         public IActionResult ReviewScreening(ScreeningModel screening) { //TODO: instead of screening param here, pass Emp.Id
+            bool authenticated = true;
+            if (!authenticated) return RedirectToAction("Index", "Login");
+
             ViewData["Title"] = "Review Screening";
             ViewData["Screening"] = screening; //instead of using screening as param, search db via API for screening matching Emp.Id
-        
             return View("ReviewScreening"); //pass screening to here
         }
 
         // POST https://capstone.ohitski.org/Screening/Edit
         public IActionResult Edit(ScreeningModel updatedScreening) {
+            bool authenticated = true;
+            if (!authenticated) return RedirectToAction("Index", "Login");
             //update screening in DB using EntityFramework in real-life application
             
             //update list by removing old screening and adding new
