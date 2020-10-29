@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text.Encodings.Web;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using EmployeeTempTracker.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EmployeeTempTracker.Controllers {
     public class LoginController : Controller {
@@ -24,7 +19,7 @@ namespace EmployeeTempTracker.Controllers {
 
         // POST https://capstone.ohitski.org/Login/AuthUser
         [HttpPost]
-        public IActionResult AuthUser(string uname, string passwd, int id = 1) {
+        public IActionResult AuthUser(string uname, string passwd, int id = 1) { // TODO: Move functionality to Login()?
             return viewProcessor_.AuthUser(uname, passwd, id);
         }
 
@@ -33,5 +28,18 @@ namespace EmployeeTempTracker.Controllers {
             return viewProcessor_.InvalidLogin();
         }
 
+        // GET https://capstone.ohitski.org/Login/Login
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult Login(string DomainName, bool? SessionValid, string Username) {
+            return viewProcessor_.Login(DomainName, SessionValid, Username);
+        }
+
+        // POST https://capstone.ohitski.org/Login/Login
+        [AllowAnonymous]
+        [HttpPost]
+        public IActionResult Login(LoginModel lm) {
+            return viewProcessor_.Login(lm);
+        }
     }
 }
