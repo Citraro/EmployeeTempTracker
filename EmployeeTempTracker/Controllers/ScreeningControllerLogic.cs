@@ -60,17 +60,17 @@ namespace EmployeeTempTracker.Controllers {
         }
 
         // GET https://capstone.ohitski.org/Screening/ReviewScreening
-        public IActionResult ReviewScreening(ScreeningModel screening) { //TODO: instead of screening param here, pass Emp.Id
+        public IActionResult ReviewScreening(ScreeningModel screening) { 
             bool authenticated = true;
             if (!authenticated) return RedirectToAction("Index", "Login");
 
             ViewData["Title"] = "Review Screening";
-            ViewData["Screening"] = screening; //instead of using screening as param, search db via API for screening matching Emp.Id
-            return View("ReviewScreening"); //pass screening to here
+            ViewData["Screening"] = screening; 
+            return View("ReviewScreening"); 
         }
 
         // POST https://capstone.ohitski.org/Screening/Edit
-        public IActionResult Edit(ScreeningModel updatedScreening) {
+        public IActionResult Edit(ScreeningModel updatedScreening) {//TODO: instead of screening param here, pass Emp.Id
             bool authenticated = true;
             if (!authenticated) return RedirectToAction("Index", "Login");
             //update screening in DB using EntityFramework in real-life application

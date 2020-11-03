@@ -31,14 +31,14 @@ namespace EmployeeTempTracker.Controllers {
         }
 
         // GET https://capstone.ohitski.org/Screening/ReviewScreening
-        public IActionResult ReviewScreening(ScreeningModel screening) { //TODO: instead of screening param here, pass Emp.Id
+        public IActionResult ReviewScreening(ScreeningModel screening) { 
             return viewProcessor_.ReviewScreening(screening);
         }
 
         // POST https://capstone.ohitski.org/Screening/Edit
         [HttpPost]
-        public IActionResult Edit(ScreeningModel updatedScreening) {
-            return viewProcessor_.Edit(updatedScreening);
+        public IActionResult Edit(ScreeningModel screening) {//TODO: instead of screening param here, pass Emp.Id
+            return viewProcessor_.Edit(screening);
         }
 
     }
