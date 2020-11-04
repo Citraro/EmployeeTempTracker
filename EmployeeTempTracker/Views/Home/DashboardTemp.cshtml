@@ -1,0 +1,32 @@
+@(Html.Kendo().Grid<EmployeeJsonGridViewModel>()
+	.Name("grid")
+	.HtmlAttributes(new{@style="min-height:100px;"})
+	.Columns(columns =>
+    {
+		columns.Bound(c => c.EmployeeName).Width(110);
+        columns.Bound(c => c.EmployeeID).Width(110);
+        columns.Bound(c => c.Position).Width(110);
+        columns.Bound(c => c.Temperature).Width(110);
+    })
+	.Sortable()
+    .Pageable(c => c.PageSizes(new int[] { 10, 20, 50, 100, 500, 1000, 2500, 5000 }))
+    .Filterable(f => f.Operators(o => o.ForString(fs =>
+    {
+        fs.Clear();
+        fs.Contains("Contains");
+    })))
+	.DataSource(dataSource => dataSource
+				.Ajax()
+                .PageSize(20)
+                .Sort(sort => sort.Add(m => m.Name).Ascending())
+                .Model(model => model.Id(m => m.Id))
+                .Read("Employees_Read", "Grid")
+                .Events(x => x.RequestEnd("onRequestEnd"))
+	)
+)
+
+<script>
+$(function() {
+    var grid = $("#grid").data("kendoGrid");
+});
+</script>
