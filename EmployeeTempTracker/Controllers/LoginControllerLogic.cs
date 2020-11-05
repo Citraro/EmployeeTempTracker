@@ -5,6 +5,7 @@ using EmployeeTempTracker.Models;
 
 namespace EmployeeTempTracker.Controllers {
     class LoginControllerLogic : Controller {
+        IntellineticsApi api_ = new IntellineticsApi();
         
         // GET https://capstone.ohitski.org/Login
         public IActionResult Index(){
@@ -13,27 +14,11 @@ namespace EmployeeTempTracker.Controllers {
         }
 
         // POST https://capstone.ohitski.org/Login/AuthUser
-        public IActionResult AuthUser(string uname, string passwd, int id = 1) { // TODO: Move functionality to Login()?
+        public IActionResult AuthUser(string domain, string uname, string passwd) { // TODO: Move functionality to Login()?
             ViewData["Title"] = "Authenticate";
-            // Handle user login API call here, unless it will be implemented in APIController.cs
-            
-            //Will use something like below code when we have API/login calls available to compare input username/password to id database:
-
-            // var obj = db.UserProfiles.Where(a => a.UserName.Equals(objUser.UserName) && a.Password.Equals(objUser.Password)).FirstOrDefault();  
-            // if (obj != null){  
-            //     Session["UserID"] = obj.UserId.ToString();  
-            //     Session["UserName"] = obj.UserName.ToString();  
-            //     return RedirectToAction("Dashboard", "Home");  
-            // } 
-
-            Boolean someLogicToCheckDataBaseForUser = true; //TEMPORARY FIELD, REMOVE WHEN API CALLS ARE IMPLEMENTED
-            
-            if(someLogicToCheckDataBaseForUser) {
-                return RedirectToAction("DashBoard", "Home", new {uname = uname});
-            }
-            else {
-                return RedirectToAction("InvalidLogin");
-            }
+            LoginModel authenticated = api_.CheckUserLogin(new LoginModel(domain, uname, passwd));            
+            if(authenticated.SessionValid) return RedirectToAction("DashBoard", "Home", authenticated);
+            else return RedirectToAction("InvalidLogin");
         }
 
         // GET https://capstone.ohitski.org/Login/InvalidLogin
