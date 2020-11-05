@@ -16,12 +16,12 @@ namespace EmployeeTempTracker.Controllers
             res = svc.Login(loginInfo.DomainName, loginInfo.Username, loginInfo.Password, callerID);
             if (String.IsNullOrEmpty(res.LoginSessionID))
             {
-                loginInfo.SessionValid = true;
-                loginInfo.SessionId = res.LoginSessionID;
+                loginInfo.SessionValid = false;
             }
             else
             {
-                loginInfo.SessionValid = false;
+                loginInfo.SessionId = res.LoginSessionID;
+                loginInfo.SessionValid = true;
             }
 
             return loginInfo;
