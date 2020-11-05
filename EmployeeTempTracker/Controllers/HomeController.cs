@@ -26,8 +26,8 @@ namespace EmployeeTempTracker.Controllers
         }
 
         // GET https://capstone.ohitski.org/Home/Dashboard
-        public IActionResult Dashboard() {
-            return viewProcessor_.Dashboard();
+        public IActionResult Dashboard(LoginModel lm) {
+            return viewProcessor_.Dashboard(lm);
         }
         
         // GET https://capstone.ohitski.org/Home/Privacy
