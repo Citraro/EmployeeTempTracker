@@ -10,10 +10,13 @@ using System.Net.Http;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Cryptography;
 using WsAuth;
+using Newtonsoft.Json;
 
 namespace EmployeeTempTracker.Controllers {
     
     class HomeControllerLogic : Controller {
+        private static IntellineticsApi api_ = new IntellineticsApi();
+
         // GET https://capstone.ohitski.org/Home
         public IActionResult Index() {
             ViewData["Title"] = "Home";
@@ -26,6 +29,12 @@ namespace EmployeeTempTracker.Controllers {
             if (!authenticated) return RedirectToAction("Index", "Login");
             
             return View("Dashboard");
+        }
+
+        public IActionResult Analytics() {
+            ScreeningModel [] graphData = api_.FetchUserScreeningsByDay(7);
+            ViewData["Temperatures"] = JsonConvert.SerializeObject(graphData);
+            return View();
         }
 
         

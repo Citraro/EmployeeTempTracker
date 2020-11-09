@@ -26,5 +26,17 @@ namespace EmployeeTempTracker.Controllers
 
             return loginInfo;
         }
+
+        // Replace with an API call that does this
+        public ScreeningModel[] FetchUserScreeningsByDay(int days) {
+            ScreeningModel [] screenings = new ScreeningModel[days];
+            Random rand = new Random();
+            for (int i = 0; i < days; ++i) {
+                screenings[i] = new ScreeningModel();
+                screenings[i].Date = DateTime.Now.AddDays(-i);
+                screenings[i].Temp = rand.Next(97, 103).ToString();
+            }
+            return screenings;
+        }
     }
 }
