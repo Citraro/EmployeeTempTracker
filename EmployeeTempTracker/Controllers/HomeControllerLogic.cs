@@ -34,6 +34,14 @@ namespace EmployeeTempTracker.Controllers {
         public IActionResult Analytics() {
             ScreeningModel [] graphData = api_.FetchUserScreeningsByDay(7);
             ViewData["Temperatures"] = JsonConvert.SerializeObject(graphData);
+            double maxTemp = -1.0;
+            double minTemp = 200.0;
+            foreach (ScreeningModel current in graphData) {
+                if(maxTemp < Convert.ToDouble(current.Temp)) maxTemp = Convert.ToDouble(current.Temp);
+                if(minTemp > Convert.ToDouble(current.Temp)) minTemp = Convert.ToDouble(current.Temp);
+            }
+            ViewData["MinTemp"] = minTemp;
+            ViewData["MaxTemp"] = maxTemp;
             return View();
         }
 
