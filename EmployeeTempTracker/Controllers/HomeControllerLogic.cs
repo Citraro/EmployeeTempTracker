@@ -31,8 +31,8 @@ namespace EmployeeTempTracker.Controllers {
             return View("Dashboard");
         }
 
-        public IActionResult Analytics() {
-            ScreeningModel [] graphData = api_.FetchUserScreeningsByDay(7);
+        public IActionResult Analytics(int numDays = 7, string empId = null) {
+            ScreeningModel [] graphData = api_.FetchUserScreeningsByDay(numDays);
             ViewData["Temperatures"] = JsonConvert.SerializeObject(graphData);
             double maxTemp = -1.0;
             double minTemp = 200.0;
