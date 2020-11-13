@@ -28,11 +28,12 @@ namespace EmployeeTempTracker.Controllers
         }
 
         // Replace with an API call that does this
-        public ScreeningModel[] FetchUserScreeningsByDay(int days, string userId = null) {
+        public ScreeningModel[] FetchUserScreeningsByDay(int days = 7, string userId = null) {
             ScreeningModel [] screenings = new ScreeningModel[days];
             Random rand = new Random();
-            for (int i = 0; i < days; ++i) {
+            for (int i = 0; i < days; ++i) { // 
                 screenings[i] = new ScreeningModel();
+                screenings[i].EmpId = "Example";
                 screenings[i].Date = DateTime.Now.AddDays(-i);
                 screenings[i].Temp = (rand.NextDouble()+rand.Next(97, 100)).ToString("F2"); // Random double between 98-99 with 2 decimal points precision
             }

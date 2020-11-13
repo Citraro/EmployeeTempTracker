@@ -2,34 +2,21 @@
 <script type="text/javascript" src="/js/graphs.js"></script>
 <!-- Begin Chart Section -->
 <div class="w3-row">
-    <div class="w3-half w3-padding-right">
-        <div class="w3-card-4">
-            <div class="w3-container w3-green w3-padding-small w3-center"><h2>Average Temperature</h2></div>
+    <div class="w3-card-4">
+        <div class="w3-container w3-green w3-padding-small w3-center"><h2>Recorded Temperatures of @ViewData["Id"] Over @ViewData["ScreeningCount"] Days</h2></div>
             <div class="w3-container" id="avg_temp_graph">
-                <script>
-                    computeColumnChart(@Html.Raw(ViewData["Temperatures"]), "chart_avg_temps");
-                </script>
-                <div id="chart_avg_temps" ></div>
-            </div>
-        </div>
-    </div>
-    <div class="w3-half w3-padding-left">
-        <div class="w3-card-4">
-            <div class="w3-container w3-green w3-padding-small w3-center"><h2>Screened Employees</h2></div>
-            <div class="w3-container" id="screened_employees_graph">
-                <script>
-                    computeLineChart(@Html.Raw(ViewData["Temperatures"]), "chart_screened_employees");
-                </script>
-                <div id="chart_screened_employees"></div>
-            </div>
+                <script>computeLineChart(@Html.Raw(ViewData["Screenings"]), "chart_avg_temps");</script>
+            <div id="chart_avg_temps" ></div>
         </div>
     </div>
 </div>
 <!-- End Chart Section / Begin Table Section -->
 <div class="w3-container w3-margin-top w3-padding-large">
     <table class="w3-table-all w3-hoverable">
-        <tr class="w3-green"><th>Statistic</th><th>Value</th></tr>
-        <tr><td>Minimum Temperature</td><td>@ViewData["MinTemp"]</td></tr>
-        <tr><td>Maximum Temperature</td><td>@ViewData["MaxTemp"]</td></tr>
+        <tr class="w3-green"><th class="w3-center">Statistic</th><th class="w3-center">Value</th></tr>
+        <tr><td class="w3-center">Minimum Temperature</td><td class="w3-center">@ViewData["MinTemp"]</td></tr>
+        <tr><td class="w3-center">Maximum Temperature</td><td class="w3-center">@ViewData["MaxTemp"]</td></tr>
+        <tr><td class="w3-center">Average Temperature</td><td class="w3-center">@ViewData["Average"]</td></tr>
+        <tr><td class="w3-center">Expected Range</td><td class="w3-center">@ViewData["ExpectedRange"]</td></tr>
     </table>
 </div>

@@ -1,15 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using EmployeeTempTracker.Models;
-using System.Net.Http;
-using Microsoft.AspNetCore.Authorization;
-using System.Security.Cryptography;
-using WsAuth;
 using Newtonsoft.Json;
 
 namespace EmployeeTempTracker.Controllers {
@@ -31,17 +23,28 @@ namespace EmployeeTempTracker.Controllers {
             return View("Dashboard");
         }
 
-        public IActionResult Analytics(int numDays = 7, string empId = null) {
+        public IActionResult Analytics(int numDays, string id) {
             ScreeningModel [] graphData = api_.FetchUserScreeningsByDay(numDays);
-            ViewData["Temperatures"] = JsonConvert.SerializeObject(graphData);
-            double maxTemp = -1.0;
-            double minTemp = 200.0;
-            foreach (ScreeningModel current in graphData) {
-                if(maxTemp < Convert.ToDouble(current.Temp)) maxTemp = Convert.ToDouble(current.Temp);
-                if(minTemp > Convert.ToDouble(current.Temp)) minTemp = Convert.ToDouble(current.Temp);
+
+            // Start computing statistics
+            double maxTemp = -1.0, minTemp = 200.0, sum = 0.0;
+            foreach (ScreeningModel obj in graphData) {
+                double current = Convert.ToDouble(obj.Temp);
+                maxTemp = (maxTemp < current) ? current : maxTemp;
+                minTemp = (minTemp > current) ? current : minTemp;
+                sum += current;
             }
-            ViewData["MinTemp"] = minTemp;
-            ViewData["MaxTemp"] = maxTemp;
+            double average = sum / numDays;
+            double rangeHalf = (maxTemp - minTemp) / 2;
+
+            // Pass data to the view
+            ViewData["Id"] = graphData[0].EmpId;
+            ViewData["ScreeningCount"] = numDays;
+            ViewData["Average"] = average.ToString("F2");
+            ViewData["MinTemp"] = minTemp.ToString("F2");
+            ViewData["MaxTemp"] = maxTemp.ToString("F2");
+            ViewData["ExpectedRange"] = $"{(average - rangeHalf).ToString("F2")} - {(average + rangeHalf).ToString("F2")}";
+            ViewData["Screenings"] = JsonConvert.SerializeObject(graphData);
             return View();
         }
 
