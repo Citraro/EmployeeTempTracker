@@ -19,27 +19,13 @@ namespace EmployeeTempTracker.Controllers {
 
         // POST https://capstone.ohitski.org/Login/AuthUser
         [HttpPost]
-        public IActionResult AuthUser(string domain, string uname, string passwd) { // TODO: Move functionality to Login()?
+        public IActionResult AuthUser(string domain, string uname, string passwd) {
             return viewProcessor_.AuthUser(domain, uname, passwd);
         }
 
         // GET https://capstone.ohitski.org/Login/InvalidLogin
         public IActionResult InvalidLogin() {
             return viewProcessor_.InvalidLogin();
-        }
-
-        // GET https://capstone.ohitski.org/Login/Login
-        [AllowAnonymous]
-        [HttpGet]
-        public ActionResult Login(string DomainName, bool? SessionValid, string Username) {
-            return viewProcessor_.Login(DomainName, SessionValid, Username);
-        }
-
-        // POST https://capstone.ohitski.org/Login/Login
-        [AllowAnonymous]
-        [HttpPost]
-        public IActionResult Login(LoginModel lm) {
-            return viewProcessor_.Login(lm);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace EmployeeTempTracker.Controllers {
         public IActionResult EnterScreening() {
             bool authenticated = true; // TODO: Replace with session check
             if (!authenticated) return RedirectToAction("Index", "Login");
-            
+
             ViewData["Title"] = "Health Screening";
             return View("EnterScreening"); 
         }
