@@ -72,8 +72,22 @@
         <input id="travel_yes" class="w3-radio" type="radio" name="intlTravel" value="Yes" /><label for="travel_yes"><p> Yes </p></label>
         <input id="travel_no" class="w3-radio" type="radio" name="intlTravel" value="No" /><label for="travel_no"><p> No </p></label>
 
+        <!-- Signature -->
+        <p>*Do you confirm the above information is correct?</p>
+        <input id="sign_yes" class="w3-radio" type="radio" name="sig" value="Yes" /><label for="sign_yes"><p> Yes </p></label>
+        <input id="sign_no" class="w3-radio" type="radio" name="sig" value="No" /><label for="sign_no"><p> No </p></label>
+
+        <div class="w3-row w3-margin-top-bottom">
+            <div class="w3-half w3-container"><input class="w3-input w3-round w3-border w3-border-grey" type="text" size="10" name="sigPrintName" placeholder="Name" required /></div>
+            <div class="w3-half w3-container"><input class="w3-input w3-round w3-border w3-border-grey" type="text" size="10" name="sigDate" placeholder="Date" required /></div>
+        </div>
+
+        <p>*My Signature on this form indicates that I have completed the daily self-assessment and acknowledge I have taken my temperature and it is equal to or below 100.4 degrees, 
+        I am not exhibiting any of the following symptoms: new/change in cough, shortness of breath, sore throat, fatigue, malaise, nausea, diarrhea or headache per CDC COVID-19 guidelines. 
+        If I have any of these symptoms and/or others I will report immediately to my supervisor/designee. </p>
+
         <!-- Submit Button row (button centered below the two columns) -->
-        <div class="w3-row w3-margin-bottom">
+        <div class="w3-row w3-margin-bottom-top">
             <div class="w3-third"><p></p></div>
             <div class="w3-third w3-container">
                 <input class="w3-btn w3-block w3-green w3-border w3-border-grey w3-round-large w3-padding-small" type="submit" value="Submit" name="new_screening" />

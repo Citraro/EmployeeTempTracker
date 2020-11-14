@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using EmployeeTempTracker.Models;
+using System;
 
 namespace EmployeeTempTracker.Controllers {
     public class ScreeningController : Controller {
@@ -21,8 +22,11 @@ namespace EmployeeTempTracker.Controllers {
         }
 
         // GET https://capstone.ohitski.org/Screening/ProcessScreening
-        public IActionResult ProcessScreening(string fname, string lname, string id, string org, string temperature, string symptoms, string closeContact, string intlTravel) {
-            return viewProcessor_.ProcessScreening(fname, lname, id, org, temperature, symptoms, closeContact, intlTravel);
+        public IActionResult ProcessScreening(string fname, string lname, string id, 
+            string org, string temperature, string highTemp, string symptoms, string closeContact, 
+            string intlTravel,string Sig, string sigPrintName, DateTime sigDate) {
+
+            return viewProcessor_.ProcessScreening(fname, lname, id, org, temperature, highTemp, symptoms, closeContact, intlTravel, Sig, sigPrintName, sigDate);
         }
 
         // GET https://capstone.ohitski.org/Screening/SendHome

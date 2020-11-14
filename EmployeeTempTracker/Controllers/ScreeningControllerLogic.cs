@@ -30,7 +30,7 @@ namespace EmployeeTempTracker.Controllers {
         }
 
         // GET https://capstone.ohitski.org/Screening/ProcessScreening
-        public IActionResult ProcessScreening(string fname, string lname, string id, string org, string temperature, string symptoms, string closeContact, string intlTravel) {
+        public IActionResult ProcessScreening(string fname, string lname, string id, string org, string temperature, string highTemp, string symptoms, string closeContact, string intlTravel,string Sig, string sigPrintName, DateTime sigDate) {
             // Takes EnterScreening form data and creates a ScreeningModel object from it.
             // Maybe have a popup that makes the signee verify everything is true?
             
@@ -40,18 +40,23 @@ namespace EmployeeTempTracker.Controllers {
             ScreeningModel screening = new ScreeningModel();
             screening.EmpId = id;
             screening.Temp = temperature;
+            screening.HighTemp = highTemp;
             screening.Symptoms = symptoms;
             screening.CloseContact = closeContact;
             screening.IntlTravel = intlTravel;
-            screening.Date = DateTime.Now;
+            screening.Date = DateTime.Now;       
+            screening.Sig = Sig;
+            screening.SigPrintName = sigPrintName;
+            screening.SigDate = sigDate;
             ViewData["Screening"] = screening;
-            // STILL NEED SigPrintName, Time, SigDate
+            // STILL NEED Time
 
             // Check for questionairre anomalies
             bool flag = false;
             if (screening.Symptoms == "Yes")        flag = true;
             if (screening.CloseContact == "Yes")    flag = true;
             if (screening.IntlTravel == "Yes")      flag = true;
+            if (screening.Sig == "No") flag = true;
 
             if (flag) return RedirectToAction("SendHome", new {screening});
             //TODO: SOME LOGIC TO ADD SCREENING TO DATABASE
