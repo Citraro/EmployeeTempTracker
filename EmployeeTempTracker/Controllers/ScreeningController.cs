@@ -16,8 +16,8 @@ namespace EmployeeTempTracker.Controllers {
         }
 
         // GET https://capstone.ohitski.org/Screening/EnterScreening
-        public IActionResult EnterScreening() {
-            return viewProcessor_.EnterScreening();
+        public IActionResult EnterScreening(string domain) {
+                return viewProcessor_.EnterScreening(domain);
         }
 
         // GET https://capstone.ohitski.org/Screening/ProcessScreening

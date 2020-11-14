@@ -13,12 +13,20 @@ namespace EmployeeTempTracker.Controllers {
         }
 
         // GET https://capstone.ohitski.org/Screening/EnterScreening
-        public IActionResult EnterScreening() {
+        public IActionResult EnterScreening(String domain) {
             bool authenticated = true; // TODO: Replace with session check
             if (!authenticated) return RedirectToAction("Index", "Login");
             
             ViewData["Title"] = "Health Screening";
-            return View("EnterScreening"); 
+            ViewData["DomainName"] = domain;
+
+            if(domain == "training1"){
+                return View("GSIEnterScreening");
+            }else if(domain == "training4"){
+                return View("INTEnterScreening");} 
+            else{
+                return RedirectToAction("Home","Dashboard");
+            }
         }
 
         // GET https://capstone.ohitski.org/Screening/ProcessScreening

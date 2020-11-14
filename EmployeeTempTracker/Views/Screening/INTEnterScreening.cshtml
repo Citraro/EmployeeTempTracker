@@ -1,8 +1,17 @@
-<div class="w3-container w3-red">
-<h4>ToDo: Determine how to incorporate the Questionnarie && Create the screening object</h4>
-<p>Use the example screening forms as an outline for data requirements. Use the Intellinetics website for design inspiration. Pass form data to a ScreeningModel object.</p>
-</div>
-<hr />
+@* @model EmployeeTempTracker.Models.LoginModel
+@{
+    LoginModel lm = ViewData["LoginModel"] as EmployeeTempTracker.Models.LoginModel;
+}
+
+
+<p>Username: @lm.Username</p>
+<p>Password: @lm.Password</p>
+<p>RememberMe : @lm.RememberMe</p>
+<p>SessionValid : @lm.SessionValid</p>
+<p>SessionId : @lm.SessionId</p> *@
+
+<p>DomainName: @ViewData["DomainName"]</p>
+<p>Domain: Intellinetics</p>
 
 <div id="gsi_screening_form" class="w3-card-4 w3-margin-left w3-margin-right">
     <div class="w3-container w3-green"><h4 class="w3-center">New Screening</h4></div>
