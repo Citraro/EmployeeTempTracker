@@ -1,14 +1,18 @@
 using System;
+using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using EmployeeTempTracker.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeTempTracker.Controllers
 {
     public class IntellineticsApi
     {
         private int callerID = 117;
-        
-        public LoginModel CheckUserLogin(LoginModel loginInfo)
-        {
+
+        public LoginModel CheckUserLogin(LoginModel loginInfo) {
             WsAuth.GXPAuthenticationSoapClient.EndpointConfiguration ec = WsAuth.GXPAuthenticationSoapClient.EndpointConfiguration.GXPAuthenticationSoap;
             WsAuth.GXPAuthenticationSoapClient svc = new WsAuth.GXPAuthenticationSoapClient(ec);
             WsAuth.LoginResult res = new WsAuth.LoginResult();
@@ -26,5 +30,6 @@ namespace EmployeeTempTracker.Controllers
 
             return loginInfo;
         }
+
     }
 }

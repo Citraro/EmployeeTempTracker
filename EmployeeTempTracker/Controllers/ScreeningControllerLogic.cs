@@ -4,6 +4,8 @@ using System;
 
 namespace EmployeeTempTracker.Controllers {
     class ScreeningControllerLogic : Controller {
+        LoginController login = new LoginController();
+
         // GET https://capstone.ohitski.org/Screening
         public IActionResult Index() {
             bool authenticated = true;
@@ -16,7 +18,6 @@ namespace EmployeeTempTracker.Controllers {
         public IActionResult EnterScreening() {
             bool authenticated = true; // TODO: Replace with session check
             if (!authenticated) return RedirectToAction("Index", "Login");
-
             ViewData["Title"] = "Health Screening";
             return View("EnterScreening"); 
         }

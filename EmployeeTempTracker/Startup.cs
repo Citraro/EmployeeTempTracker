@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,6 +19,17 @@ namespace EmployeeTempTracker
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.Cookie.Name = "_auth";
+                    options.Cookie.HttpOnly = true;
+                    options.LoginPath = "/Login";
+                    options.LogoutPath = "/Login";
+                    options.AccessDeniedPath = "/Login/InvalidLogin";
+                    //options.LogoutPath = "/LogIn";
+                    //options.Cookie.Domain = ".ohitski.org";
+                });
             services.AddControllersWithViews();
         }
 
@@ -44,6 +51,7 @@ namespace EmployeeTempTracker
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
