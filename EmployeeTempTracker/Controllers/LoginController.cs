@@ -18,13 +18,13 @@ namespace EmployeeTempTracker.Controllers {
         }
 
         // POST https://capstone.ohitski.org/Login/AuthUser
+        // (Amy): Couldnt get this to work in the logic controller so leaving it here for now
+        // api call to athenticate user and if authenticated, cookie is created
         [HttpPost]
-        public async Task<IActionResult> AuthUser(string domain, string uname, string passwd)
-        {
+        public async Task<IActionResult> AuthUser(string domain, string uname, string passwd) {
             ViewData["Title"] = "Authenticate";
             LoginModel authenticated = api_.CheckUserLogin(new LoginModel(domain, uname, passwd));
-            if (authenticated.SessionValid)
-            {
+            if (authenticated.SessionValid) {
                 var claims = new List<Claim>
                 {
                     new Claim("SessionId", authenticated.SessionId),
@@ -36,9 +36,6 @@ namespace EmployeeTempTracker.Controllers {
             }
             return RedirectToAction("InvalidLogin");
         }
-        /*public async Task<IActionResult> AuthUser(string domain, string uname, string passwd) {
-            return await viewProcessor_.AuthUser(domain, uname, passwd);
-        }*/
 
         // GET https://capstone.ohitski.org/Login/InvalidLogin
         public IActionResult InvalidLogin() {

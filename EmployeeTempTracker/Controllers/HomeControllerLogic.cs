@@ -13,7 +13,6 @@ namespace EmployeeTempTracker.Controllers {
 
         // GET https://capstone.ohitski.org/Home/Dashboard
         public IActionResult Dashboard() {
-        //    if (!lm.SessionValid) return RedirectToAction("Index", "Login");
             return View("Dashboard");
         }
 
