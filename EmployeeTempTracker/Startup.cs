@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace EmployeeTempTracker
 {
@@ -25,9 +26,10 @@ namespace EmployeeTempTracker
                     options.Cookie.Name = "_auth";
                     options.Cookie.HttpOnly = true;
                     options.LoginPath = "/Login";
-                    options.LogoutPath = "/Login";
+                    options.LogoutPath = "/Home/Logout";
                     options.AccessDeniedPath = "/Login/InvalidLogin";
-                    //options.LogoutPath = "/LogIn";
+                    options.ExpireTimeSpan = TimeSpan.FromMinutes(15);
+                    options.SlidingExpiration = true;
                     //options.Cookie.Domain = ".ohitski.org";
                 });
             services.AddControllersWithViews();

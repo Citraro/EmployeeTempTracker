@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <header>
-    <link rel="stylesheet" href="~/css/Dashboard.css" />
+    <link rel="stylesheet" href="~/css/UserDashboard.css" />
       <div class="collapse bg-dark" id="navbarHeader">
         <div class="container">
           <div class="row">
@@ -52,15 +52,14 @@
           </a>
         </div>
       </div>
-      <div class="w3-third">
+      <!-- TODO: Change button font color to white #fff (Amy)-->
+      <form class="w3-third" action="/Home/Logout" method="Post">
         <div class="w3-container">
-          <a href="/Login" style="text-decoration: none;">
             <div class="w3-grey">
-              <h2 class="w3-center w3-padding-small">Logout</h2>
+              <h2><input class="w3-btn w3-block w3-center w3-padding-small" type="submit" value="Logout" name="logout_user" /></h2>
             </div>
-          </a>
         </div>
-      </div>
+      </form>
     </div>
     <!-- End Dashboard Modification (David) -->
 
