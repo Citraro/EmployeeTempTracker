@@ -23,7 +23,8 @@ namespace EmployeeTempTracker.Controllers {
         [HttpPost]
         public async Task<IActionResult> AuthUser(string domain, string uname, string passwd) {
             ViewData["Title"] = "Authenticate";
-            LoginModel authenticated = api_.CheckUserLogin(new LoginModel(domain, uname, passwd));
+            var appID = domain == "training1" ? 117 : 216; //TODO: refactor later
+            LoginModel authenticated = api_.CheckUserLogin(new LoginModel(domain, uname, passwd), appID);
             if (authenticated.SessionValid) {
                 var claims = new List<Claim>
                 {

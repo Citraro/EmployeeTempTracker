@@ -21,7 +21,7 @@ namespace EmployeeTempTracker.Controllers {
         }
 
         // GET https://capstone.ohitski.org/Screening/ProcessScreening
-        public IActionResult ProcessScreening(string fname, string lname, string id, 
+        public IActionResult ProcessScreening(string fname, string lname, int id, 
             string org, string temperature, string highTemp, string symptoms, string closeContact, 
             string intlTravel,string Sig, string sigPrintName, DateTime sigDate) {
 

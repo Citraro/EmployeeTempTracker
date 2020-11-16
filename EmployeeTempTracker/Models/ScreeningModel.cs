@@ -28,7 +28,7 @@ namespace EmployeeTempTracker.Models
         public DateTime SigDate { get; set; }
 
         public ScreeningModel() {
-            EmpId = null;
+            EmpId = new int();
             Date = DateTime.Now;
             Time = DateTime.Now;
             Temp = "98.6";
