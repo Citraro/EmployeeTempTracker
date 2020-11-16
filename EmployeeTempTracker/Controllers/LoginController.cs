@@ -19,8 +19,8 @@ namespace EmployeeTempTracker.Controllers {
 
         // POST https://capstone.ohitski.org/Login/AuthUser
         [HttpPost]
-        public IActionResult AuthUser(string uname, string passwd, int id = 1) { // TODO: Move functionality to Login()?
-            return viewProcessor_.AuthUser(uname, passwd, id);
+        public IActionResult AuthUser(string domain, string uname, string passwd) { // TODO: Move functionality to Login()?
+            return viewProcessor_.AuthUser(domain, uname, passwd);
         }
 
         // GET https://capstone.ohitski.org/Login/InvalidLogin
