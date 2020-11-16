@@ -1,15 +1,15 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using EmployeeTempTracker.Models;
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeTempTracker.Controllers {
     public class LoginController : Controller {
+        IntellineticsApi api_ = new IntellineticsApi();
 
-        private readonly ILogger<LoginController> _logger;
-        public LoginController(ILogger<LoginController> logger) {
-            _logger = logger;
-        }
         private LoginControllerLogic viewProcessor_ = new LoginControllerLogic();
 
         // GET https://capstone.ohitski.org/Login
@@ -18,28 +18,28 @@ namespace EmployeeTempTracker.Controllers {
         }
 
         // POST https://capstone.ohitski.org/Login/AuthUser
+        // (Amy): Couldnt get this to work in the logic controller so leaving it here for now
+        // api call to athenticate user and if authenticated, cookie is created
         [HttpPost]
-        public IActionResult AuthUser(string domain, string uname, string passwd) { // TODO: Move functionality to Login()?
-            return viewProcessor_.AuthUser(domain, uname, passwd);
+        public async Task<IActionResult> AuthUser(string domain, string uname, string passwd) {
+            ViewData["Title"] = "Authenticate";
+            LoginModel authenticated = api_.CheckUserLogin(new LoginModel(domain, uname, passwd));
+            if (authenticated.SessionValid) {
+                var claims = new List<Claim>
+                {
+                    new Claim("SessionId", authenticated.SessionId),
+                    new Claim(ClaimTypes.Name, authenticated.Username)
+                };
+                var claimsIdentity = new ClaimsIdentity(claims, "Login");
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+                return RedirectToAction("Dashboard", "Home");
+            }
+            return RedirectToAction("InvalidLogin");
         }
 
         // GET https://capstone.ohitski.org/Login/InvalidLogin
         public IActionResult InvalidLogin() {
             return viewProcessor_.InvalidLogin();
-        }
-
-        // GET https://capstone.ohitski.org/Login/Login
-        [AllowAnonymous]
-        [HttpGet]
-        public ActionResult Login(string DomainName, bool? SessionValid, string Username) {
-            return viewProcessor_.Login(DomainName, SessionValid, Username);
-        }
-
-        // POST https://capstone.ohitski.org/Login/Login
-        [AllowAnonymous]
-        [HttpPost]
-        public IActionResult Login(LoginModel lm) {
-            return viewProcessor_.Login(lm);
         }
     }
 }

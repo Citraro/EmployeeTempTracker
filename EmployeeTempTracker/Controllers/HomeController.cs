@@ -1,26 +1,33 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using EmployeeTempTracker.Models;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-
 
 namespace EmployeeTempTracker.Controllers
 {
     public class HomeController : Controller {
-        private readonly ILogger<HomeController> _logger;
-        public HomeController(ILogger<HomeController> logger) {
-            _logger = logger;
-        }
+
         private HomeControllerLogic viewProcessor_ = new HomeControllerLogic();
 
         // GET https://capstone.ohitski.org/Home
         public IActionResult Index() {
             return viewProcessor_.Index();
         }
-
+        [Authorize]
         // GET https://capstone.ohitski.org/Home/Dashboard
-        public IActionResult Dashboard(LoginModel lm) {
-            return viewProcessor_.Dashboard(lm);
+        public IActionResult Dashboard() {
+            return viewProcessor_.Dashboard();
         }
 
+        [HttpPost]
+        // GET https://capstone.ohitski.org/Home/Dashboard
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Index","Login");
+        }
         public IActionResult Analytics(int days = 7, string id = null) {
             return viewProcessor_.Analytics(days, id);
         }

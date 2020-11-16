@@ -1,14 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using EmployeeTempTracker.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using System;
 
 namespace EmployeeTempTracker.Controllers {
+    [Authorize]
     public class ScreeningController : Controller {
-        private readonly ILogger<LoginController> _logger;
-        public ScreeningController(ILogger<LoginController> logger) {
-            _logger = logger;
-        }
+ 
         private ScreeningControllerLogic viewProcessor_ = new ScreeningControllerLogic();
 
         // GET https://capstone.ohitski.org/Screening

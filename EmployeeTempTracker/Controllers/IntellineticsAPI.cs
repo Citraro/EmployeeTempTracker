@@ -1,5 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using EmployeeTempTracker.Models;
 using WsCore;
@@ -9,6 +13,10 @@ namespace EmployeeTempTracker.Controllers
 {
     public class IntellineticsApi
     {
+        private int callerID = 117;
+
+        public LoginModel CheckUserLogin(LoginModel loginInfo) {
+            WsAuth.GXPAuthenticationSoapClient.EndpointConfiguration ec = WsAuth.GXPAuthenticationSoapClient.EndpointConfiguration.GXPAuthenticationSoap;
         private WsCore.ICMCoreServiceSoap _service;
         private const string _SERVICE_ASMX = "/ICMCoreService.asmx";
 

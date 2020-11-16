@@ -1,6 +1,7 @@
-using System;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using EmployeeTempTracker.Models;
+using System;
 using EmployeeTempTracker.Models;
 using Newtonsoft.Json;
 
@@ -16,6 +17,10 @@ namespace EmployeeTempTracker.Controllers {
         }
 
         // GET https://capstone.ohitski.org/Home/Dashboard
+        public IActionResult Dashboard() {
+            return View("Dashboard");
+        }
+
         public IActionResult Dashboard(LoginModel lm) {
             if (!lm.SessionValid) return RedirectToAction("Index", "Login");
             ViewData["DomainName"] = lm.DomainName;
@@ -47,7 +52,6 @@ namespace EmployeeTempTracker.Controllers {
             return View();
         }
 
-        
         // GET https://capstone.ohitski.org/Home/Privacy
         public IActionResult Privacy() {
             return View("Privacy");
