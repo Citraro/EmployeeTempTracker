@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using EmployeeTempTracker.Models;
-using System.Net.Http;
-using Microsoft.AspNetCore.Authorization;
-using System.Security.Cryptography;
-using WsAuth;
+
 
 namespace EmployeeTempTracker.Controllers
 {
@@ -28,6 +19,10 @@ namespace EmployeeTempTracker.Controllers
         // GET https://capstone.ohitski.org/Home/Dashboard
         public IActionResult Dashboard(LoginModel lm) {
             return viewProcessor_.Dashboard(lm);
+        }
+
+        public IActionResult Analytics(int days = 7, string id = null) {
+            return viewProcessor_.Analytics(days, id);
         }
         
         // GET https://capstone.ohitski.org/Home/Privacy

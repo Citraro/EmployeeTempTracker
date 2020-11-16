@@ -27,5 +27,18 @@ namespace EmployeeTempTracker.Models
         [DataType(DataType.Date)]
         public DateTime SigDate { get; set; }
 
+        public ScreeningModel() {
+            EmpId = null;
+            Date = DateTime.Now;
+            Time = DateTime.Now;
+            Temp = "98.6";
+            Symptoms = "No";
+            CloseContact = "No";
+            IntlTravel = "No";
+            SigPrintName = null;
+            SigDate = DateTime.Now;
+        }
+
     }
+
 }
