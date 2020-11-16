@@ -5,7 +5,9 @@ namespace EmployeeTempTracker.Models
 {
     public class ScreeningModel
     {
-        public string EmpId { get; set; }
+        public int EmpId { get; set; }
+        public string FirstName { get; set; } 
+        public string LastName { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
