@@ -1,9 +1,9 @@
-﻿
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 using EmployeeTempTracker.Models;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace EmployeeTempTracker.Controllers
 {
@@ -28,7 +28,10 @@ namespace EmployeeTempTracker.Controllers
             await HttpContext.SignOutAsync();
             return RedirectToAction("Index","Login");
         }
-
+        public IActionResult Analytics(int days = 7, string id = null) {
+            return viewProcessor_.Analytics(days, id);
+        }
+        
         // GET https://capstone.ohitski.org/Home/Privacy
         public IActionResult Privacy() {
             return viewProcessor_.Privacy();
