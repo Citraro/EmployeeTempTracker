@@ -72,6 +72,7 @@ namespace EmployeeTempTracker.Controllers {
             ViewData["IntlTravel"]      = !(screening.IntlTravel == "Yes");
             ViewData["CloseContact"]    = !(screening.CloseContact == "Yes");
             ViewData["Symptoms"]        = !(screening.Symptoms == "Yes");
+            ViewData["HighTemp"]        = !(Convert.ToDouble(screening.Temp) > 100.4);
             ViewData["Message"] = "You answered 'yes' to one or more questions on the questionairre. For the health and safety of us all, you are required to go home.";
             
             return View("SendHome");
