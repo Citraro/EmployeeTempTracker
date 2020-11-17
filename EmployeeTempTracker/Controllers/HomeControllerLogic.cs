@@ -2,7 +2,6 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using EmployeeTempTracker.Models;
 using System;
-using EmployeeTempTracker.Models;
 using Newtonsoft.Json;
 
 namespace EmployeeTempTracker.Controllers {
@@ -17,15 +16,17 @@ namespace EmployeeTempTracker.Controllers {
         }
 
         // GET https://capstone.ohitski.org/Home/Dashboard
-        public IActionResult Dashboard() {
+        public IActionResult Dashboard(string domain = null) {
+            ViewData["DomainName"] = domain;
             return View("Dashboard");
         }
 
-        public IActionResult Dashboard(LoginModel lm) {
-            if (!lm.SessionValid) return RedirectToAction("Index", "Login");
-            ViewData["DomainName"] = lm.DomainName;
-            return View("Dashboard");
-        }
+        // ToDo: Remove?
+        // public IActionResult Dashboard(LoginModel lm) {
+        //     if (!lm.SessionValid) return RedirectToAction("Index", "Login");
+        //     ViewData["DomainName"] = lm.DomainName;
+        //     return View("Dashboard");
+        // }
 
         public IActionResult Analytics(int numDays, string id) {
             ScreeningModel [] graphData = api_.FetchUserScreeningsByDay(numDays);
