@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using EmployeeTempTracker.Models;
 using WsCore;
 using WsAuth;
@@ -13,8 +15,6 @@ namespace EmployeeTempTracker.Controllers
 {
     public class IntellineticsApi
     {
-        private int callerID = 117;
-        
         private WsCore.ICMCoreServiceSoap _service;
         private const string _SERVICE_ASMX = "/ICMCoreService.asmx";
 
@@ -61,12 +61,57 @@ namespace EmployeeTempTracker.Controllers
         {
             WsCore.FMResult result = new FMResult();
             var list = new List<WsCore.FMIndexItem>();
-            WsCore.FMIndexItem screeningItem = new WsCore.FMIndexItem();
-            screeningItem.Id = sm.EmpId;
-            //TODO: add full screening record
-            list.Append(screeningItem);
+
+            var screeningItem = createIndexItem("EMPLOYEE_ID",sm.EmpId.ToString());
+            list.Add(screeningItem);
+            screeningItem = createIndexItem("LAST_NAME", sm.LastName);
+            list.Add(screeningItem);
+            screeningItem = createIndexItem("FIRST_NAME", sm.FirstName);
+            list.Add(screeningItem);
+            screeningItem = createIndexItem("DATE", sm.Date.ToString(CultureInfo.InvariantCulture));
+            list.Add(screeningItem);
+            screeningItem = createIndexItem("TIME", sm.Time.ToString(CultureInfo.InvariantCulture));
+            list.Add(screeningItem);
+            screeningItem = createIndexItem("TEMPERATURE", sm.Temp);
+            list.Add(screeningItem);
+            screeningItem = createIndexItem("SYMPTOMS", sm.Symptoms);
+            list.Add(screeningItem);
+            screeningItem = createIndexItem("CLOSE_CONTACT", sm.CloseContact);
+            list.Add(screeningItem);
+            screeningItem = createIndexItem("INTL_TRAVEL", sm.IntlTravel);
+            list.Add(screeningItem);
+            screeningItem = createIndexItem("SIGNATURE_PRINT_NAME", sm.SigPrintName);
+            list.Add(screeningItem);
+            screeningItem = createIndexItem("SIGNATURE_DATE", sm.SigDate.ToString(CultureInfo.InvariantCulture));
+            list.Add(screeningItem);
+            
             result = _service.FMModifyFolderIndexes(lm.SessionId, appId, sm.EmpId, list.ToArray());
             return result;
+        }
+        public WsCore.FMResult InsertEmployee(EmployeeModel emp, LoginModel lm,int appId)
+        {
+            WsCore.FMResult result = new FMResult();
+            var list = new List<WsCore.FMIndexItem>();
+
+            var screeningItem = createIndexItem("EMPLOYEE_ID",emp.Id);
+            list.Add(screeningItem);
+            screeningItem = createIndexItem("LAST_NAME",emp.LastName);
+            list.Add(screeningItem);
+            screeningItem = createIndexItem("FIRSTNAME",emp.FirstName);
+            list.Add(screeningItem);
+            screeningItem = createIndexItem("STATUS",emp.Status);
+            list.Add(screeningItem);
+
+            result = _service.FMModifyFolderIndexes(lm.SessionId, appId, Convert.ToInt32(emp.Id), list.ToArray());
+            return result;
+        }
+
+        private WsCore.FMIndexItem createIndexItem(string name,string value)
+        {
+            var indexItem = new FMIndexItem();
+            indexItem.Name = name;
+            indexItem.Value = value;
+            return indexItem;
         }
     }
 }
