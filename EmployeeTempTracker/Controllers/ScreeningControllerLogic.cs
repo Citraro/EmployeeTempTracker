@@ -26,7 +26,7 @@ namespace EmployeeTempTracker.Controllers {
             }else if(domain == "training4"){
                 return View("INTEnterScreening");} 
             else{
-                return RedirectToAction("Home","Dashboard");
+                return RedirectToAction("Dashboard","Home");
             }
         }
 
@@ -57,9 +57,9 @@ namespace EmployeeTempTracker.Controllers {
             if (screening.Symptoms == "Yes")        flag = true;
             if (screening.CloseContact == "Yes")    flag = true;
             if (screening.IntlTravel == "Yes")      flag = true;
-            if (screening.Sig == "No") flag = true;
+            if (screening.Sig == "No")              flag = true;
 
-            if (flag) return RedirectToAction("SendHome", new {screening});
+            if (flag) return RedirectToAction("SendHome", screening);
             //TODO: SOME LOGIC TO ADD SCREENING TO DATABASE
             else return RedirectToAction("ReviewScreening", screening); //pass screening EmpId after adding to db instead of passing screening
         }
@@ -68,8 +68,12 @@ namespace EmployeeTempTracker.Controllers {
         public IActionResult SendHome(ScreeningModel screening) {
             bool authenticated = true;
             if (!authenticated) return RedirectToAction("Index", "Login");
-            
+
+            ViewData["IntlTravel"]      = !(screening.IntlTravel == "Yes");
+            ViewData["CloseContact"]    = !(screening.CloseContact == "Yes");
+            ViewData["Symptoms"]        = !(screening.Symptoms == "Yes");
             ViewData["Message"] = "You answered 'yes' to one or more questions on the questionairre. For the health and safety of us all, you are required to go home.";
+            
             return View("SendHome");
         }
 
