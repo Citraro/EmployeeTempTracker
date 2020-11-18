@@ -29,7 +29,8 @@ namespace EmployeeTempTracker.Controllers {
                 var claims = new List<Claim>
                 {
                     new Claim("SessionId", authenticated.SessionId),
-                    new Claim(ClaimTypes.Name, authenticated.Username)
+                    new Claim(ClaimTypes.Name, authenticated.Username),
+                    new Claim("Domain", authenticated.DomainName)
                 };
                 var claimsIdentity = new ClaimsIdentity(claims, "Login");
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
