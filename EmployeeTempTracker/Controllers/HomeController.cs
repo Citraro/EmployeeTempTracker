@@ -32,11 +32,6 @@ namespace EmployeeTempTracker.Controllers
         public IActionResult Analytics(int days = 7, string id = null) {
             return viewProcessor_.Analytics(days, id);
         }
-        
-        // GET https://capstone.ohitski.org/Home/Privacy
-        public IActionResult Privacy() {
-            return viewProcessor_.Privacy();
-        }
 
         // GET https://capstone.ohitski.org/Home/Error
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
