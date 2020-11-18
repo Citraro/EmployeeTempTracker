@@ -33,7 +33,7 @@ namespace EmployeeTempTracker.Controllers {
                 };
                 var claimsIdentity = new ClaimsIdentity(claims, "Login");
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
-                return RedirectToAction("Dashboard", "Home");
+                return RedirectToAction("Dashboard", "Home", new {domain = authenticated.DomainName});
             }
             return RedirectToAction("InvalidLogin");
         }

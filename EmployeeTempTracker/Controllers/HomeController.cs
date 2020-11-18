@@ -17,8 +17,8 @@ namespace EmployeeTempTracker.Controllers
         }
         [Authorize]
         // GET https://capstone.ohitski.org/Home/Dashboard
-        public IActionResult Dashboard() {
-            return viewProcessor_.Dashboard();
+        public IActionResult Dashboard(string domain = null) {
+            return viewProcessor_.Dashboard(domain);
         }
 
         [HttpPost]
@@ -28,6 +28,7 @@ namespace EmployeeTempTracker.Controllers
             await HttpContext.SignOutAsync();
             return RedirectToAction("Index","Login");
         }
+        
         public IActionResult Analytics(int days = 7, string id = null) {
             return viewProcessor_.Analytics(days, id);
         }
