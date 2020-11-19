@@ -58,9 +58,10 @@ namespace EmployeeTempTracker.Controllers {
             if (screening.CloseContact == "Yes")    flag = true;
             if (screening.IntlTravel == "Yes")      flag = true;
             if (screening.Sig == "No")              flag = true;
+            if (screening.HighTemp == "Yes")        flag = true;
             if (Convert.ToDouble(screening.Temp) > 100.4) flag = true;
 
-            if (flag) return RedirectToAction("SendHome");
+            if (flag) return RedirectToAction("SendHome", screening);
             //TODO: SOME LOGIC TO ADD SCREENING TO DATABASE
             else return RedirectToAction("ReviewScreening", screening); //pass screening EmpId after adding to db instead of passing screening
         }
@@ -70,7 +71,7 @@ namespace EmployeeTempTracker.Controllers {
             ViewData["IntlTravel"]      = !(screening.IntlTravel == "Yes");
             ViewData["CloseContact"]    = !(screening.CloseContact == "Yes");
             ViewData["Symptoms"]        = !(screening.Symptoms == "Yes");
-            ViewData["HighTemp"]        = !(Convert.ToDouble(screening.Temp) > 100.4);
+            ViewData["HighTemp"]        = !(Convert.ToDouble(screening.Temp) > 100.4 || screening.HighTemp == "Yes");
             ViewData["Message"] = "You answered 'yes' to one or more questions on the questionairre. For the health and safety of us all, you are required to go home.";
             
             return View("SendHome");
