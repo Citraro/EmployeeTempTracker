@@ -31,9 +31,11 @@ namespace EmployeeTempTracker.Controllers {
                     new Claim("SessionId", authenticated.SessionId),
                     new Claim(ClaimTypes.Name, authenticated.Username)
                 };
+                Response.Cookies.Append("SessionId", authenticated.SessionId); // Adds SessionId as a cookie
+                Response.Cookies.Append("DomainName", authenticated.DomainName); // Adds domain as a cookie
                 var claimsIdentity = new ClaimsIdentity(claims, "Login");
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
-                return RedirectToAction("Dashboard", "Home", new {domain = authenticated.DomainName});
+                return RedirectToAction("Dashboard", "Home");
             }
             return RedirectToAction("InvalidLogin");
         }
