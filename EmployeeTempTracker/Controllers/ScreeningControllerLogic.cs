@@ -4,6 +4,8 @@ using System;
 
 namespace EmployeeTempTracker.Controllers {
     class ScreeningControllerLogic : Controller {
+
+        private IntellineticsApi api_ = new IntellineticsApi();
         LoginController login = new LoginController();
 
         // GET https://capstone.ohitski.org/Screening
@@ -30,15 +32,14 @@ namespace EmployeeTempTracker.Controllers {
             }
         }
 
-        // GET https://capstone.ohitski.org/Screening/ProcessScreening
-        public IActionResult ProcessScreening(string fname, string lname, int id, string org, string temperature, string highTemp, string symptoms, string closeContact, string intlTravel,string Sig, string sigPrintName, DateTime sigDate) {
+        // POST https://capstone.ohitski.org/Screening/ProcessScreening
+        public IActionResult ProcessScreening(string fname, string lname, int id, string org, string temperature, string highTemp, string symptoms, string closeContact, string intlTravel,string Sig, string sigPrintName, DateTime sigDate, string sessionId, string domain) {
             // Takes EnterScreening form data and creates a ScreeningModel object from it.
             // Maybe have a popup that makes the signee verify everything is true?
-            
-            bool authenticated = true; // TODO: Replace with session check
-            if (!authenticated) return RedirectToAction("Index", "Login");
 
             ScreeningModel screening = new ScreeningModel();
+            screening.FirstName = fname;
+            screening.LastName = lname;
             screening.EmpId = id;
             screening.Temp = temperature;
             screening.HighTemp = highTemp;
@@ -61,8 +62,13 @@ namespace EmployeeTempTracker.Controllers {
             if (screening.HighTemp == "Yes")        flag = true;
             if (Convert.ToDouble(screening.Temp) > 100.4) flag = true;
 
+            int appId = (domain == "training1") ? 117 : 216; // ToDo: Refactor to use Web.config constants
+            WsCore.FMResult res = api_.InsertScreening(screening, sessionId, appId);
+
+            // ToDo: Determine action if insertion fails (Error Logging)
+            if (res.ResultCode == -1) return RedirectToAction("Dashboard", "Home");
+
             if (flag) return RedirectToAction("SendHome", screening);
-            //TODO: SOME LOGIC TO ADD SCREENING TO DATABASE
             else return RedirectToAction("ReviewScreening", screening); //pass screening EmpId after adding to db instead of passing screening
         }
 

@@ -16,16 +16,20 @@ namespace EmployeeTempTracker.Controllers {
         }
 
         // GET https://capstone.ohitski.org/Screening/EnterScreening
-        public IActionResult EnterScreening(string domain) {
-                return viewProcessor_.EnterScreening(domain);
+        public IActionResult EnterScreening() {
+            string domain = Request.Cookies["DomainName"];
+            return viewProcessor_.EnterScreening(domain);
         }
 
-        // GET https://capstone.ohitski.org/Screening/ProcessScreening
+        // POST https://capstone.ohitski.org/Screening/ProcessScreening
+        [HttpPost]
         public IActionResult ProcessScreening(string fname, string lname, int id, 
             string org, string temperature, string highTemp, string symptoms, string closeContact, 
             string intlTravel,string Sig, string sigPrintName, DateTime sigDate) {
 
-            return viewProcessor_.ProcessScreening(fname, lname, id, org, temperature, highTemp, symptoms, closeContact, intlTravel, Sig, sigPrintName, sigDate);
+            string sessionId = Request.Cookies["SessionId"];
+            string domain = Request.Cookies["DomainName"];
+            return viewProcessor_.ProcessScreening(fname, lname, id, org, temperature, highTemp, symptoms, closeContact, intlTravel, Sig, sigPrintName, sigDate, sessionId, domain);
         }
 
         // GET https://capstone.ohitski.org/Screening/SendHome
