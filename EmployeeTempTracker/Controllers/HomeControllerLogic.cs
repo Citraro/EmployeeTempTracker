@@ -21,13 +21,6 @@ namespace EmployeeTempTracker.Controllers {
             return View("Dashboard");
         }
 
-        // ToDo: Remove?
-        // public IActionResult Dashboard(LoginModel lm) {
-        //     if (!lm.SessionValid) return RedirectToAction("Index", "Login");
-        //     ViewData["DomainName"] = lm.DomainName;
-        //     return View("Dashboard");
-        // }
-
         public IActionResult Analytics(int numDays, string id) {
             ScreeningModel [] graphData = api_.FetchUserScreeningsByDay(numDays);
 
