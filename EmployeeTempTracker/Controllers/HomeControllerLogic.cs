@@ -2,7 +2,6 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using EmployeeTempTracker.Models;
 using System;
-using EmployeeTempTracker.Models;
 using Newtonsoft.Json;
 
 namespace EmployeeTempTracker.Controllers {
