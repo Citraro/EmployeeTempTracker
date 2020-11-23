@@ -33,11 +33,13 @@ namespace EmployeeTempTracker.Controllers {
         }
 
         // POST https://capstone.ohitski.org/Screening/ProcessScreening
-        public IActionResult ProcessScreening(string fname, string lname, int id, string org, string temperature, string highTemp, string symptoms, string closeContact, string intlTravel,string Sig, string sigPrintName, DateTime sigDate, string sessionId, string domain) {
-            // Takes EnterScreening form data and creates a ScreeningModel object from it.
-            // Maybe have a popup that makes the signee verify everything is true?
+        public IActionResult ProcessScreening(string fname, string lname, int id, string temperature, string highTemp, string symptoms, string closeContact, string intlTravel,string Sig, string sigPrintName, DateTime sigDate, string sessionId, string domain) {
 
-            if (temperature.Length < 5) temperature.Insert(0, "0");
+            // Ensure proper mask for temperature object
+            double deg = Convert.ToDouble(temperature);
+            temperature = deg.ToString("F1");
+            while (temperature.Length < 5) temperature.Insert(0, "0");
+            if (temperature.Length > 5) temperature = temperature.Substring(temperature.Length - 5);
 
             ScreeningModel screening = new ScreeningModel();
             screening.FirstName = fname;

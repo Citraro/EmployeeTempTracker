@@ -24,12 +24,12 @@ namespace EmployeeTempTracker.Controllers {
         // POST https://capstone.ohitski.org/Screening/ProcessScreening
         [HttpPost]
         public IActionResult ProcessScreening(string fname, string lname, int id, 
-            string org, string temperature, string highTemp, string symptoms, string closeContact, 
+            string temperature, string highTemp, string symptoms, string closeContact, 
             string intlTravel,string Sig, string sigPrintName, DateTime sigDate) {
 
             string sessionId = Request.Cookies["SessionId"];
             string domain = Request.Cookies["DomainName"];
-            return viewProcessor_.ProcessScreening(fname, lname, id, org, temperature, highTemp, symptoms, closeContact, intlTravel, Sig, sigPrintName, sigDate, sessionId, domain);
+            return viewProcessor_.ProcessScreening(fname, lname, id, temperature, highTemp, symptoms, closeContact, intlTravel, Sig, sigPrintName, sigDate, sessionId, domain);
         }
 
         // GET https://capstone.ohitski.org/Screening/SendHome
