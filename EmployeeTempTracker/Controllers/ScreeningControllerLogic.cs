@@ -37,6 +37,8 @@ namespace EmployeeTempTracker.Controllers {
             // Takes EnterScreening form data and creates a ScreeningModel object from it.
             // Maybe have a popup that makes the signee verify everything is true?
 
+            if (temperature.Length < 5) temperature.Insert(0, "0");
+
             ScreeningModel screening = new ScreeningModel();
             screening.FirstName = fname;
             screening.LastName = lname;
@@ -47,9 +49,10 @@ namespace EmployeeTempTracker.Controllers {
             screening.CloseContact = closeContact;
             screening.IntlTravel = intlTravel;
             screening.Date = DateTime.Now;       
+            screening.Time = DateTime.Now;
             screening.Sig = Sig;
             screening.SigPrintName = sigPrintName;
-            screening.SigDate = sigDate;
+            screening.SigDate = DateTime.Now;
             ViewData["Screening"] = screening;
             // STILL NEED Time
 

@@ -56,7 +56,7 @@ namespace EmployeeTempTracker.Controllers
             return screenings;
         }
 
-        public WsCore.FMResult InsertScreening(ScreeningModel sm, string session,int appId)
+        public WsCore.FMResult InsertScreening(ScreeningModel sm, string session, int appId)
         {
             WsCore.FMResult result = new FMResult();
             var list = new List<WsCore.FMIndexItem>();
@@ -67,9 +67,9 @@ namespace EmployeeTempTracker.Controllers
             list.Add(screeningItem);
             screeningItem = createIndexItem("FIRST_NAME", sm.FirstName);
             list.Add(screeningItem);
-            screeningItem = createIndexItem("DATE", sm.Date.ToString(CultureInfo.InvariantCulture));
+            screeningItem = createIndexItem("DATE", sm.Date.ToString("yyyy-MM-dd hh:mm:ss.fff"));
             list.Add(screeningItem);
-            screeningItem = createIndexItem("TIME", sm.Time.ToString(CultureInfo.InvariantCulture));
+            screeningItem = createIndexItem("TIME", sm.Time.ToString("hh:mm tt"));
             list.Add(screeningItem);
             screeningItem = createIndexItem("TEMPERATURE", sm.Temp);
             list.Add(screeningItem);
@@ -81,9 +81,10 @@ namespace EmployeeTempTracker.Controllers
             list.Add(screeningItem);
             screeningItem = createIndexItem("SIGNATURE_PRINT_NAME", sm.SigPrintName);
             list.Add(screeningItem);
-            screeningItem = createIndexItem("SIGNATURE_DATE", sm.SigDate.ToString(CultureInfo.InvariantCulture));
+            screeningItem = createIndexItem("SIGNATURE_DATE", sm.SigDate.ToString("yyyy-MM-dd hh:mm:ss.fff"));
             list.Add(screeningItem);
             
+            list.Add(createIndexItem("acc", "0"));
             
             WsCore.CMCoreServiceSoapClient.EndpointConfiguration ec = WsCore.CMCoreServiceSoapClient.EndpointConfiguration.ICMCoreServiceSoap;
             WsCore.CMCoreServiceSoapClient svc = new WsCore.CMCoreServiceSoapClient(ec);
@@ -91,6 +92,7 @@ namespace EmployeeTempTracker.Controllers
             result = svc.FMModifyFolderIndexes(session, appId, sm.EmpId, list.ToArray());
             return result;
         }
+
         public WsCore.FMResult InsertEmployee(EmployeeModel emp, LoginModel lm,int appId)
         {
             WsCore.FMResult result = new FMResult();
