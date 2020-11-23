@@ -37,9 +37,9 @@ namespace EmployeeTempTracker.Controllers {
 
             // Ensure proper mask for temperature object
             double deg = Convert.ToDouble(temperature);
-            temperature = deg.ToString("F1");
-            while (temperature.Length < 5) temperature.Insert(0, "0");
-            if (temperature.Length > 5) temperature = temperature.Substring(temperature.Length - 5);
+            temperature = deg.ToString("F2");
+            while (temperature.Length < 6) temperature = temperature.Insert(0, "0");
+            if (temperature.Length > 6) temperature = temperature.Substring(temperature.Length - 5);
 
             ScreeningModel screening = new ScreeningModel();
             screening.FirstName = fname;
@@ -67,7 +67,7 @@ namespace EmployeeTempTracker.Controllers {
             if (screening.HighTemp == "Yes")        flag = true;
             if (Convert.ToDouble(screening.Temp) > 100.4) flag = true;
 
-            int appId = (domain == "training1") ? 117 : 216; // ToDo: Refactor to use Web.config constants
+            int appId = (domain == "training1") ? 116 : 216; // ToDo: Refactor to use Web.config constants
             WsCore.FMResult res = api_.InsertScreening(screening, sessionId, appId);
 
             // ToDo: Determine action if insertion fails (Error Logging)

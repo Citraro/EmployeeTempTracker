@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using EmployeeTempTracker.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using System;
 
 namespace EmployeeTempTracker.Controllers {
