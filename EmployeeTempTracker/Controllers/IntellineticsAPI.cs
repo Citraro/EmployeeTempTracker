@@ -61,35 +61,23 @@ namespace EmployeeTempTracker.Controllers
             WsCore.FMResult result = new FMResult();
             var list = new List<WsCore.FMIndexItem>();
 
-            var screeningItem = createIndexItem("EMPLOYEE_ID",sm.EmpId.ToString());
-            list.Add(screeningItem);
-            screeningItem = createIndexItem("LAST_NAME", sm.LastName);
-            list.Add(screeningItem);
-            screeningItem = createIndexItem("FIRST_NAME", sm.FirstName);
-            list.Add(screeningItem);
-            screeningItem = createIndexItem("DATE", sm.Date.ToString("yyyy-MM-dd hh:mm:ss.fff"));
-            list.Add(screeningItem);
-            screeningItem = createIndexItem("TIME", sm.Time.ToString("hh:mm tt"));
-            list.Add(screeningItem);
-            screeningItem = createIndexItem("TEMPERATURE", sm.Temp);
-            list.Add(screeningItem);
-            screeningItem = createIndexItem("SYMPTOMS", sm.Symptoms);
-            list.Add(screeningItem);
-            screeningItem = createIndexItem("CLOSE_CONTACT", sm.CloseContact);
-            list.Add(screeningItem);
-            screeningItem = createIndexItem("INTL_TRAVEL", sm.IntlTravel);
-            list.Add(screeningItem);
-            screeningItem = createIndexItem("SIGNATURE_PRINT_NAME", sm.SigPrintName);
-            list.Add(screeningItem);
-            screeningItem = createIndexItem("SIGNATURE_DATE", sm.SigDate.ToString("yyyy-MM-dd hh:mm:ss.fff"));
-            list.Add(screeningItem);
-            
-            list.Add(createIndexItem("acc", "0"));
+            //list.Add(createIndexItem("acc", "0"));
+            list.Add(createIndexItem("EMPLOYEE_ID", sm.EmpId.ToString()));
+            list.Add(createIndexItem("LAST_NAME", sm.LastName));
+            list.Add(createIndexItem("FIRST_NAME", sm.FirstName));
+            list.Add(createIndexItem("DATE", sm.Date.ToString("yyyy-MM-dd")));
+            list.Add(createIndexItem("SCREENING_TIME", sm.Date.ToString("hh:mm tt")));
+            list.Add(createIndexItem("TEMPERATURE", sm.Temp));
+            list.Add(createIndexItem("SYMPTOMS", sm.Symptoms));
+            list.Add(createIndexItem("CLOSE_CONTACT", sm.CloseContact));
+            list.Add(createIndexItem("INTL_TRAVEL", sm.IntlTravel));
+            list.Add(createIndexItem("SIGNATURE_PRINT_NAME", sm.SigPrintName));
+            list.Add(createIndexItem("SIGNATURE_DATE", sm.SigDate.ToString("yyyy-MM-dd")));
             
             WsCore.CMCoreServiceSoapClient.EndpointConfiguration ec = WsCore.CMCoreServiceSoapClient.EndpointConfiguration.ICMCoreServiceSoap;
             WsCore.CMCoreServiceSoapClient svc = new WsCore.CMCoreServiceSoapClient(ec);
 
-            result = svc.FMModifyFolderIndexes(session, appId, sm.EmpId, list.ToArray());
+            result = svc.FMCreateFolder(session, appId, list.ToArray(), 0);
             return result;
         }
 
