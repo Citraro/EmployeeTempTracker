@@ -15,7 +15,6 @@ namespace EmployeeTempTracker.Controllers
 {
     public class IntellineticsApi
     {
-        private WsCore.ICMCoreServiceSoap _service;
         private const string _SERVICE_ASMX = "/ICMCoreService.asmx";
 
         public LoginModel CheckUserLogin(LoginModel loginInfo, int appId)
@@ -57,37 +56,31 @@ namespace EmployeeTempTracker.Controllers
             return screenings;
         }
 
-        public WsCore.FMResult InsertScreening(ScreeningModel sm, LoginModel lm,int appId)
+        public WsCore.FMResult InsertScreening(ScreeningModel sm, string session, int appId)
         {
             WsCore.FMResult result = new FMResult();
             var list = new List<WsCore.FMIndexItem>();
 
-            var screeningItem = createIndexItem("EMPLOYEE_ID",sm.EmpId.ToString());
-            list.Add(screeningItem);
-            screeningItem = createIndexItem("LAST_NAME", sm.LastName);
-            list.Add(screeningItem);
-            screeningItem = createIndexItem("FIRST_NAME", sm.FirstName);
-            list.Add(screeningItem);
-            screeningItem = createIndexItem("DATE", sm.Date.ToString(CultureInfo.InvariantCulture));
-            list.Add(screeningItem);
-            screeningItem = createIndexItem("TIME", sm.Time.ToString(CultureInfo.InvariantCulture));
-            list.Add(screeningItem);
-            screeningItem = createIndexItem("TEMPERATURE", sm.Temp);
-            list.Add(screeningItem);
-            screeningItem = createIndexItem("SYMPTOMS", sm.Symptoms);
-            list.Add(screeningItem);
-            screeningItem = createIndexItem("CLOSE_CONTACT", sm.CloseContact);
-            list.Add(screeningItem);
-            screeningItem = createIndexItem("INTL_TRAVEL", sm.IntlTravel);
-            list.Add(screeningItem);
-            screeningItem = createIndexItem("SIGNATURE_PRINT_NAME", sm.SigPrintName);
-            list.Add(screeningItem);
-            screeningItem = createIndexItem("SIGNATURE_DATE", sm.SigDate.ToString(CultureInfo.InvariantCulture));
-            list.Add(screeningItem);
+            //list.Add(createIndexItem("acc", "0"));
+            list.Add(createIndexItem("EMPLOYEE_ID", sm.EmpId.ToString()));
+            list.Add(createIndexItem("LAST_NAME", sm.LastName));
+            list.Add(createIndexItem("FIRST_NAME", sm.FirstName));
+            list.Add(createIndexItem("DATE", sm.Date.ToString("yyyy-MM-dd")));
+            list.Add(createIndexItem("SCREENING_TIME", sm.Date.ToString("hh:mm tt")));
+            list.Add(createIndexItem("TEMPERATURE", sm.Temp));
+            list.Add(createIndexItem("SYMPTOMS", sm.Symptoms));
+            list.Add(createIndexItem("CLOSE_CONTACT", sm.CloseContact));
+            list.Add(createIndexItem("INTL_TRAVEL", sm.IntlTravel));
+            list.Add(createIndexItem("SIGNATURE_PRINT_NAME", sm.SigPrintName));
+            list.Add(createIndexItem("SIGNATURE_DATE", sm.SigDate.ToString("yyyy-MM-dd")));
             
-            result = _service.FMModifyFolderIndexes(lm.SessionId, appId, sm.EmpId, list.ToArray());
+            WsCore.CMCoreServiceSoapClient.EndpointConfiguration ec = WsCore.CMCoreServiceSoapClient.EndpointConfiguration.ICMCoreServiceSoap;
+            WsCore.CMCoreServiceSoapClient svc = new WsCore.CMCoreServiceSoapClient(ec);
+
+            result = svc.FMCreateFolder(session, appId, list.ToArray(), 0);
             return result;
         }
+
         public WsCore.FMResult InsertEmployee(EmployeeModel emp, LoginModel lm,int appId)
         {
             WsCore.FMResult result = new FMResult();
@@ -102,7 +95,10 @@ namespace EmployeeTempTracker.Controllers
             screeningItem = createIndexItem("STATUS",emp.Status);
             list.Add(screeningItem);
 
-            result = _service.FMModifyFolderIndexes(lm.SessionId, appId, Convert.ToInt32(emp.Id), list.ToArray());
+            WsCore.CMCoreServiceSoapClient.EndpointConfiguration ec = WsCore.CMCoreServiceSoapClient.EndpointConfiguration.ICMCoreServiceSoap;
+            WsCore.CMCoreServiceSoapClient svc = new WsCore.CMCoreServiceSoapClient(ec);
+
+            result = svc.FMModifyFolderIndexes(lm.SessionId, appId, Convert.ToInt32(emp.Id), list.ToArray());
             return result;
         }
 

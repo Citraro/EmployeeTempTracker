@@ -35,6 +35,7 @@ namespace EmployeeTempTracker.Models
             Symptoms = "No";
             CloseContact = "No";
             IntlTravel = "No";
+            HighTemp = "No";
             SigPrintName = null;
             SigDate = DateTime.Now;
         }

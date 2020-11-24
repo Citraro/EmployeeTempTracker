@@ -17,7 +17,8 @@ namespace EmployeeTempTracker.Controllers
         }
         [Authorize]
         // GET https://capstone.ohitski.org/Home/Dashboard
-        public IActionResult Dashboard(string domain = null) {
+        public IActionResult Dashboard() {
+            string domain = Request.Cookies["DomainName"];
             return viewProcessor_.Dashboard(domain);
         }
 
@@ -25,6 +26,8 @@ namespace EmployeeTempTracker.Controllers
         // GET https://capstone.ohitski.org/Home/Dashboard
         public async Task<IActionResult> Logout()
         {
+            Response.Cookies.Delete("SessionId");
+            Response.Cookies.Delete("DomainName");
             await HttpContext.SignOutAsync();
             return RedirectToAction("Index","Login");
         }
