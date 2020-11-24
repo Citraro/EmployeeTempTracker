@@ -1,30 +1,32 @@
-<div class="w3-container w3-red">
-<h4>ToDo: Determine how to incorporate the Questionnarie && Create the screening object</h4>
-<p>Use the example screening forms as an outline for data requirements. Use the Intellinetics website for design inspiration. Pass form data to a ScreeningModel object.</p>
-</div>
-<hr />
+@* @model EmployeeTempTracker.Models.LoginModel
+@{
+    LoginModel lm = ViewData["LoginModel"] as EmployeeTempTracker.Models.LoginModel;
+}
+
+
+<p>Username: @lm.Username</p>
+<p>Password: @lm.Password</p>
+<p>RememberMe : @lm.RememberMe</p>
+<p>SessionValid : @lm.SessionValid</p>
+<p>SessionId : @lm.SessionId</p> *@
+@* 
+<p>DomainName: @ViewData["DomainName"]</p>
+<p>Domain: GSI</p> *@
 
 <div id="gsi_screening_form" class="w3-card-4 w3-margin-left w3-margin-right">
-    <div class="w3-container w3-green"><h4 class="w3-center">New Screening</h4></div>
+    <div class="w3-container w3-green"><h4 class="w3-center">New Screening - GSI</h4></div>
     <form method="Post" action="/Screening/ProcessScreening" class="w3-container">
         <!-- Begin Data Entry Portion -->
        
         <!-- First/Last Name Row -->
         <div class="w3-row w3-margin-top">
             <div class="w3-half w3-container"><input class="w3-input w3-round w3-border w3-border-grey" type="text" size="20" name="fname" placeholder="Firstname" required /></div>
-            <div class="w3-half w3-container"><input class="w3-input w3-round w3-border w3-border-grey" type="text" size="20" name="fname" placeholder="Lastname" required /></div>
+            <div class="w3-half w3-container"><input class="w3-input w3-round w3-border w3-border-grey" type="text" size="20" name="lname" placeholder="Lastname" required /></div>
         </div>
            
         <!-- Id, Organization, & Temperature row -->
         <div class="w3-row w3-margin-top w3-margin-bottom">
             <div class="w3-third w3-container"><input class="w3-input w3-round w3-border w3-border-grey" type="text" size="20" name="id" placeholder="Employee Id" required /></div>
-            <div class="w3-third w3-container">
-                <select class="w3-select w3-round w3-border w3-border-grey" name="org" placeholder="Organization" required>
-                    <option value="" disabled selected>Organization</option>
-                    <option value="GSI">GSI</option>
-                    <option value="Intellinetics">Intellinetics</option>
-                </select>
-            </div>
             <div class="w3-third w3-container"><input class="w3-input w3-round w3-border w3-border-grey" type="password" maxlength="6" minlength="4" name="temperature" placeholder="Temperature" required/></div>
         </div>
 
@@ -70,8 +72,22 @@
         <input id="travel_yes" class="w3-radio" type="radio" name="intlTravel" value="Yes" /><label for="travel_yes"><p> Yes </p></label>
         <input id="travel_no" class="w3-radio" type="radio" name="intlTravel" value="No" /><label for="travel_no"><p> No </p></label>
 
+        <!-- Signature -->
+        <p>*Do you confirm the above information is correct?</p>
+        <input id="sign_yes" class="w3-radio" type="radio" name="sig" value="Yes" /><label for="sign_yes"><p> Yes </p></label>
+        <input id="sign_no" class="w3-radio" type="radio" name="sig" value="No" /><label for="sign_no"><p> No </p></label>
+
+        <div class="w3-row w3-margin-top-bottom">
+            <div class="w3-half w3-container"><input class="w3-input w3-round w3-border w3-border-grey" type="text" size="10" name="sigPrintName" placeholder="Name" required /></div>
+            <div class="w3-half w3-container"><input class="w3-input w3-round w3-border w3-border-grey" type="text" size="10" name="sigDate" placeholder="Date" required /></div>
+        </div>
+
+        <p>*My Signature on this form indicates that I have completed the daily self-assessment and acknowledge I have taken my temperature and it is equal to or below 100.4 degrees, 
+        I am not exhibiting any of the following symptoms: new/change in cough, shortness of breath, sore throat, fatigue, malaise, nausea, diarrhea or headache per CDC COVID-19 guidelines. 
+        If I have any of these symptoms and/or others I will report immediately to my supervisor/designee. </p>
+
         <!-- Submit Button row (button centered below the two columns) -->
-        <div class="w3-row w3-margin-bottom">
+        <div class="w3-row w3-margin-top w3-margin-bottom">
             <div class="w3-third"><p></p></div>
             <div class="w3-third w3-container">
                 <input class="w3-btn w3-block w3-green w3-border w3-border-grey w3-round-large w3-padding-small" type="submit" value="Submit" name="new_screening" />

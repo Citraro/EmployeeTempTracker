@@ -1,13 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using EmployeeTempTracker.Models;
+using Microsoft.AspNetCore.Authorization;
+using System;
 
 namespace EmployeeTempTracker.Controllers {
+    [Authorize]
     public class ScreeningController : Controller {
-        private readonly ILogger<LoginController> _logger;
-        public ScreeningController(ILogger<LoginController> logger) {
-            _logger = logger;
-        }
+ 
         private ScreeningControllerLogic viewProcessor_ = new ScreeningControllerLogic();
 
         // GET https://capstone.ohitski.org/Screening
@@ -17,12 +16,19 @@ namespace EmployeeTempTracker.Controllers {
 
         // GET https://capstone.ohitski.org/Screening/EnterScreening
         public IActionResult EnterScreening() {
-            return viewProcessor_.EnterScreening();
+            string domain = Request.Cookies["DomainName"];
+            return viewProcessor_.EnterScreening(domain);
         }
 
-        // GET https://capstone.ohitski.org/Screening/ProcessScreening
-        public IActionResult ProcessScreening(string fname, string lname, string id, string org, string temperature, string symptoms, string closeContact, string intlTravel) {
-            return viewProcessor_.ProcessScreening(fname, lname, id, org, temperature, symptoms, closeContact, intlTravel);
+        // POST https://capstone.ohitski.org/Screening/ProcessScreening
+        [HttpPost]
+        public IActionResult ProcessScreening(string fname, string lname, int id, 
+            string temperature, string highTemp, string symptoms, string closeContact, 
+            string intlTravel,string Sig, string sigPrintName, DateTime sigDate) {
+
+            string sessionId = Request.Cookies["SessionId"];
+            string domain = Request.Cookies["DomainName"];
+            return viewProcessor_.ProcessScreening(fname, lname, id, temperature, highTemp, symptoms, closeContact, intlTravel, Sig, sigPrintName, sigDate, sessionId, domain);
         }
 
         // GET https://capstone.ohitski.org/Screening/SendHome

@@ -1,38 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+using Microsoft.AspNetCore.Authorization;
+using EmployeeTempTracker.Models;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using EmployeeTempTracker.Models;
-using System.Net.Http;
-using Microsoft.AspNetCore.Authorization;
-using System.Security.Cryptography;
-using WsAuth;
 
 namespace EmployeeTempTracker.Controllers
 {
     public class HomeController : Controller {
-        private readonly ILogger<HomeController> _logger;
-        public HomeController(ILogger<HomeController> logger) {
-            _logger = logger;
-        }
+
         private HomeControllerLogic viewProcessor_ = new HomeControllerLogic();
 
         // GET https://capstone.ohitski.org/Home
         public IActionResult Index() {
             return viewProcessor_.Index();
         }
-
+        [Authorize]
         // GET https://capstone.ohitski.org/Home/Dashboard
         public IActionResult Dashboard() {
-            return viewProcessor_.Dashboard();
+            string domain = Request.Cookies["DomainName"];
+            return viewProcessor_.Dashboard(domain);
+        }
+
+        [HttpPost]
+        // GET https://capstone.ohitski.org/Home/Dashboard
+        public async Task<IActionResult> Logout()
+        {
+            Response.Cookies.Delete("SessionId");
+            Response.Cookies.Delete("DomainName");
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Index","Login");
         }
         
-        // GET https://capstone.ohitski.org/Home/Privacy
-        public IActionResult Privacy() {
-            return viewProcessor_.Privacy();
+        public IActionResult Analytics(int days = 7, string id = null) {
+            return viewProcessor_.Analytics(days, id);
         }
 
         // GET https://capstone.ohitski.org/Home/Error

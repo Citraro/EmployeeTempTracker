@@ -1,1 +1,43 @@
-<p>@ViewData["Message"]</p>
+<div class="w3-card-4">
+    <div class="w3-container w3-green"><h2 class="w3-center">COVID-19 Precautionary Measures</h2></div>
+    
+    <div class="w3-container w3-margin-top">
+        <p>In your questionairre, you selected 'Yes' to at least one of the screening questions. For the health and safety of us all, please read the details below and follow the steps that apply to you.</p>
+    </div>
+    
+    <div class="w3-container w3-margin-top" hidden='@ViewData["Symptoms"]'>
+        <p>You indicated that you have recently been experiencing the symptoms of a respiratory infection or COVID-19. You are required to quaratine at home until you are no longer symptomatic (typically 24+ hours). You do not require a doctor's release unless otherwise noted in further instructions.</p>
+    </div>
+    
+    <div class="w3-container w3-margin-top" hidden='@ViewData["IntlTravel"]'>
+        <p>You indicated that you have recently traveled outside of the United States. Please follow the instruction below which is applicable to you:</p>
+        <ul>
+            <li><p><b>I am <i>not</i> symptomatic.</b> You are required to stay home for 14 days from the time that you returned to the United States.</p></li>
+            <li><p><b>I <i>am</i> symptomatic</b>. You are required to return home and contact your Primary Care Clinician (PCC). Additionally, you are required to stay home for 14 days from the time that you returned to the country and must obtain a release from your PCC.</p></li>
+        </ul>
+    </div>
+    
+    <div class="w3-container w3-margin-top" hidden='@ViewData["CloseContact"]'>
+        <p>You indicated that you have had close contact or been exposed to an individual confirmed to have COVID-19. Please follow the instruction below which is applicable to you:</p>
+        <ul>
+            <li><p><b>I am <i>not</i> symptomatic.</b> You are required to stay home for 14 days from the time that you were exposed to the individual.</p></li>
+            <li><p><b>I <i>am</i> symptomatic</b>. You are required to return home and contact your Primary Care Clinician (PCC). Additionally, you are required to stay home for 14 days from the time that you were exposed to the individual and must obtain a release from your PCC.</p></li>
+        </ul>
+    </div>
+    
+    <div class="w3-container w3-margin-top" hidden='@ViewData["HighTemp"]'>
+        <p>Your temperature was recorded to be unusually high. Please follow the instructions below which are applicable to you:</p>
+        <ul>
+            <li><p><b>I have <i>not</i> recently traveled outside of the United States.</b> You are required to quarantine at home until you are no longer symptomatic.</p></li>
+            <li><p><b>I <i>have</i> recently traveled outside of the United States.</b> You are required to return home and contact your Primary Care Clinician (PCC). Additionally, you are required to stay home for 14 days from the time that you returned to the country and must obtain a release from your PCC.</p></li>
+        </ul>
+    </div>
+
+    <div class="w3-row w3-margin-top">
+        <div class="w3-third"><p></p></div>
+        <div class="w3-third w3-container w3-margin-top w3-margin-bottom">
+            <a href="/Home/Dashboard" class="w3-btn w3-block w3-green w3-border w3-border-grey w3-round-large w3-padding-small"><b>Home</b></a>
+        </div>
+    <div class="w3-third"><p></p></div>
+
+</div>
