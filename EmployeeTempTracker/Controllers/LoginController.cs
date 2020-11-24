@@ -29,7 +29,8 @@ namespace EmployeeTempTracker.Controllers {
                 var claims = new List<Claim>
                 {
                     new Claim("SessionId", authenticated.SessionId),
-                    new Claim(ClaimTypes.Name, authenticated.Username)
+                    new Claim(ClaimTypes.Name, authenticated.Username),
+                    new Claim("Domain", authenticated.DomainName)
                 };
                 Response.Cookies.Append("SessionId", authenticated.SessionId); // Adds SessionId as a cookie
                 Response.Cookies.Append("DomainName", authenticated.DomainName); // Adds domain as a cookie
