@@ -67,8 +67,8 @@ namespace EmployeeTempTracker.Controllers {
             if (screening.HighTemp == "Yes")        flag = true;
             if (Convert.ToDouble(screening.Temp) > 100.4) flag = true;
 
-            int appId = (domain == "training1") ? 116 : 216; // GSI : Intellinetics DAILY_HEALTH_RECORD app ids
-            WsCore.FMResult res = api_.InsertScreening(screening, sessionId, appId);
+            int appId = (domain == "training1") ? 116 : 217; // GSI : Intellinetics DAILY_HEALTH_RECORD app ids
+            WsCore.FMResult res = api_.InsertScreening(screening, domain, sessionId, appId);
 
             // ToDo: Determine action if insertion fails (Error Logging)
             if (res.ResultCode == -1) return RedirectToAction("Dashboard", "Home");
