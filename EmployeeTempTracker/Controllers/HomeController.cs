@@ -41,9 +41,6 @@ namespace EmployeeTempTracker.Controllers
         public IActionResult Error() {
             return viewProcessor_.Error();
         }
-        // GET https://capstone.ohitski.org/Home/DashboardTemp
-        public IActionResult DashboardTemp(){
-            return viewProcessor_.DashboardTemp();
-        }
+
     }
 }

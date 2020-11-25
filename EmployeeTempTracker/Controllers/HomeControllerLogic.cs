@@ -50,10 +50,7 @@ namespace EmployeeTempTracker.Controllers {
         public IActionResult Error() {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        // GET https://capstone.ohitski.org/Home/DashboardTemp
-        public IActionResult DashboardTemp() {
-            return View("DashboardTemp");
-        }
+
     }
     
 }
