@@ -12,7 +12,7 @@ namespace EmployeeTempTracker.Controllers {
         // GET https://capstone.ohitski.org/Home
         public IActionResult Index() {
             ViewData["Title"] = "Home";
-            return View("Index");
+            return View("Dashboard");
         }
 
         // GET https://capstone.ohitski.org/Home/Dashboard

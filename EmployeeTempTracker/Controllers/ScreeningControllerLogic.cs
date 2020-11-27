@@ -17,12 +17,12 @@ namespace EmployeeTempTracker.Controllers {
         }
 
         // GET https://capstone.ohitski.org/Screening/EnterScreening
-        public IActionResult EnterScreening(String domain) {
-            bool authenticated = true; // TODO: Replace with session check
-            if (!authenticated) return RedirectToAction("Index", "Login");
+        public IActionResult EnterScreening(string domain, string id = null, string fname = null, string lname = null) {
             ViewData["Title"] = "Health Screening";
             ViewData["DomainName"] = domain;
-
+            ViewData["EmployeeId"] = id;
+            ViewData["FirstName"] = fname;
+            ViewData["LastName"] = lname;
             if(domain == "training1"){
                 return View("GSIEnterScreening");
             }else if(domain == "training4"){
@@ -56,7 +56,6 @@ namespace EmployeeTempTracker.Controllers {
             screening.SigPrintName = sigPrintName;
             screening.SigDate = DateTime.Now;
             ViewData["Screening"] = screening;
-            // STILL NEED Time
 
             // Check for questionairre anomalies
             bool flag = false;
