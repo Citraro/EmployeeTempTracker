@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using EmployeeTempTracker.Models;
 using System;
@@ -18,6 +19,8 @@ namespace EmployeeTempTracker.Controllers {
         // GET https://capstone.ohitski.org/Home/Dashboard
         public IActionResult Dashboard(string domain = null) {
             ViewData["DomainName"] = domain;
+            List<EmployeeModel> contents = api_.FetchAllEmployees("Example", 1738);
+            ViewData["DashboardContents"] = JsonConvert.SerializeObject(contents.ToArray());
             return View("Dashboard");
         }
 

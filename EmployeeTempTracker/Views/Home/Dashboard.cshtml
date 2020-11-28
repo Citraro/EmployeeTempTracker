@@ -1,4 +1,4 @@
-
+@{ Console.WriteLine(ViewData["DashboardContents"]); }
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +12,9 @@
     <script>
         $(document).ready(function() {
             $('#maingrid').kendoGrid({
-                height: 400,
+                height: 500,
                 columns: [
-                    {field: "EmployeeID", title: "ID", width: "150px", type: "number"},
+                    {field: "EmployeeID", title: "ID", width: "150px", type: "string"},
                     {field: "Company", width: "150px", type: "string"},
                     {field: "LastName", title: "Last Name", width: "150px", type: "string"},
                     {field: "FirstName", title: "First Name", width: "150px", type: "string"},
@@ -31,14 +31,8 @@
                 //filterable: true,
                 toolbar: ["create", "save", "cancel"], 
                 dataSource: {
-                    data: [
-                        {EmployeeID: 1000, Company: "GSI", LastName: "Sargent", FirstName: "John", Status: "Active"},
-                        {EmployeeID: 1035, Company: "Intellinetics", LastName: "Yeats", FirstName: "William", Status: "Inactive"},
-                        {EmployeeID: 3684, Company: "GSI", LastName: "Hepburn", FirstName: "Katherine", Status: "Inactive"},
-                        {EmployeeID: 8589, Company: "GSI", LastName: "London", FirstName: "Jack", Status: "Active"},
-                        {EmployeeID: 9382, Company: "Intellinetics", LastName: "Lloyd", FirstName: "Harold", Status: "Active"}
-                        ],
-                    pageSize: 20    
+                    data: initDashboard(@Html.Raw(ViewData["DashboardContents"])),
+                    pageSize: 8  
                 },
                 editable: true,
                 pageable: {refresh: true, pageSizes: true, numeric: true, input: true},
@@ -54,6 +48,22 @@
             var dataItem = this.dataItem($(row.currentTarget).closest("tr"));
             console.log(dataItem);
             window.location = `/Screening/EnterScreening/?id=${dataItem.EmployeeID}&fname=${dataItem.FirstName}&lname=${dataItem.LastName}`;
+        }
+
+        function initDashboard(rawData) {
+            results = [];
+            rawData.forEach(obj => {
+                currentObj = {
+                    EmployeeID: obj.Id,
+                    Company: obj.Company,
+                    LastName: obj.LastName,
+                    FirstName: obj.FirstName,
+                    Status: obj.Status
+                };
+                results.push(currentObj);
+            });
+            console.log(results);
+            return results;
         }
     </script>
 
@@ -97,7 +107,7 @@
 
 <div id="DashboardTable" class="w3-card w3-margin-right w3-margin-left w3-margin-top">
     <div class="w3-container w3-green"><h4 class="w3-center">Employee Table</h4></div>
-    <div class="w3-container w3-margin-top">
+    <div class="w3-container w3-margin-top w3-margin-bottom">
         <div id="maingrid" />
     </div>
 </div>
