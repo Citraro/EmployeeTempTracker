@@ -14,7 +14,7 @@ namespace EmployeeTempTracker.Controllers
 
         // GET https://capstone.ohitski.org/Home
         public IActionResult Index() {
-            //log.Info("Index accessed");
+            log.Info("Index accessed"); //test log
             return viewProcessor_.Index();
         }
         [Authorize]
