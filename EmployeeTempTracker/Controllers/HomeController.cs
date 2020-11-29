@@ -10,9 +10,11 @@ namespace EmployeeTempTracker.Controllers
     public class HomeController : Controller {
 
         private HomeControllerLogic viewProcessor_ = new HomeControllerLogic();
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         // GET https://capstone.ohitski.org/Home
         public IActionResult Index() {
+            log.Info("Index accessed"); //test log
             return viewProcessor_.Index();
         }
         [Authorize]
