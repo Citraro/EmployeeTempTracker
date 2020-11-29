@@ -6,6 +6,7 @@ namespace EmployeeTempTracker.Controllers {
     class ScreeningControllerLogic : Controller {
 
         private IntellineticsApi api_ = new IntellineticsApi();
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         LoginController login = new LoginController();
 
         // Placeholder
@@ -64,8 +65,13 @@ namespace EmployeeTempTracker.Controllers {
             if (Convert.ToDouble(screening.Temp) > 100.4) flag = true;
 
             int appId = (domain == "training1") ? 116 : 216; // GSI : Intellinetics DAILY_HEALTH_RECORD app ids
-            WsCore.FMResult res = api_.InsertScreening(screening, sessionId, appId);
-
+            WsCore.FMResult res = null;
+            try{
+                res = api_.InsertScreening(screening, sessionId, appId);
+            }
+            catch(Exception e){
+                log.Debug(e.Message);
+            }
             if (res.ResultCode == -1) return RedirectToAction("Dashboard", "Home");
             else if (flag) return RedirectToAction("SendHome", screening);
             else return RedirectToAction("ReviewScreening", screening); //pass screening EmpId after adding to db instead of passing screening
