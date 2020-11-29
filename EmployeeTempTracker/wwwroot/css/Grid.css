@@ -24,7 +24,7 @@
   color: #787878;
 }
 .ktb-var-hover-background {
-  color: #4caf50;
+  color: #4caf50; 
 }
 .ktb-var-hover-gradient {
   background-image: none;
@@ -106,9 +106,9 @@
 }
 .k-button:hover,
 .k-button.k-state-hover {
-  color: #ffffff;
+  color: #4caf50;
   border-color: #4caf50;
-  background-color: #4caf50;
+  background-color: #ffffff;
 }
 .k-button:active,
 .k-button.k-state-active,
@@ -2689,7 +2689,7 @@ div.k-filebrowser-dropzone em {
 .k-grid tr:hover,
 .k-grid td.k-state-selected:hover {
   color: #ffffff;
-  background-color: #4caf50;
+  background-color: #919191;
 }
 .k-grid .k-filter-row:hover,
 .k-pivot-rowheaders .k-grid tr:hover {
@@ -3182,7 +3182,7 @@ div.k-filebrowser-dropzone em {
 .k-grid-header .k-i-sort-asc-sm,
 .k-grid-header .k-i-sort-desc-sm,
 .k-grid-header .k-sort-order {
-  color: #4caf50;
+  color: #666666;
 }
 .k-dropdowngrid-popup {
   border-color: #dbdbdb;

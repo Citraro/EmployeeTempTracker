@@ -10,7 +10,7 @@ namespace EmployeeTempTracker.Controllers {
     class HomeControllerLogic : Controller {
         private static IntellineticsApi api_ = new IntellineticsApi();
 
-        // GET https://capstone.ohitski.org/Home
+        // Placeholder
         public IActionResult Index() {
             ViewData["Title"] = "Home";
             return View("Dashboard");

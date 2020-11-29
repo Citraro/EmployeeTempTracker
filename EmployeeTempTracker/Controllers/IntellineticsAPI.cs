@@ -114,7 +114,7 @@ namespace EmployeeTempTracker.Controllers
                 EmployeeModel current = new EmployeeModel();
                 current.FirstName = firstNames[rand.Next(0, 14)];
                 current.LastName = lastNames[rand.Next(0, 14)];
-                current.Company = (rand.Next(0, 1) == 0) ? "GSI" : "Intellinetics";
+                current.Company = (rand.Next(0, 2) == 0) ? "GSI" : "Intellinetics";
                 current.Id = rand.Next(1000, 9999).ToString();
                 result.Add(current);
             }

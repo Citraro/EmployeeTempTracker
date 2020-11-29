@@ -18,8 +18,6 @@ namespace EmployeeTempTracker.Controllers {
         }
 
         // POST https://capstone.ohitski.org/Login/AuthUser
-        // (Amy): Couldnt get this to work in the logic controller so leaving it here for now
-        // api call to athenticate user and if authenticated, cookie is created
         [HttpPost]
         public async Task<IActionResult> AuthUser(string domain, string uname, string passwd) {
             ViewData["Title"] = "Authenticate";
@@ -32,8 +30,8 @@ namespace EmployeeTempTracker.Controllers {
                     new Claim(ClaimTypes.Name, authenticated.Username),
                     new Claim("Domain", authenticated.DomainName)
                 };
-                Response.Cookies.Append("SessionId", authenticated.SessionId); // Adds SessionId as a cookie
-                Response.Cookies.Append("DomainName", authenticated.DomainName); // Adds domain as a cookie
+                Response.Cookies.Append("SessionId", authenticated.SessionId);
+                Response.Cookies.Append("DomainName", authenticated.DomainName);
                 var claimsIdentity = new ClaimsIdentity(claims, "Login");
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
                 return RedirectToAction("Dashboard", "Home");

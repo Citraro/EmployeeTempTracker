@@ -11,7 +11,8 @@ namespace EmployeeTempTracker.Controllers {
 
         // GET https://capstone.ohitski.org/Screening
         public IActionResult Index() {
-            return viewProcessor_.Index();
+            string domain = Request.Cookies["DomainName"];
+            return viewProcessor_.EnterScreening(domain);
         }
 
         // GET https://capstone.ohitski.org/Screening/EnterScreening

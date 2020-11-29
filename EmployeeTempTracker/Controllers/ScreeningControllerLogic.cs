@@ -8,11 +8,8 @@ namespace EmployeeTempTracker.Controllers {
         private IntellineticsApi api_ = new IntellineticsApi();
         LoginController login = new LoginController();
 
-        // GET https://capstone.ohitski.org/Screening
+        // Placeholder
         public IActionResult Index() {
-            bool authenticated = true;
-            if (!authenticated) return RedirectToAction("Index", "Login");
-            
             return View("Index");
         }
 
@@ -69,10 +66,8 @@ namespace EmployeeTempTracker.Controllers {
             int appId = (domain == "training1") ? 116 : 216; // GSI : Intellinetics DAILY_HEALTH_RECORD app ids
             WsCore.FMResult res = api_.InsertScreening(screening, sessionId, appId);
 
-            // ToDo: Determine action if insertion fails (Error Logging)
             if (res.ResultCode == -1) return RedirectToAction("Dashboard", "Home");
-
-            if (flag) return RedirectToAction("SendHome", screening);
+            else if (flag) return RedirectToAction("SendHome", screening);
             else return RedirectToAction("ReviewScreening", screening); //pass screening EmpId after adding to db instead of passing screening
         }
 
@@ -99,8 +94,6 @@ namespace EmployeeTempTracker.Controllers {
 
         // POST https://capstone.ohitski.org/Screening/Edit
         public IActionResult Edit(ScreeningModel updatedScreening) {//TODO: instead of screening param here, pass Emp.Id
-            bool authenticated = true;
-            if (!authenticated) return RedirectToAction("Index", "Login");
             //update screening in DB using EntityFramework in real-life application
             
             //update list by removing old screening and adding new
