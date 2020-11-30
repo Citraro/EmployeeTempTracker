@@ -41,7 +41,7 @@ namespace EmployeeTempTracker.Controllers {
                 double rangeHalf = (maxTemp - minTemp) / 2;
 
                 // Pass data to the view
-                ViewData["Id"] = graphData[0].EmpId;
+                ViewData["Id"] = id;
                 ViewData["ScreeningCount"] = numDays;
                 ViewData["Average"] = average.ToString("F2");
                 ViewData["MinTemp"] = minTemp.ToString("F2");

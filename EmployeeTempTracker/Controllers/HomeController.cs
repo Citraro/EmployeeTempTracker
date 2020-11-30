@@ -35,7 +35,7 @@ namespace EmployeeTempTracker.Controllers
             return RedirectToAction("Index","Login");
         }
         
-        public IActionResult Analytics(int days = 7, string id = null) {
+        public IActionResult Analytics(int days = 7, string id = "Example") {
             return viewProcessor_.Analytics(days, id);
         }
 
