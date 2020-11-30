@@ -14,8 +14,9 @@ namespace EmployeeTempTracker.Controllers
 
         // GET https://capstone.ohitski.org/Home
         public IActionResult Index() {
-            log.Info("Index accessed"); //test log
-            return viewProcessor_.Index();
+            string domain = Request.Cookies["DomainName"];
+            log.Info("Index accessed");
+            return viewProcessor_.Dashboard(domain);
         }
         [Authorize]
         // GET https://capstone.ohitski.org/Home/Dashboard
@@ -43,9 +44,6 @@ namespace EmployeeTempTracker.Controllers
         public IActionResult Error() {
             return viewProcessor_.Error();
         }
-        // GET https://capstone.ohitski.org/Home/DashboardTemp
-        public IActionResult DashboardTemp(){
-            return viewProcessor_.DashboardTemp();
-        }
+
     }
 }

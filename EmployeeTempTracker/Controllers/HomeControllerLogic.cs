@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using EmployeeTempTracker.Models;
 using System;
@@ -10,15 +11,17 @@ namespace EmployeeTempTracker.Controllers {
         private static IntellineticsApi api_ = new IntellineticsApi();
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        // GET https://capstone.ohitski.org/Home
+        // Placeholder
         public IActionResult Index() {
             ViewData["Title"] = "Home";
-            return View("Index");
+            return View("Dashboard");
         }
 
         // GET https://capstone.ohitski.org/Home/Dashboard
         public IActionResult Dashboard(string domain = null) {
             ViewData["DomainName"] = domain;
+            List<EmployeeModel> contents = api_.FetchAllEmployees("Example", 1738);
+            ViewData["DashboardContents"] = JsonConvert.SerializeObject(contents.ToArray());
             return View("Dashboard");
         }
 
@@ -57,10 +60,7 @@ namespace EmployeeTempTracker.Controllers {
         public IActionResult Error() {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        // GET https://capstone.ohitski.org/Home/DashboardTemp
-        public IActionResult DashboardTemp() {
-            return View("DashboardTemp");
-        }
+
     }
     
 }

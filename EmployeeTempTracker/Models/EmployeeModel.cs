@@ -9,5 +9,14 @@ namespace EmployeeTempTracker.Models
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string Status { get; set; }
+
+        public EmployeeModel() {
+            Id = "";
+            Company = "";
+            LastName = "";
+            FirstName = "";
+            Status = "Active";
+        }
     }
+
 }

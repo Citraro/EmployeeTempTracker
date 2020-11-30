@@ -9,21 +9,18 @@ namespace EmployeeTempTracker.Controllers {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         LoginController login = new LoginController();
 
-        // GET https://capstone.ohitski.org/Screening
+        // Placeholder
         public IActionResult Index() {
-            bool authenticated = true;
-            if (!authenticated) return RedirectToAction("Index", "Login");
-            
             return View("Index");
         }
 
         // GET https://capstone.ohitski.org/Screening/EnterScreening
-        public IActionResult EnterScreening(String domain) {
-            bool authenticated = true; // TODO: Replace with session check
-            if (!authenticated) return RedirectToAction("Index", "Login");
+        public IActionResult EnterScreening(string domain, string id = null, string fname = null, string lname = null) {
             ViewData["Title"] = "Health Screening";
             ViewData["DomainName"] = domain;
-
+            ViewData["EmployeeId"] = id;
+            ViewData["FirstName"] = fname;
+            ViewData["LastName"] = lname;
             if(domain == "training1"){
                 return View("GSIEnterScreening");
             }else if(domain == "training4"){
@@ -57,7 +54,6 @@ namespace EmployeeTempTracker.Controllers {
             screening.SigPrintName = sigPrintName;
             screening.SigDate = DateTime.Now;
             ViewData["Screening"] = screening;
-            // STILL NEED Time
 
             // Check for questionairre anomalies
             bool flag = false;
@@ -76,10 +72,8 @@ namespace EmployeeTempTracker.Controllers {
             catch(Exception e){
                 log.Debug(e.Message);
             }
-            // ToDo: Determine action if insertion fails (Error Logging)
             if (res.ResultCode == -1) return RedirectToAction("Dashboard", "Home");
-
-            if (flag) return RedirectToAction("SendHome", screening);
+            else if (flag) return RedirectToAction("SendHome", screening);
             else return RedirectToAction("ReviewScreening", screening); //pass screening EmpId after adding to db instead of passing screening
         }
 
@@ -106,8 +100,6 @@ namespace EmployeeTempTracker.Controllers {
 
         // POST https://capstone.ohitski.org/Screening/Edit
         public IActionResult Edit(ScreeningModel updatedScreening) {//TODO: instead of screening param here, pass Emp.Id
-            bool authenticated = true;
-            if (!authenticated) return RedirectToAction("Index", "Login");
             //update screening in DB using EntityFramework in real-life application
             
             //update list by removing old screening and adding new
