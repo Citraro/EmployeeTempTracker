@@ -56,7 +56,7 @@ namespace EmployeeTempTracker.Controllers
             return screenings;
         }
 
-        public WsCore.FMResult InsertScreening(ScreeningModel sm, string session, int appId)
+        public WsCore.FMResult InsertScreening(ScreeningModel sm, string domain, string session, int appId)
         {
             WsCore.FMResult result = new FMResult();
             var list = new List<WsCore.FMIndexItem>();
@@ -67,13 +67,20 @@ namespace EmployeeTempTracker.Controllers
             list.Add(createIndexItem("FIRST_NAME", sm.FirstName));
             list.Add(createIndexItem("DATE", sm.Date.ToString("yyyy-MM-dd")));
             list.Add(createIndexItem("SCREENING_TIME", sm.Date.ToString("hh:mm tt")));
-            list.Add(createIndexItem("TEMPERATURE", sm.Temp));
             list.Add(createIndexItem("SYMPTOMS", sm.Symptoms));
-            list.Add(createIndexItem("CLOSE_CONTACT", sm.CloseContact));
             list.Add(createIndexItem("INTL_TRAVEL", sm.IntlTravel));
             list.Add(createIndexItem("SIGNATURE_PRINT_NAME", sm.SigPrintName));
             list.Add(createIndexItem("SIGNATURE_DATE", sm.SigDate.ToString("yyyy-MM-dd")));
             
+            // Handle differences in the two domains screening databases
+            if (domain == "training1") { // GSI Screening
+                list.Add(createIndexItem("TEMPERATURE", sm.Temp));
+                list.Add(createIndexItem("CLOSE_CONTACT", sm.CloseContact));
+            } else { // Intellinetics Screening
+                list.Add(createIndexItem("TEMPERATURE", sm.HighTemp));
+                list.Add(createIndexItem("COMPANY", "Intellinetics")); // ToDo: figure out how to differentiate company based off EmpId.
+            }
+
             WsCore.CMCoreServiceSoapClient.EndpointConfiguration ec = WsCore.CMCoreServiceSoapClient.EndpointConfiguration.ICMCoreServiceSoap;
             WsCore.CMCoreServiceSoapClient svc = new WsCore.CMCoreServiceSoapClient(ec);
 
