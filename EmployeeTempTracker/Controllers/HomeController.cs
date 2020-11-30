@@ -10,10 +10,13 @@ namespace EmployeeTempTracker.Controllers
     public class HomeController : Controller {
 
         private HomeControllerLogic viewProcessor_ = new HomeControllerLogic();
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         // GET https://capstone.ohitski.org/Home
         public IActionResult Index() {
-            return viewProcessor_.Index();
+            string domain = Request.Cookies["DomainName"];
+            log.Info("Index accessed");
+            return viewProcessor_.Dashboard(domain);
         }
         [Authorize]
         // GET https://capstone.ohitski.org/Home/Dashboard
@@ -41,9 +44,6 @@ namespace EmployeeTempTracker.Controllers
         public IActionResult Error() {
             return viewProcessor_.Error();
         }
-        // GET https://capstone.ohitski.org/Home/DashboardTemp
-        public IActionResult DashboardTemp(){
-            return viewProcessor_.DashboardTemp();
-        }
+
     }
 }

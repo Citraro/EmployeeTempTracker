@@ -109,6 +109,25 @@ namespace EmployeeTempTracker.Controllers
             return result;
         }
 
+        public List<EmployeeModel> FetchAllEmployees(string session, int appId) {
+            List<EmployeeModel> result = new List<EmployeeModel>();
+
+            // API Call here instead of randomly generating employees //
+            Random rand = new Random();
+            int employeeCount = rand.Next(25, 50);
+            string [] firstNames = new string[] {"Humberto", "Desiree", "Baron", "Malaki", "Landen", "Hailey", "Ryan", "Liliana", "Nick", "Jayda", "Barbara", "Sara", "Ricardo", "Edgar", "Hassan"};
+            string [] lastNames = new string[] {"Gravellese", "Schimmrigk", "Paltiel", "Twomey", "Ellet", "Carlin", "Cranston", "Finnegan", "Hodge", "Wilkes", "Erlich", "Gillispie", "Garau", "Voigt", "Spradley"};
+            for (int i = 0; i < employeeCount; ++i) {
+                EmployeeModel current = new EmployeeModel();
+                current.FirstName = firstNames[rand.Next(0, 14)];
+                current.LastName = lastNames[rand.Next(0, 14)];
+                current.Company = (rand.Next(0, 2) == 0) ? "GSI" : "Intellinetics";
+                current.Id = rand.Next(1000, 9999).ToString();
+                result.Add(current);
+            }
+            return result;
+        }
+
         private WsCore.FMIndexItem createIndexItem(string name,string value)
         {
             var indexItem = new FMIndexItem();
@@ -116,5 +135,6 @@ namespace EmployeeTempTracker.Controllers
             indexItem.Value = value;
             return indexItem;
         }
+
     }
 }
