@@ -18,16 +18,17 @@ namespace EmployeeTempTracker.Controllers {
         }
 
         // GET https://capstone.ohitski.org/Home/Dashboard
-        public IActionResult Dashboard(string domain = null) {
+        public IActionResult Dashboard(string domain = null,string sessionId = null) {
             ViewData["DomainName"] = domain;
-            List<EmployeeModel> contents = api_.FetchAllEmployees("Example", 1738);
+            var appId = domain == "training1" ? 117 : 216;
+            List<EmployeeModel> contents = api_.FetchAllEmployees(sessionId, appId);
             ViewData["DashboardContents"] = JsonConvert.SerializeObject(contents.ToArray());
             return View("Dashboard");
         }
 
-        public IActionResult Analytics(int numDays, string id) {
+        public IActionResult Analytics(int numDays, int id,string sessionId,int appId) {
             try{
-                ScreeningModel [] graphData = api_.FetchUserScreeningsByDay(numDays);
+                List<ScreeningModel> graphData = api_.FetchUserScreeningsByDays(numDays,id,sessionId,appId);
 
                 // Start computing statistics
                 double maxTemp = -1.0, minTemp = 200.0, sum = 0.0;
