@@ -67,7 +67,7 @@ namespace EmployeeTempTracker.Controllers {
             int appId = (domain == "training1") ? 116 : 216; // GSI : Intellinetics DAILY_HEALTH_RECORD app ids
             WsCore.FMResult res = null;
             try{
-                res = api_.InsertScreening(screening, sessionId, appId);
+                res = api_.InsertScreening(screening, domain, sessionId, appId);
             }
             catch(Exception e){
                 log.Debug(e.Message);

@@ -35,7 +35,7 @@ namespace EmployeeTempTracker.Controllers
             await HttpContext.SignOutAsync();
             return RedirectToAction("Index","Login");
         }
-        
+
         public IActionResult Analytics(int days, int id, string session,int appId) {
             return viewProcessor_.Analytics(days, id,session,appId);
         }
