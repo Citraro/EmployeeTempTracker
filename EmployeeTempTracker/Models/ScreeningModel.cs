@@ -5,7 +5,7 @@ namespace EmployeeTempTracker.Models
 {
     public class ScreeningModel
     {
-        public int EmpId { get; set; }
+        public string EmpId { get; set; }
         public string FirstName { get; set; } 
         public string LastName { get; set; }
 
@@ -28,7 +28,7 @@ namespace EmployeeTempTracker.Models
         public DateTime SigDate { get; set; }
 
         public ScreeningModel() {
-            EmpId = new int();
+            EmpId = "";
             Date = DateTime.Now;
             Time = DateTime.Now;
             Temp = "98.6";

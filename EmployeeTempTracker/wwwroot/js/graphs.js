@@ -10,7 +10,7 @@ const computeLineChart = (rawData, graph_id) => {
 
     function drawChart() {
         var data = google.visualization.arrayToDataTable(graphData);
-        var options = { title: 'Most Recent <= Oldest', curveType: 'function', height: 400, legend: { position: 'bottom' } };
+        var options = { title: 'Employee Temperatures By Day', curveType: 'function', height: 400, legend: { position: 'bottom' } };
         var chart = new google.visualization.LineChart(document.getElementById(graph_id));
         chart.draw(data, options);
     }

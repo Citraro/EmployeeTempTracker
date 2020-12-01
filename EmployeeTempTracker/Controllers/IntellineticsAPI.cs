@@ -19,6 +19,8 @@ namespace EmployeeTempTracker.Controllers
 {
     public class IntellineticsApi
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private const string _SERVICE_ASMX = "/ICMCoreService.asmx";
         private const WsCore.CMCoreServiceSoapClient.EndpointConfiguration _ec = WsCore.CMCoreServiceSoapClient.EndpointConfiguration.ICMCoreServiceSoap;
         private  WsCore.CMCoreServiceSoapClient _svc = new WsCore.CMCoreServiceSoapClient(_ec);
@@ -101,7 +103,7 @@ namespace EmployeeTempTracker.Controllers
             List<EmployeeModel> result = new List<EmployeeModel>();
             var query = _search.Query(session, appId, "", "EMPLOYEE_ID > 0", "", 1, 1, 1000);
             var count = query.XDResultSet.ChildNodes.Count;
-            var company = appId == 117 ? "GSI" : "Intellinetics";
+            var company = (appId == 117) ? "GSI" : "Intellinetics";
             for(int index = 0; index < count; index++)
             {
                 var employee = new EmployeeModel();
@@ -131,30 +133,35 @@ namespace EmployeeTempTracker.Controllers
             return employee;
         }
 
-        public List<ScreeningModel> FetchUserScreeningsByDays(int days, int employeeId,string session, int appId)
+        public List<ScreeningModel> FetchUserScreeningsByDays(int days, string employeeId, string session, int appId)
         {
             List<ScreeningModel> result = new List<ScreeningModel>();
             var today = DateTime.Today;
             var todayMinusDays = DateTime.Today.AddDays(-days);
-            var queryString = $"DATE <= '{today}' AND DATE >= '{todayMinusDays}' AND EMPLOYEE_ID = {employeeId}";
-            var query = _search.Query(session, appId, "", queryString, "", 1, 1, 1000);
-            var count = query.XDResultSet.ChildNodes.Count;
-            for(int index = 0; index < count; index++)
-            {
-                var screening = new ScreeningModel();
-                var obj = query.XDResultSet.ChildNodes.Item(index);
-                screening.EmpId = employeeId;
-                screening.Date = DateTime.Parse(obj["DATE"].InnerText);
-                screening.Time = DateTime.Parse(obj["SCREENING_TIME"].InnerText);
-                screening.LastName = obj["LAST_NAME"].InnerText;
-                screening.FirstName = obj["FIRST_NAME"].InnerText;
-                screening.Temp = obj["TEMPERATURE"].InnerText;
-                screening.Symptoms = obj["SYMPTOMS"].InnerText;
-                screening.CloseContact = obj["CLOSE_CONTACT"].InnerText;
-                screening.IntlTravel = obj["INTL_TRAVEL"].InnerText;
-                screening.SigPrintName = obj["SIGNATURE_PRINT_NAME"].InnerText;
-                screening.SigDate = DateTime.Parse(obj["SIGNATURE_DATE"].InnerText);
-                result.Add(screening);
+            var queryString = $"DATE <= '{today}' AND DATE >= '{todayMinusDays}' AND EMPLOYEE_ID = '{employeeId}'";
+            try {
+                var query = _search.Query(session, appId, "", queryString, "", 1, 1, 1000);
+                int count = 0;
+                if (query.XDResultSet != null) count = query.XDResultSet.ChildNodes.Count;
+                for(int index = 0; index < count; index++)
+                {
+                    var screening = new ScreeningModel();
+                    var obj = query.XDResultSet.ChildNodes.Item(index);
+                    screening.EmpId = employeeId;
+                    screening.Date = DateTime.Parse(obj["DATE"].InnerText);
+                    screening.Time = DateTime.Parse(obj["SCREENING_TIME"].InnerText);
+                    screening.LastName = obj["LAST_NAME"].InnerText;
+                    screening.FirstName = obj["FIRST_NAME"].InnerText;
+                    screening.Temp = obj["TEMPERATURE"].InnerText;
+                    screening.Symptoms = obj["SYMPTOMS"].InnerText;
+                    screening.CloseContact = obj["CLOSE_CONTACT"].InnerText;
+                    screening.IntlTravel = obj["INTL_TRAVEL"].InnerText;
+                    screening.SigPrintName = obj["SIGNATURE_PRINT_NAME"].InnerText;
+                    screening.SigDate = DateTime.Parse(obj["SIGNATURE_DATE"].InnerText);
+                    result.Add(screening);
+                }
+            } catch (Exception e) {
+                log.Debug(e.Message);
             }
             return result;
         }

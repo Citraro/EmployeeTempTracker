@@ -3,7 +3,7 @@
 <!-- Begin Chart Section -->
 <div class="w3-row">
     <div class="w3-card-4">
-        <div class="w3-container w3-green w3-padding-small w3-center"><h2>Recorded Temperatures of @ViewData["Id"] Over @ViewData["ScreeningCount"] Days</h2></div>
+        <div class="w3-container w3-green w3-padding-small w3-center"><h2>Recorded Temperatures of @ViewData["Name"] Over @ViewData["Timeframe"]</h2></div>
             <div class="w3-container" id="avg_temp_graph">
                 <script>computeLineChart(@Html.Raw(ViewData["Screenings"]), "chart_avg_temps");</script>
             <div id="chart_avg_temps" ></div>
