@@ -29,7 +29,7 @@ namespace EmployeeTempTracker.Controllers {
 
         // POST https://capstone.ohitski.org/Screening/ProcessScreening
         [HttpPost]
-        public IActionResult ProcessScreening(string fname, string lname, int id, 
+        public IActionResult ProcessScreening(string fname, string lname, string id, 
             string temperature, string highTemp, string symptoms, string closeContact, 
             string intlTravel,string Sig, string sigPrintName, DateTime sigDate) {
             

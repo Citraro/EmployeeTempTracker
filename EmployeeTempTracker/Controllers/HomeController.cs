@@ -36,8 +36,17 @@ namespace EmployeeTempTracker.Controllers
             return RedirectToAction("Index","Login");
         }
 
-        public IActionResult Analytics(int days, int id, string session,int appId) {
-            return viewProcessor_.Analytics(days, id,session,appId);
+        public IActionResult History() {
+            string sessionId = Request.Cookies["SessionId"];
+            string domain = Request.Cookies["DomainName"];
+            return viewProcessor_.History(sessionId, domain);
+        }
+
+        public IActionResult Analytics(string id, string fname, string lname, int days = 7) {
+            string sessionId = Request.Cookies["SessionId"];
+            string domain = Request.Cookies["DomainName"];
+            int appId = (domain == "training1") ? 116 : 217;
+            return viewProcessor_.Analytics(id, fname, lname, sessionId, appId, days);
         }
 
         // GET https://capstone.ohitski.org/Home/Error

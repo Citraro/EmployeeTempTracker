@@ -31,7 +31,7 @@ namespace EmployeeTempTracker.Controllers {
         }
 
         // POST https://capstone.ohitski.org/Screening/ProcessScreening
-        public IActionResult ProcessScreening(string fname, string lname, int id, string temperature, string highTemp, string symptoms, string closeContact, string intlTravel,string Sig, string sigPrintName, DateTime sigDate, string sessionId, string domain) {
+        public IActionResult ProcessScreening(string fname, string lname, string id, string temperature, string highTemp, string symptoms, string closeContact, string intlTravel,string Sig, string sigPrintName, DateTime sigDate, string sessionId, string domain) {
 
             // Ensure proper mask for temperature object
             double deg = Convert.ToDouble(temperature);
