@@ -1,21 +1,30 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Xml.Serialization;
 using EmployeeTempTracker.Models;
+using Microsoft.AspNetCore.WebUtilities;
 using WsCore;
 using WsAuth;
+using WsSearch;
 
 namespace EmployeeTempTracker.Controllers
 {
     public class IntellineticsApi
     {
         private const string _SERVICE_ASMX = "/ICMCoreService.asmx";
+        private const WsCore.CMCoreServiceSoapClient.EndpointConfiguration _ec = WsCore.CMCoreServiceSoapClient.EndpointConfiguration.ICMCoreServiceSoap;
+        private  WsCore.CMCoreServiceSoapClient _svc = new WsCore.CMCoreServiceSoapClient(_ec);
+        private const WsSearch.CMSearchServiceSoapClient.EndpointConfiguration _sec =
+            WsSearch.CMSearchServiceSoapClient.EndpointConfiguration.ICMSearchServiceSoap;
+        private  WsSearch.CMSearchServiceSoapClient _search = new CMSearchServiceSoapClient(_sec);
 
         public LoginModel CheckUserLogin(LoginModel loginInfo, int appId)
         {
@@ -37,24 +46,6 @@ namespace EmployeeTempTracker.Controllers
 
             return loginInfo;
         }
-        // Replace with an API call that does this
-        public ScreeningModel[] FetchUserScreeningsByDay(int days = 7, string userId = null)
-        {
-            ScreeningModel[] screenings = new ScreeningModel[days];
-            Random rand = new Random();
-            for (int i = 0; i < days; ++i)
-            {
-                // 
-                screenings[i] = new ScreeningModel();
-                screenings[i].EmpId = new int();
-                screenings[i].Date = DateTime.Now.AddDays(-i);
-                screenings[i].Temp =
-                    (rand.NextDouble() + rand.Next(97, 100))
-                    .ToString("F2"); // Random double between 98-99 with 2 decimal points precision
-            }
-
-            return screenings;
-        }
 
         public WsCore.FMResult InsertScreening(ScreeningModel sm, string session, int appId)
         {
@@ -73,11 +64,8 @@ namespace EmployeeTempTracker.Controllers
             list.Add(createIndexItem("INTL_TRAVEL", sm.IntlTravel));
             list.Add(createIndexItem("SIGNATURE_PRINT_NAME", sm.SigPrintName));
             list.Add(createIndexItem("SIGNATURE_DATE", sm.SigDate.ToString("yyyy-MM-dd")));
-            
-            WsCore.CMCoreServiceSoapClient.EndpointConfiguration ec = WsCore.CMCoreServiceSoapClient.EndpointConfiguration.ICMCoreServiceSoap;
-            WsCore.CMCoreServiceSoapClient svc = new WsCore.CMCoreServiceSoapClient(ec);
 
-            result = svc.FMCreateFolder(session, appId, list.ToArray(), 0);
+            result = _svc.FMCreateFolder(session, appId, list.ToArray(), 0);
             return result;
         }
 
@@ -95,28 +83,68 @@ namespace EmployeeTempTracker.Controllers
             screeningItem = createIndexItem("STATUS",emp.Status);
             list.Add(screeningItem);
 
-            WsCore.CMCoreServiceSoapClient.EndpointConfiguration ec = WsCore.CMCoreServiceSoapClient.EndpointConfiguration.ICMCoreServiceSoap;
-            WsCore.CMCoreServiceSoapClient svc = new WsCore.CMCoreServiceSoapClient(ec);
-
-            result = svc.FMModifyFolderIndexes(lm.SessionId, appId, Convert.ToInt32(emp.Id), list.ToArray());
+            result = _svc.FMModifyFolderIndexes(lm.SessionId, appId, Convert.ToInt32(emp.Id), list.ToArray());
             return result;
         }
 
         public List<EmployeeModel> FetchAllEmployees(string session, int appId) {
             List<EmployeeModel> result = new List<EmployeeModel>();
+            var query = _search.Query(session, appId, "", "EMPLOYEE_ID > 0", "", 1, 1, 1000);
+            var count = query.XDResultSet.ChildNodes.Count;
+            var company = appId == 117 ? "GSI" : "Intellinetics";
+            for(int index = 0; index < count; index++)
+            {
+                var employee = new EmployeeModel();
+                var obj = query.XDResultSet.ChildNodes.Item(index);
+                employee.Company = company;
+                employee.Id = obj["EMPLOYEE_ID"].InnerText;
+                employee.FirstName = obj["FIRST_NAME"].InnerText;
+                employee.LastName = obj["LAST_NAME"].InnerText;
+                employee.Status = obj["STATUS"].InnerText;
+                result.Add(employee);
+            }
+            return result;
+        }
 
-            // API Call here instead of randomly generating employees //
-            Random rand = new Random();
-            int employeeCount = rand.Next(25, 50);
-            string [] firstNames = new string[] {"Humberto", "Desiree", "Baron", "Malaki", "Landen", "Hailey", "Ryan", "Liliana", "Nick", "Jayda", "Barbara", "Sara", "Ricardo", "Edgar", "Hassan"};
-            string [] lastNames = new string[] {"Gravellese", "Schimmrigk", "Paltiel", "Twomey", "Ellet", "Carlin", "Cranston", "Finnegan", "Hodge", "Wilkes", "Erlich", "Gillispie", "Garau", "Voigt", "Spradley"};
-            for (int i = 0; i < employeeCount; ++i) {
-                EmployeeModel current = new EmployeeModel();
-                current.FirstName = firstNames[rand.Next(0, 14)];
-                current.LastName = lastNames[rand.Next(0, 14)];
-                current.Company = (rand.Next(0, 2) == 0) ? "GSI" : "Intellinetics";
-                current.Id = rand.Next(1000, 9999).ToString();
-                result.Add(current);
+        public EmployeeModel FetchEmployee(int employeeId,string session,int appId)
+        {
+            var employee = new EmployeeModel();
+            var company = appId == 117 ? "GSI" : "Intellinetics";
+            var queryString = $"WHERE EMPLOYEE_ID = '{employeeId}'";
+            var query = _search.Query(session, appId, "", "", queryString, 1, 1, 1);
+            var xmlNode = query.XDResultSet;
+            employee.Company = company;
+            employee.Id = xmlNode.FirstChild["EMPLOYEE_ID"].InnerText;
+            employee.FirstName = xmlNode.FirstChild["FIRST_NAME"].InnerText;
+            employee.LastName = xmlNode.FirstChild["LAST_NAME"].InnerText;
+            employee.Status = xmlNode.FirstChild["STATUS"].InnerText;
+            return employee;
+        }
+
+        public List<ScreeningModel> FetchUserScreeningsByDays(int days, int employeeId,string session, int appId)
+        {
+            List<ScreeningModel> result = new List<ScreeningModel>();
+            var today = DateTime.Today;
+            var todayMinusDays = DateTime.Today.AddDays(-days);
+            var queryString = $"DATE <= '{today}' AND DATE >= '{todayMinusDays}' AND EMPLOYEE_ID = {employeeId}";
+            var query = _search.Query(session, appId, "", queryString, "", 1, 1, 1000);
+            var count = query.XDResultSet.ChildNodes.Count;
+            for(int index = 0; index < count; index++)
+            {
+                var screening = new ScreeningModel();
+                var obj = query.XDResultSet.ChildNodes.Item(index);
+                screening.EmpId = employeeId;
+                screening.Date = DateTime.Parse(obj["DATE"].InnerText);
+                screening.Time = DateTime.Parse(obj["SCREENING_TIME"].InnerText);
+                screening.LastName = obj["LAST_NAME"].InnerText;
+                screening.FirstName = obj["FIRST_NAME"].InnerText;
+                screening.Temp = obj["TEMPERATURE"].InnerText;
+                screening.Symptoms = obj["SYMPTOMS"].InnerText;
+                screening.CloseContact = obj["CLOSE_CONTACT"].InnerText;
+                screening.IntlTravel = obj["INTL_TRAVEL"].InnerText;
+                screening.SigPrintName = obj["SIGNATURE_PRINT_NAME"].InnerText;
+                screening.SigDate = DateTime.Parse(obj["SIGNATURE_DATE"].InnerText);
+                result.Add(screening);
             }
             return result;
         }

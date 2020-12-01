@@ -22,7 +22,8 @@ namespace EmployeeTempTracker.Controllers
         // GET https://capstone.ohitski.org/Home/Dashboard
         public IActionResult Dashboard() {
             string domain = Request.Cookies["DomainName"];
-            return viewProcessor_.Dashboard(domain);
+            string sessionId = Request.Cookies["SessionId"];
+            return viewProcessor_.Dashboard(domain,sessionId);
         }
 
         [HttpPost]
@@ -35,8 +36,8 @@ namespace EmployeeTempTracker.Controllers
             return RedirectToAction("Index","Login");
         }
         
-        public IActionResult Analytics(int days = 7, string id = null) {
-            return viewProcessor_.Analytics(days, id);
+        public IActionResult Analytics(int days, int id, string session,int appId) {
+            return viewProcessor_.Analytics(days, id,session,appId);
         }
 
         // GET https://capstone.ohitski.org/Home/Error
