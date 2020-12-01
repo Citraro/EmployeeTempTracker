@@ -138,7 +138,7 @@ namespace EmployeeTempTracker.Controllers
             List<ScreeningModel> result = new List<ScreeningModel>();
             var today = DateTime.Today;
             var todayMinusDays = DateTime.Today.AddDays(-days);
-            var queryString = $"DATE <= '{today}' AND DATE >= '{todayMinusDays}' AND EMPLOYEE_ID = {employeeId}";
+            var queryString = $"DATE <= '{today}' AND DATE >= '{todayMinusDays}' AND EMPLOYEE_ID = '{employeeId}'";
             try {
                 var query = _search.Query(session, appId, "", queryString, "", 1, 1, 1000);
                 int count = 0;
