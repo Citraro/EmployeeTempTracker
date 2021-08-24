@@ -1,0 +1,16 @@
+@{
+    ScreeningModel screening = ViewData["Screening"] as EmployeeTempTracker.Models.ScreeningModel;
+}
+
+<div class="w3-container w3-red">
+    <h2>Temp File - Remove Later On</h2>
+    <p>Still need to figure out if ScreeningModel.Time is necessary & how to implement the signature portion of the screening</p>
+</div>
+<br />
+
+<p>Id: @screening.EmpId</p>
+<p>Date: @screening.Date</p>
+<p>Temp: @screening.Temp</p>
+<p>Symptoms? : @screening.Symptoms</p>
+<p>Close Contact? : @screening.CloseContact</p>
+<p>Internation Travel? : @screening.IntlTravel</p>

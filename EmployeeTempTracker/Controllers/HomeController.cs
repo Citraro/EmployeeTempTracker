@@ -1,37 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+using Microsoft.AspNetCore.Authorization;
+using EmployeeTempTracker.Models;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using EmployeeTempTracker.Models;
 
 namespace EmployeeTempTracker.Controllers
 {
-    public class HomeController : Controller
-    {
-        private readonly ILogger<HomeController> _logger;
+    public class HomeController : Controller {
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
+        private HomeControllerLogic viewProcessor_ = new HomeControllerLogic();
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        // GET https://capstone.ohitski.org/Home
+        public IActionResult Index() {
+            string domain = Request.Cookies["DomainName"];
+            log.Info("Index accessed");
+            return viewProcessor_.Dashboard(domain);
+        }
+        [Authorize]
+        // GET https://capstone.ohitski.org/Home/Dashboard
+        public IActionResult Dashboard() {
+            string domain = Request.Cookies["DomainName"];
+            string sessionId = Request.Cookies["SessionId"];
+            return viewProcessor_.Dashboard(domain,sessionId);
         }
 
-        public IActionResult Index()
+        [HttpPost]
+        // GET https://capstone.ohitski.org/Home/Dashboard
+        public async Task<IActionResult> Logout()
         {
-            return View();
+            Response.Cookies.Delete("SessionId");
+            Response.Cookies.Delete("DomainName");
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Index","Login");
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
+        public IActionResult History() {
+            string sessionId = Request.Cookies["SessionId"];
+            string domain = Request.Cookies["DomainName"];
+            return viewProcessor_.History(sessionId, domain);
         }
 
+        public IActionResult Analytics(string id, string fname, string lname, int days = 7) {
+            string sessionId = Request.Cookies["SessionId"];
+            string domain = Request.Cookies["DomainName"];
+            int appId = (domain == "training1") ? 116 : 217;
+            return viewProcessor_.Analytics(id, fname, lname, sessionId, appId, days);
+        }
+
+        // GET https://capstone.ohitski.org/Home/Error
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        public IActionResult Error() {
+            return viewProcessor_.Error();
         }
+
     }
 }

@@ -1,0 +1,29 @@
+@model LoginModel
+
+<div id="login_form" class="w3-card w3-margin-left w3-margin-right">
+    <div class="w3-container w3-green"><h4 class="w3-center">User Login</h4></div>
+    <form class="w3-container" action="./Login/AuthUser" method="Post">
+
+        <label asp-for="DomainName" class="w3-margin-top"><b>Domain:</b></label>
+        <input class="w3-input w3-round w3-border w3-border-grey w3-margin-bottom" type="text" size="50" maxlength="50" name="domain" placeholder="Domain" required/>
+        <span asp-validation-for="DomainName" class="text-danger"></span>
+
+        <label asp-for="Username"><b>Username:</b></label>
+        <input class="w3-input w3-round w3-border w3-border-grey w3-margin-bottom" type="text" size="50" maxlength="50" name="uname" placeholder="Username" required/>
+        <span asp-validation-for="Username" class="text-danger"></span>
+        
+        <label asp-for="Password"><b>Password:</b></label>
+        <input class="w3-input w3-round w3-border w3-border-grey" type="password" size="50" maxlength="50" name="passwd" placeholder="Password" />
+
+        @* Center submit button in the middle with 1/3rd container width *@
+        <div class="w3-row">
+            <div class="w3-third"><p></p></div>
+            <div class="w3-third w3-container w3-margin-top w3-margin-bottom">
+                <input class="w3-btn w3-block w3-green w3-border w3-border-grey w3-round-large w3-padding-small" type="submit" value="Submit" name="authenticate_user" />
+            </div>
+            <div class="w3-third"><p></p></div>
+        </div>
+    </form>
+</div>
+
+<hr />

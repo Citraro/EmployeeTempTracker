@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://kendo.cdn.telerik.com/2020.3.1118/styles/kendo.common.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2020.3.1118/js/kendo.all.min.js"></script>
+    <link rel="stylesheet" href="/css/Grid.css" />
+
+    <!-- Draws the KendoGrid main Dashboard Table -->
+    <script>
+        $(document).ready(function() {
+            $('#maingrid').kendoGrid({
+                height: 500,
+                columns: [
+                    {field: "EmployeeID", title: "ID", width: "110px", type: "string"},
+                    {field: "Company", width: "150px", type: "string"},
+                    {field: "LastName", title: "Last Name", width: "125px", type: "string"},
+                    {field: "FirstName", title: "First Name", width: "125px", type: "string"},
+                    {field: "Status", width: "120px", type: "string"},
+                    {
+                        command: {
+                            text: "New Screening",
+                            click: initScreening,
+                        },
+                        title: "New Screening",
+                        width: "110px"
+                    },
+                    {
+                        command: {
+                            text: "Analytics",
+                            click: analytics,
+                        },
+                        title: "Analytics",
+                        width: "75px"
+                    }
+                ], 
+                filterable: true,
+                toolbar: ["create", "save", "cancel"], 
+                dataSource: {
+                    data: initDashboard(@Html.Raw(ViewData["DashboardContents"])),
+                    pageSize: 8  
+                },
+                editable: true,
+                pageable: {refresh: true, pageSizes: true, numeric: true, input: true},
+                sortable: {mode: "single"},
+                selectable: "multiple cell",
+                scrollable: false,
+                navigatable: true,
+            });
+        });
+        
+        function initScreening (row) {
+            row.preventDefault();
+            var dataItem = this.dataItem($(row.currentTarget).closest("tr"));
+            window.location = `/Screening/EnterScreening/?id=${dataItem.EmployeeID}&fname=${dataItem.FirstName}&lname=${dataItem.LastName}`;
+        }
+
+        function analytics(row) {
+            row.preventDefault();
+            var dataItem = this.dataItem($(row.currentTarget).closest("tr"));
+            window.location = `/Home/Analytics?id=${dataItem.EmployeeID}&fname=${dataItem.FirstName}&lname=${dataItem.LastName}`;
+        }
+
+        function initDashboard(rawData) {
+            results = [];
+            rawData.forEach(obj => {
+                currentObj = {
+                    EmployeeID: obj.Id,
+                    Company: obj.Company,
+                    LastName: obj.LastName,
+                    FirstName: obj.FirstName,
+                    Status: obj.Status
+                };
+                results.push(currentObj);
+            });
+            return results;
+        }
+    </script>
+
+</head>
+
+<header>
+    <link rel="stylesheet" href="/css/UserDashboard.css" />
+    <div class="w3-container w3-dark-gray w3-padding-small">
+        <div class="w3-row">
+            <div class="w3-container w3-twothird"><h3 class="w3-center">Employee Temperature Tracking Application</h4></div>
+            <div class="w3-container w3-third w3-right"><img src="https://www.intellinetics.com/wp-content/uploads/2019/03/default-logo.png" alt="Intellinetics" class="w3-padding-small"></div>
+        </div>
+    </div>
+</header>
+
+<!-- Start Dashboard Modification (David) -->
+<div class="w3-row w3-margin-top">
+    <form class="w3-third" action="/Home/History" method="Get">
+        <div class="w3-container">
+            <div class="w3-gray">
+                <h2><input class="w3-btn w3-block w3-center w3-padding-small" type="submit" value="History"/></h2>
+            </div>
+        </div>
+    </form>
+    <form class="w3-third" action="/Screening/EnterScreening" method="Get">
+        <div class="w3-container">
+            <div class="w3-green">
+                <h2><input class="w3-btn w3-block w3-center w3-padding-small" type="submit" value="Enter Screening"/></h2>
+            </div>
+        </div>
+    </form>
+    <form class="w3-third" action="/Home/Logout" method="Post">
+        <div class="w3-container">
+            <div class="w3-gray">
+                <h2><input class="w3-btn w3-block w3-center w3-padding-small" type="submit" value="Logout" name="logout_user" /></h2>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- End Dashboard Modification (David) -->
+
+<div id="DashboardTable" class="w3-card w3-margin-right w3-margin-left w3-margin-top">
+    <div class="w3-container w3-green"><h4 class="w3-center">Employee Table</h4></div>
+    <div class="w3-container w3-margin-top w3-margin-bottom">
+        <div id="maingrid" />
+    </div>
+</div>
+
+</html>

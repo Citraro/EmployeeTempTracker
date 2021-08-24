@@ -1,0 +1,27 @@
+<!-- Temp file to check if the ScreeningModel object is being created successfully -->
+@{
+    ScreeningModel screening = ViewData["Screening"] as EmployeeTempTracker.Models.ScreeningModel;
+}
+
+<div id="review_screening" class="w3-card-4 w3-margin-left w3-margin-right">
+    <div class="w3-container w3-green"><h4 class="w3-center">Review Screening</h4></div>
+
+    <div class="w3-container" style="border:3px;">
+        <p>Id: @screening.EmpId</p>
+        <p>Date: @screening.Date</p>
+        <p>Temp: @screening.Temp</p>
+        <p>HighTemp: @screening.HighTemp</p>
+        <p>Symptoms? : @screening.Symptoms</p>
+        <p>Close Contact? : @screening.CloseContact</p>
+        <p>Internation Travel? : @screening.IntlTravel</p>
+        <p>Signature?: @screening.Sig </p>
+        <p>SigPrintName?: @screening.SigPrintName</p>
+        <p>SigDate?: @screening.SigDate</p>
+
+        @using (Html.BeginForm("DashBoard","Home"))
+        {
+            <input type="submit" value="Return to Home" />
+        } 
+    </div>
+
+</div>
